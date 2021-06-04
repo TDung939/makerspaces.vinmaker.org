@@ -12,10 +12,9 @@ import {
 } from '@chakra-ui/react'
 import * as React from 'react'
 import { BiRightArrowAlt } from 'react-icons/bi'
-import { FaPlayCircle } from 'react-icons/fa'
 import { SampleLogo } from './SampleLogo'
 import { Testimonial } from './Testimonial'
-import VideoBtn from '../video-btn';
+import Modal from './Modal'
 
 const Feature = (props) => {
   const { title, children } = props
@@ -90,8 +89,10 @@ const App = () => {
               }}
               rounded="lg"
             >
-              
-            <VideoBtn path="https://youtu.be/YXLPkoqBuAY" />
+            
+            {/*This little guy plays the Video. Find him in /components/testimonials/modal.jsx*/}
+            <Modal />
+
             </Center>
             <SimpleGrid
               rounded="lg"
