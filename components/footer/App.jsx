@@ -9,7 +9,7 @@ import {
 } from '@chakra-ui/react'
 import * as React from 'react'
 import { FaHeart } from 'react-icons/fa'
-
+import Image from 'next/image'
 import { SocialLink } from './SocialLink'
 import { links, socialLinks } from './_data'
 import { LinkGroup } from './LinkGroup'
@@ -45,6 +45,7 @@ const App = () => (
         align="flex-start"
         id="top"
       >
+        <Image src="/assets/logo-white.svg" width={164} height={100}/>
         <SimpleGrid
           flex="1"
           w={{
@@ -176,7 +177,7 @@ const App = () => (
         pos="absolute"
         bg="#ae262b"
         w="100%"
-        h="50px"
+        h="3.6875rem"
     >
     </Box>
     {/*Create the Blue line */}
@@ -185,8 +186,8 @@ const App = () => (
         right="0"
         bg="#2d4d73"
         w="20%"
-        h="83px"
-        bottom="-50"
+        h="5.125rem"
+        bottom="-3.6875rem"
         transformOrigin="top left"
     >
     </Box>
@@ -195,8 +196,8 @@ const App = () => (
         right="0"
         bg="#2d4d73"
         w="45%"
-        h="83px"
-        bottom="-50"
+        h="5.125rem"
+        bottom="-3.6875rem"
         transformOrigin="top left"
         transform="skew(-17deg, 0deg)"
     >

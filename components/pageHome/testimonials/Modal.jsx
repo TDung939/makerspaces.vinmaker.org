@@ -23,7 +23,7 @@ export class videoModal extends Component {
             channel="youtube"
             isOpen={this.state.isOpen}
             //Change the youtube URL here
-            videoId="YXLPkoqBuAY"
+            videoId="rnOuO6Ou6BY"
             onClose={() => this.setState({ isOpen: false })}
           />
           <Box as={FaPlayCircle} fontSize="90px" color="gray.300" onClick={this.openModal} opacity="1" _hover={{ opacity: 0.8  }}/>

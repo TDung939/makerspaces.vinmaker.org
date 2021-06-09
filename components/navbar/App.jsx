@@ -6,13 +6,45 @@ import {
   useColorModeValue as mode,
   Heading,
   VisuallyHidden,
+  Text,
+  chakra,
 } from '@chakra-ui/react'
 import * as React from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { MobileNav } from './MobileNav'
 import { NavLink } from './NavLink'
+import { Logo } from './Logo'
+
+import {useAuth} from '../../services/auth'
+import firebase from "firebase/app";
 
 const App = () => {
+  const {user} =useAuth();
+  let display;
+  if (!user) {
+    display = ( <Link href="/login">
+                  <Button 
+                  color="white"
+                  bg="#ae262b"
+                  _hover={{ bg: "#9d2227" }}
+                  >
+                    Login
+                  </Button>
+                </Link>)
+  } else {
+    display = (  <Button 
+                  color="white"
+                  bg="#ae262b"
+                  _hover={{ bg: "#9d2227" }}
+                  onClick={async () => {
+                    await firebase.auth().signOut();
+                    window.location.href = "/";
+                  }}
+                  >
+                    Logout
+                  </Button>)
+  }
   return (
     <Box maxH="480px">
        {/*Create the Red line 
@@ -55,11 +87,11 @@ const App = () => {
             md: '8',
           }}
         >
-          <Flex as="nav" justify="space-between">
+          <Flex as="nav"  justify="space-between">
             <HStack spacing="8">
-              <Box as="a" href="/" rel="home">
-                <Heading>MakerSpaces</Heading>
-                
+              <Box as="a" href="/" rel="home" textAlign="left">
+              <Image src="/assets/logo.svg" height={30} width={150}/>
+                <Heading as="h3" fontSize="lg">MAKERSPACE NETWORK</Heading>
               </Box>
               <HStack
                 display={{
@@ -83,14 +115,7 @@ const App = () => {
                   md: 'flex',
                 }}
               >
-                <Button 
-                 color="white"
-                 bg="#ae262b"
-                 _hover={{ bg: "#9d2227" }}
-                 
-                >
-                  Login
-                </Button>
+                {display}
               </HStack>
               <Box ml="5">
                 <MobileNav />
