@@ -2,7 +2,10 @@ import {
   Box,
   Heading,
   useColorModeValue,
+  Text,
+  chakra
 } from '@chakra-ui/react'
+import Link from 'next/link'
 import * as React from 'react'
 import { Card } from './Card'
 
@@ -20,10 +23,11 @@ const App = () => (
   >
     <Box maxW="md" mx="auto">
       <Heading textAlign="center" size="xl" fontWeight="extrabold" mt="4" mb="8">
-        Sign in to your VinUniversity account
+        Sign in with your VinUniversity account
       </Heading>
       <Card>
         <LoginForm />
+        <Text mt={8} textAlign="center" fontSize="md">Don't have an account? <Link href="/signup"><chakra.a cursor="pointer" _hover={{color: "#ae262b"}}>Sign up</chakra.a></Link></Text> 
       </Card>
     </Box>
   </Box>
