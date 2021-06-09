@@ -134,7 +134,7 @@ const App = () => {
             await firebase.auth().currentUser.updateProfile({
               displayName: name,
             }).then(function() {
-              window.location.href = "/"
+              window.location.href = "/user/settings"
             }).catch(function(error) {
               const message = error.message;
                 toast({

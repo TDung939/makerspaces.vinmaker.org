@@ -58,7 +58,7 @@ const App = () => {
                   EXPLORE
                 </Button>
               </Link>
-              <Link href={user? "/user/user": "/login"}>
+              <Link href={user? "/user/settings": "/login"}>
                 <HStack
                   as="a"
                   transition="background 0.2s"
