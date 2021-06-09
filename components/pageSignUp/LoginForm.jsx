@@ -62,7 +62,7 @@ export const LoginForm = React.forwardRef((props, ref) => {
           <FormLabel>Full Name</FormLabel>
           <Input 
           onChange={(e) => setName(e.target.value)}
-          type="name" 
+          type="text" 
           id="fullName"
           value={name}
           aria-describedby="name-helper-text"

@@ -47,10 +47,15 @@ const App = () => {
                 )
   } else {
     display = (  <>
-                  <UserProfile 
-                    name={user.displayName}
-                    email={user.email}
-                  />
+                  <Link href="/user/user">
+                  <Box>
+                    <UserProfile 
+                      name={user.displayName}
+                      email={user.email}
+                    />
+                  </Box>
+                  </Link>
+                  
                   <Button 
                   color="white"
                   bg="#ae262b"
