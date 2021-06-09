@@ -64,13 +64,13 @@ const App = () => {
                 type="name"
                 maxLength={255} 
                 value={name}
-                placeholder={user.displayName}
+                placeholder={user? user.displayName : ""}
                 />
             </FormControl>
 
             <FormControl id="email">
               <FormLabel>Email</FormLabel>
-              <Input type="email" isReadOnly placeholder={user.email} />
+              <Input type="email" isReadOnly placeholder={user? user.email : ""} />
             </FormControl>
 
             <FormControl id="bio">
@@ -87,7 +87,7 @@ const App = () => {
             <Avatar
               size="xl"
               name="Alyssa Mall"
-              src={user.photoURL}
+              src={user? user.photoURL : ""}
             />
             <Box>
               <HStack spacing="5">
