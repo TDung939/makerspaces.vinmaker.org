@@ -78,7 +78,7 @@ const App = () => {
           <Box>
             <Center
               bg={mode('white', 'gray.700')}
-              bgImage="url('https://res.cloudinary.com/dpec7wjtk/image/upload/v1622788495/VinMakerSpace%20Network/STEAM-VinMaker_y93fzq.jpg')"
+              bgImage="https://res.cloudinary.com/dpec7wjtk/image/upload/v1622788495/VinMakerSpace%20Network/STEAM-VinMaker_y93fzq.jpg"
               bgSize="cover"
               bgPosition="center"
               bgRepeat="no-repeat"

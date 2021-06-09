@@ -15,6 +15,7 @@ import Image from 'next/image'
 import { MobileNav } from './MobileNav'
 import { NavLink } from './NavLink'
 import { Logo } from './Logo'
+import { UserProfile } from './UserProfile'
 
 import {useAuth} from '../../services/auth'
 import firebase from "firebase/app";
@@ -23,17 +24,34 @@ const App = () => {
   const {user} =useAuth();
   let display;
   if (!user) {
-    display = ( <Link href="/login">
+    display = ( <>
+                <Link href="/login">
+                  <Button 
+                  color="#ae262b"
+                  bg="transparent"
+                  
+                  >
+                    Login
+                  </Button>
+                </Link>
+                <Link href="/signup">
                   <Button 
                   color="white"
                   bg="#ae262b"
                   _hover={{ bg: "#9d2227" }}
                   >
-                    Login
+                    Sign Up
                   </Button>
-                </Link>)
+                </Link>
+                </>
+                )
   } else {
-    display = (  <Button 
+    display = (  <>
+                  <UserProfile 
+                    name={user.displayName}
+                    email={user.email}
+                  />
+                  <Button 
                   color="white"
                   bg="#ae262b"
                   _hover={{ bg: "#9d2227" }}
@@ -43,7 +61,9 @@ const App = () => {
                   }}
                   >
                     Logout
-                  </Button>)
+                  </Button>
+                </>
+                )
   }
   return (
     <Box maxH="480px">
