@@ -47,7 +47,7 @@ const App = () => {
                 )
   } else {
     display = (  <>
-                  <Link href="/user/settings">
+                  <Link href="/user/dashboard">
                   <Box cursor="default">
                     <UserProfile 
                       name={user.displayName}

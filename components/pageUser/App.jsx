@@ -86,7 +86,7 @@ const App = () => {
           <Stack direction="row" spacing="6" align="center" width="full">
             <Avatar
               size="xl"
-              name="Alyssa Mall"
+              name={user? user.displayName : ""}
               src={user? user.photoURL : ""}
             />
             <Box>
@@ -134,7 +134,7 @@ const App = () => {
             await firebase.auth().currentUser.updateProfile({
               displayName: name,
             }).then(function() {
-              window.location.href = "/user/settings"
+              window.location.href = "/user/dashboard"
             }).catch(function(error) {
               const message = error.message;
                 toast({

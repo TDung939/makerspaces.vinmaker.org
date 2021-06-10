@@ -58,8 +58,9 @@ const App = () => {
                   EXPLORE
                 </Button>
               </Link>
-              <Link href={user? "/user/settings": "/login"}>
+              <Link href={user? "/user/dashboard": "/login"}>
                 <HStack
+                  cursor="default"
                   as="a"
                   transition="background 0.2s"
                   justify={{

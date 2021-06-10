@@ -1,6 +1,7 @@
 import { Box, Button, Flex, Heading, HStack, Img, Stack, Text } from '@chakra-ui/react'
 import * as React from 'react'
 import { HiChevronRight } from 'react-icons/hi'
+import Image from 'next/link'
 
 const App = () => {
   return (

@@ -1,7 +1,10 @@
 import { Box, Button, Heading, Stack, Text, useColorModeValue } from '@chakra-ui/react'
+import Link from 'next/link'
 import * as React from 'react'
+import {useAuth} from '../../../services/auth'
 
 const App = () => {
+  const {user} = useAuth();
   return (
     <Box as="section">
       <Box
@@ -58,6 +61,7 @@ const App = () => {
           maxW="md"
           mx="auto"
         >
+          <Link href={user? "/user/dashboard" : "/login"}>
           <Button
             as="a"
             href="#"
@@ -74,6 +78,7 @@ const App = () => {
           >
             GO TO MY PROFILE
           </Button>
+          </Link>
           <Button
             as="a"
             flex={{

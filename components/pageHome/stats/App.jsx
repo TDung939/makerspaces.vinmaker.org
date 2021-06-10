@@ -58,17 +58,17 @@ const App = () => (
         spacing="6"
       >
         <StatCard
-          title="Trackable revenue generated across our portfolio"
+          title="Makerspaces"
           value="5+"
           icon={<BiDoorOpen />}
         />
         <StatCard
-          title="Average yearly growth rate across our clients"
+          title="Available machines"
           value="20+"
           icon={<BiWrench />}
         />
         <StatCard
-          title="Increate in client’s creative output on average"
+          title="Learning Modules"
           value="25+"
           icon={<BiBook />}
         />
