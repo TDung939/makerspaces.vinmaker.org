@@ -24,6 +24,8 @@ import { BsFillGridFill, BsPlusCircleFill, BsShieldLockFill, BsArrowRight } from
 import {ChevronRightIcon} from '@chakra-ui/icons'
 import { Feature } from '../../components/layoutBadges/Feature'
 
+import Link from "next/link"
+
 export default function Home({badge}) {
   return (
     <ChakraProvider>
@@ -70,19 +72,23 @@ export default function Home({badge}) {
             >
               {badge.descriptions}
             </Text>
-            <Button
-              size="lg"
-              colorScheme="blue"
-              rightIcon={<BsArrowRight />}
-              fontWeight="bold"
-              fontSize="md"
-              w={{
-                base: 'full',
-                sm: 'auto',
-              }}
+            <Link as={`/badges/module/${badge.slug}`} href="/badges/module/[id]"
             >
-              Get started
-            </Button>
+              <Button
+                size="lg"
+                colorScheme="blue"
+                rightIcon={<BsArrowRight />}
+                fontWeight="bold"
+                fontSize="md"
+                w={{
+                  base: 'full',
+                  sm: 'auto',
+                }}
+                isDisabled={badge.module? false : true}
+              >
+                Get started
+              </Button>
+            </Link>
           </Box>
         </SimpleGrid>
         
@@ -103,9 +109,11 @@ export default function Home({badge}) {
               incididunt ut labore et dolore magna aliqua.
             </Text>
             <UnorderedList>
-              {(badge.machines).map((machine, i) => {
+              {(badge.machines).map((machine, i) => { 
                 return (
-                    <ListItem>{machine.name}</ListItem>
+                  <Link as={`/machines/${machine.slug}`} href="/machines/[id]">
+                    <ListItem cursor="pointer" _hover={{color: "#AE262B"}}>{machine.name}</ListItem>
+                  </Link>
                 );
               })}
             </UnorderedList>

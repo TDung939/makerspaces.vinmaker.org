@@ -3,13 +3,7 @@ import * as React from 'react'
 import { BsCaretRightFill } from 'react-icons/bs'
 
 export const NavItem = (props) => {
-  const { active, subtle, icon, children, label, endElement, onChange, pageView } = props
-
-  function handleChange(view) {
-    // Here, we invoke the callback with the new value
-    props.onChange(view);
-  }
-  
+  const { active, subtle, icon, children, label, endElement } = props
   return (
     <HStack
       _selected='gray.700'
@@ -27,7 +21,6 @@ export const NavItem = (props) => {
       _active={{
         bg: 'gray.600',
       }}
-      onClick={() => {handleChange(pageView)}}
     >
       <Box fontSize="lg" color={active ? 'currentcolor' : 'gray.400'}>
         {icon}

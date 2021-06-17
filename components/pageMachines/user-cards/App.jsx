@@ -17,7 +17,7 @@ import { HiCash, HiLocationMarker, HiShieldCheck } from 'react-icons/hi'
 import { Card } from './Card'
 import { CustomerReviews } from './CustomerReviews'
 
-const App = ({badges}) => (
+const App = ({machines}) => (
   <Box as="section" py="12" ml="50" maxWidth="70%">
     <SimpleGrid 
       columns={{
@@ -26,10 +26,10 @@ const App = ({badges}) => (
       }} 
       spacing={10}
     >
-      {badges.map((badge, i) => {
+      {machines.map((machine, i) => {
         return (
-        <Link as={`/badges/${badge.slug}`} href="/badges/[id]">
-        <Card>
+        <Link as={`/machines/${machine.slug}`} href="/machines/[id]">
+        <Card width="100%">
           <Stack
             direction={{
               base: 'column',
@@ -45,8 +45,8 @@ const App = ({badges}) => (
             <Stack spacing="4">
               <Avatar
                 size="2xl"
-                src="https://res.cloudinary.com/dpec7wjtk/image/upload/v1623827515/VinMakerSpace%20Network/badges/4f5f2fc6-ed80-4377-a8a3-4f1bd05a375e_ynq9zw.png"
-                name={badge.title}
+                src="https://res.cloudinary.com/dpec7wjtk/image/upload/v1623827197/VinMakerSpace%20Network/badges/badge-makerspace-safety-induction_vzdccd.png"
+                name={machine.name}
               />
             </Stack>
             <Box>
@@ -61,7 +61,7 @@ const App = ({badges}) => (
                 }}
               >
                 <Text as="h2" fontWeight="bold" fontSize="xl">
-                  {badge.title}
+                  {machine.name}
                 </Text>
                 <HStack
                   fontSize={{
@@ -72,9 +72,8 @@ const App = ({badges}) => (
                   <Icon as={HiShieldCheck} color="green.500" />
                 </HStack>
               </Stack>
-              <Text mt="2">{badge.level.name}</Text>
               <Box fontSize="sm" noOfLines={2}>
-                  {badge.descriptions}
+                  {machine.descriptions}
               </Box>
             </Box>
           </Stack>

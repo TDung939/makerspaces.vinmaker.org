@@ -1,4 +1,4 @@
-import { Box, Circle, Flex, Stack, useColorModeValue as mode } from '@chakra-ui/react'
+import { Button, Box, Circle, Flex, Stack, useColorModeValue as mode } from '@chakra-ui/react'
 import * as React from 'react'
 import {
   BiBuoy,
@@ -18,36 +18,49 @@ import { AccountSwitcher } from './AccountSwitcher'
 import { NavGroup } from './NavGroup'
 import { NavItem } from './NavItem'
 
-const App = () => {
+const App = (props) => {
+
+  function handleChange(view) {
+    // Here, we invoke the callback with the new value
+    props.onChange(view);
+  }
+  
   return (
     <Box minHeight="100vh" height="auto" overflow="hidden" position="relative">
       <Flex h="full" id="app-container">
         <Box w="64" bg="#2b2b2b" color="white" fontSize="sm">
           <Flex h="full" direction="column" px="4" py="4">
-            <AccountSwitcher />
+            {/*<AccountSwitcher />*/}
             <Stack spacing="8" flex="1" overflow="auto" pt="8">
               <Stack spacing="1">
-                <NavItem active={true} icon={<BiHome />} label="Get Started" />
-                <NavItem icon={<BiCommentAdd />} label="Inbox" />
+                <NavItem icon={<BiHome />} label="Get Started" pageView="" onChange={handleChange}/>
+                {/*<NavItem icon={<BiCommentAdd />} label="Inbox" pageView="" onChange={handleChange}/>*/}
               </Stack>
-              <NavGroup label="Your Business">
-                <NavItem icon={<BiCreditCard />} label="Transactions" />
-                <NavItem icon={<BiUserCircle />} label="Customers" />
-                <NavItem icon={<BiWallet />} label="Income" />
-                <NavItem icon={<BiRedo />} label="Transfer" />
+
+              <NavGroup label="Courses">
+                <NavItem icon={<BiNews />} label="Current Courses" pageView="" onChange={handleChange}/>
+                <NavItem icon={<BiEnvelope />} label="Past Courses" pageView="" onChange={handleChange}/>
+                {/*<NavItem icon={<BiPurchaseTagAlt />} label="Plans" />
+                <NavItem icon={<BiRecycle />} label="Subsription" />*/}
               </NavGroup>
 
-              <NavGroup label="Seller Tools">
-                <NavItem icon={<BiNews />} label="Payment Pages" />
-                <NavItem icon={<BiEnvelope />} label="Invoices" />
-                <NavItem icon={<BiPurchaseTagAlt />} label="Plans" />
-                <NavItem icon={<BiRecycle />} label="Subsription" />
+              <NavGroup label="Mentors">
+                <NavItem icon={<BiCreditCard />} label="Mentors Booked" pageView="" onChange={handleChange}/>
+                <NavItem icon={<BiUserCircle />} label="Past Mentors" pageView="" onChange={handleChange}/>
               </NavGroup>
+
+              <NavGroup label="Projects">
+                <NavItem icon={<BiNews />} label="Current Projects" pageView="" onChange={handleChange}/>
+                {/*<NavItem icon={<BiEnvelope />} label="Invoices" />
+                <NavItem icon={<BiPurchaseTagAlt />} label="Plans" />
+                <NavItem icon={<BiRecycle />} label="Subsription" />*/}
+                </NavGroup>
             </Stack>
             <Box>
               <Stack spacing="1">
-                <NavItem subtle icon={<BiCog />} label="Settings" />
+                <NavItem subtle icon={<BiCog />} label="Settings" pageView="settings" onChange={handleChange}/>
                 <NavItem
+                  pageView="support" onChange={handleChange}
                   subtle
                   icon={<BiBuoy />}
                   label="Help & Support"

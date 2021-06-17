@@ -23,6 +23,7 @@ import {useState} from 'react'
 import firebaseClient from '../../services/firebaseClient'
 import firebase from 'firebase/app'
 import 'firebase/auth'
+import axios from 'axios'
 
 export const LoginForm = React.forwardRef((props, ref) => {
   firebaseClient();
@@ -124,6 +125,22 @@ export const LoginForm = React.forwardRef((props, ref) => {
           fontSize="md"
           isDisabled={email === "" || pass === ""}
           onClick={ async () => {
+              axios.post('http://localhost:1337/auth/local/register', {
+                username: name,
+                email: email,
+                password: pass,
+              })
+              .then(response => {
+                // Handle success.
+                console.log('Well done!');
+                console.log('User profile', response.data.user);
+                console.log('User token', response.data.jwt);
+              })
+              .catch(error => {
+                // Handle error.
+                console.log('An error occurred:', error.response);
+              });
+
               await firebase.auth().createUserWithEmailAndPassword(email, pass).then()
               .catch(function (error) {
                   const message = error.message;

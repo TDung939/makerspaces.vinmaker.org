@@ -129,7 +129,7 @@ const App = () => {
       </Stack>
       <FieldGroup mt="8">
         <HStack width="full">
-          <Button type="submit" colorScheme="blue"
+          <Button type="submit" colorScheme="blue" isDisabled={name===""}
           onClick={ async () => {
             await firebase.auth().currentUser.updateProfile({
               displayName: name,
