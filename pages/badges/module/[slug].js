@@ -17,7 +17,7 @@ import {
   Breadcrumb,
   BreadcrumbItem,
   BreadcrumbLink,
-  List, ListItem, ListIcon, OrderedList, Spinner
+  Spinner, Progress
 } from '@chakra-ui/react'
 import * as React from 'react'
 import { BsFillGridFill, BsPlusCircleFill, BsShieldLockFill, BsArrowRight } from 
@@ -25,12 +25,18 @@ import { BsFillGridFill, BsPlusCircleFill, BsShieldLockFill, BsArrowRight } from
 import {ChevronRightIcon} from '@chakra-ui/icons'
 import { Feature } from '../../../components/layoutBadges/Feature'
 import { useState } from "react"
-
+import Questions from '../../../components/questions'
 import Link from "next/link"
+import { set } from "nprogress"
 
 export default function Home({badge}) {
   const section = badge.module.section;
   const [view, setView] = useState(0);
+  const [score, setScore] = useState(0);
+
+  function handleChange(newScore) {
+    setScore(newScore);
+  }
   console.log(section[view].__component);
   let display;
   switch (section[view].__component) {
@@ -59,7 +65,7 @@ export default function Home({badge}) {
                 speed="0.65s"
                 emptyColor="gray.200"
                 color="#AE262B"
-                size="xl"
+                size="lg"
             />
             <YouTube videoId={section[view].youtubeUrl} opts={{playerVars: {autoplay: 1}}}/>
         </Box>
@@ -70,24 +76,20 @@ export default function Home({badge}) {
       console.log(section[view].questions)
       display = (
         <Box>
-            <Heading size="xl" mb="4" fontWeight="extrabold">
+          <Heading size="xl" mb="4" fontWeight="extrabold">
               {section[view].title}
-            </Heading>
-            {(section[view].questions).map((question, i) => {
-              return (
-                <Box my="50">
-                  {question.question}
-                  <OrderedList>
-                    <ListItem>{question.answer_1}</ListItem>
-                    <ListItem>{question.answer_2}</ListItem>
-                    <ListItem>{question.answer_3}</ListItem>
-                    <ListItem>{question.answer_4}</ListItem>
-                  </OrderedList>
-                </Box>
-              )
-            })}
+          </Heading>
+          <Progress isAnimated hasStripe colorScheme="green" size="md" value={(score)/(section[view].questions.length)*100}/>
+          <Text fontSize="lg" fontWeight="bold" mt="5">
+            {score}/{section[view].questions.length}
+          </Text>
+          {section[view].questions.map((question, i) => {
+            return (
+            <Questions props={question} score={score} onChange={handleChange}/>
+            )
+          })}
         </Box>
-      );
+        );
       break;
   }
 
@@ -126,14 +128,14 @@ export default function Home({badge}) {
           {display}
 
           <Box w="100%" py="5" my="25">
-          <Button mx="15" onClick={() => setView(view - 1)} isDisabled={view === 0}>
+          <Button mx="15" onClick={() => {setView(view - 1), setScore(0)}} isDisabled={view === 0}>
             Back
           </Button>
-          <Button mx="15" onClick={() => setView(view + 1)} isDisabled={view === section.length - 1}>
+          <Button mx="15" onClick={() => {setView(view + 1), setScore(0)}} isDisabled={view === section.length - 1}>
             Next
           </Button>
-          <Button  mx="15" onClick={() => setView(0)} visibility={view === section.length - 1? "visible" : "hidden"}>
-            Reset
+          <Button  mx="15" onClick={() => {setView(0), setScore(0)}} visibility={view === section.length - 1? "visible" : "hidden"}>
+            Finish
           </Button>
         </Box>
         </Box>

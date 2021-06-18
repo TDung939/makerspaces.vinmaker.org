@@ -10,6 +10,7 @@ import {
   Text,
   useColorModeValue as mode,
 } from '@chakra-ui/react'
+import Link from 'next/link'
 import * as React from 'react'
 import { FaArrowRight, FaCertificate, FaChalkboard, FaTools } from 'react-icons/fa'
 import { Feature } from './Feature'
@@ -114,7 +115,8 @@ const App = () => {
         >
           <Box>
             <Feature title="Learn Modules" icon={<FaChalkboard />}>
-            Take a look at our online learning resources. Learn new skills or expand your knowledge.            </Feature>
+            Take a look at our online learning resources. Learn new skills or expand your knowledge.
+            </Feature>
             <Button mt="25px"> 
               Learn more
             </Button>
@@ -124,18 +126,22 @@ const App = () => {
             <Feature title="Machines" icon={<FaTools />}>
             VinUniversity has a wide range of machines for makers to tinker and design prototype. View the Makerspace Network machine database. Search by location, material or Badge.
             </Feature>
-            <Button mt="25px"> 
-              Learn more
-            </Button>
+            <Link href="/machines">
+              <Button mt="25px"> 
+                Learn more
+              </Button>
+            </Link>
           </Box>
           
           <Box>
             <Feature title="Makerspace Badges" icon={<FaCertificate />}>
             Badging is how we ensure VinUniversity Makers have the skills to safely and efficiently use our network of materials, machines and spaces.
             </Feature>
-            <Button mt="25px"> 
-              Learn more
-            </Button>
+            <Link href="/badges">
+              <Button mt="25px"> 
+                Learn more
+              </Button>
+            </Link>
           </Box>
           
         </SimpleGrid>
