@@ -3,7 +3,7 @@ import * as React from 'react'
 import { useState } from 'react'
 const App = ({props, score, onChange}) => {
     const [value, setValue] = useState("");
-    const [submitted, setSubmiited] = useState(false)
+    const [submitted, setSubmited] = useState(false)
     function handleChange(score) {
         // Here, we invoke the callback with the new value
         onChange(score);
@@ -14,7 +14,7 @@ const App = ({props, score, onChange}) => {
         console.log(props.isCorrect)
         correct = (value===props.isCorrect)
         console.log(correct)
-        setSubmiited(true)
+        setSubmited(true)
         if (value===props.isCorrect) {
             handleChange(score+1)
         }

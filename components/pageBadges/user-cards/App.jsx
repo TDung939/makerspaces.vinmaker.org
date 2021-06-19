@@ -45,7 +45,7 @@ const App = ({badges}) => (
             <Stack spacing="4">
               <Avatar
                 size="2xl"
-                src="https://res.cloudinary.com/dpec7wjtk/image/upload/v1623827515/VinMakerSpace%20Network/badges/4f5f2fc6-ed80-4377-a8a3-4f1bd05a375e_ynq9zw.png"
+                src=""
                 name={badge.title}
               />
             </Stack>

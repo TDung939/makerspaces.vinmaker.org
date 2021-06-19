@@ -1,4 +1,4 @@
-import { ChakraProvider} from "@chakra-ui/react"
+import { ChakraProvider, useDisclosure} from "@chakra-ui/react"
 import NavBar from '../../../components/navbar/App'
 import Hero from '../../../components/pageBadges/hero/App'
 import Badges from '../../../components/pageBadges/user-cards/App'
@@ -12,12 +12,19 @@ import {
   Button,
   Heading,
   Img,
-  SimpleGrid,
+  Avatar,
   Text,
   Breadcrumb,
   BreadcrumbItem,
   BreadcrumbLink,
-  Spinner, Progress
+  Spinner, Progress,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
+  ModalCloseButton,
 } from '@chakra-ui/react'
 import * as React from 'react'
 import { BsFillGridFill, BsPlusCircleFill, BsShieldLockFill, BsArrowRight } from 
@@ -37,6 +44,12 @@ export default function Home({badge}) {
   function handleChange(newScore) {
     setScore(newScore);
   }
+  const { isOpen, onOpen, onClose } = useDisclosure()
+  let pass = false
+  if (section[view].__component === "module.quiz") {
+    pass = ((score)/(section[view].questions.length)*100) > 80? true : false;
+  }
+
   console.log(section[view].__component);
   let display;
   switch (section[view].__component) {
@@ -134,9 +147,40 @@ export default function Home({badge}) {
           <Button mx="15" onClick={() => {setView(view + 1), setScore(0)}} isDisabled={view === section.length - 1}>
             Next
           </Button>
-          <Button  mx="15" onClick={() => {setView(0), setScore(0)}} visibility={view === section.length - 1? "visible" : "hidden"}>
+          <Button  mx="15" onClick={onOpen} visibility={view === section.length - 1? "visible" : "hidden"}>
             Finish
           </Button>
+
+          {/*Result*/}
+          <Modal isOpen={isOpen} onClose={onClose}>
+            <ModalOverlay />
+            <ModalContent>
+              <ModalHeader>Result</ModalHeader>
+              <ModalBody>
+                {pass? `Congratulations! You have successfully received ${badge.title} Badge. You are now ready to book a hands-on session.` : "Unforturnately, you did not surpass 80% of the quiz. Please watch the videos carefully and try again. Best of luck!"}
+                
+              </ModalBody>
+              {pass? <Avatar
+                my="15"
+                mx="auto"
+                size="2xl"
+                src=""
+                name={badge.title}
+              /> : null}
+              <ModalFooter>
+                {pass?
+                <Button colorScheme="blue" mr={3} onClick={() => {onClose(); window.location.href = "/user/dashboard" }}>
+                  Receive Badge
+                </Button>
+                : 
+                <Button colorScheme="blue" mr={3} onClick={() => {setView(0), setScore(0), onClose()}}>
+                  Restart
+                </Button>
+                }
+              </ModalFooter>
+            </ModalContent>
+          </Modal>
+
         </Box>
         </Box>
       </Layout>
