@@ -1,21 +1,16 @@
 import {
   Avatar,
   Box,
-  Button,
   HStack,
   Icon,
   SimpleGrid,
   Stack,
-  Tag,
   Text,
-  useColorModeValue,
-  Wrap,
 } from '@chakra-ui/react'
 import * as React from 'react'
 import Link from 'next/link'
-import { HiCash, HiLocationMarker, HiShieldCheck } from 'react-icons/hi'
+import { HiShieldCheck } from 'react-icons/hi'
 import { Card } from './Card'
-import { CustomerReviews } from './CustomerReviews'
 
 const App = ({badges}) => (
   <Box as="section" py="12" ml="50" maxWidth="70%">
@@ -72,7 +67,7 @@ const App = ({badges}) => (
                   <Icon as={HiShieldCheck} color="green.500" />
                 </HStack>
               </Stack>
-              <Text mt="2">{badge.level.name}</Text>
+              <Text mt="2" textTransform="capitalize">{badge.level} Level</Text>
               <Box fontSize="sm" noOfLines={2}>
                   {badge.descriptions}
               </Box>

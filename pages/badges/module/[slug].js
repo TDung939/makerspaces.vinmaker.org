@@ -1,8 +1,5 @@
 import { ChakraProvider, useDisclosure} from "@chakra-ui/react"
 import NavBar from '../../../components/navbar/App'
-import Hero from '../../../components/pageBadges/hero/App'
-import Badges from '../../../components/pageBadges/user-cards/App'
-import Footer from '../../../components/footer/App'
 import {fetchAPI} from '../../../lib/api'
 import Layout from '../../../components/layoutBadges/App'
 import ReactMarkdown from 'react-markdown'
@@ -11,7 +8,6 @@ import {
   Box,
   Button,
   Heading,
-  Img,
   Avatar,
   Text,
   Breadcrumb,
@@ -27,14 +23,10 @@ import {
   ModalCloseButton,
 } from '@chakra-ui/react'
 import * as React from 'react'
-import { BsFillGridFill, BsPlusCircleFill, BsShieldLockFill, BsArrowRight } from 
-'react-icons/bs'
 import {ChevronRightIcon} from '@chakra-ui/icons'
-import { Feature } from '../../../components/layoutBadges/Feature'
 import { useState } from "react"
 import Questions from '../../../components/questions'
 import Link from "next/link"
-import { set } from "nprogress"
 
 export default function Home({badge}) {
   const section = badge.module.section;

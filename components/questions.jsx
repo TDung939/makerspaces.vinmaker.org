@@ -26,11 +26,21 @@ const App = ({props, score, onChange}) => {
             </Heading>
             
             <RadioGroup onChange={setValue} value={value}>
-                <Stack >
-                    <Radio isDisabled={submitted} value="answer_1">{props.answer_1}</Radio>
-                    <Radio isDisabled={submitted} value="answer_2">{props.answer_2}</Radio>
-                    <Radio isDisabled={submitted} value="answer_3">{props.answer_3}</Radio>
-                    <Radio isDisabled={submitted} value="answer_4">{props.answer_4}</Radio>
+                <Stack > 
+                    {props.answer_1? 
+                        <Radio isDisabled={submitted} value="answer_1">{props.answer_1}</Radio>
+                    : null}
+
+                    {props.answer_2? 
+                        <Radio isDisabled={submitted} value="answer_2">{props.answer_2}</Radio>
+                    : null}
+
+                    {props.answer_3? 
+                        <Radio isDisabled={submitted} value="answer_3">{props.answer_3}</Radio>
+                    : null}
+                    {props.answer_4? 
+                        <Radio isDisabled={submitted} value="answer_4">{props.answer_4}</Radio>
+                    : null}
                 </Stack>
                 </RadioGroup>
             <Button mt="10" onClick={checkAnswer} isDisabled={submitted}>
