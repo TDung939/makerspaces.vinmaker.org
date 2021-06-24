@@ -20,13 +20,11 @@ import {
   ModalHeader,
   ModalFooter,
   ModalBody,
-  ModalCloseButton,
 } from '@chakra-ui/react'
 import * as React from 'react'
 import {ChevronRightIcon} from '@chakra-ui/icons'
 import { useState } from "react"
 import Questions from '../../../components/questions'
-import Link from "next/link"
 
 export default function Home({badge}) {
   const section = badge.module.section;
@@ -150,16 +148,16 @@ export default function Home({badge}) {
               <ModalHeader>Result</ModalHeader>
               <ModalBody>
                 {pass? `Congratulations! You have successfully received ${badge.title} Badge. You are now ready to book a hands-on session.` : "Unforturnately, you did not surpass 80% of the quiz. Please watch the videos carefully and try again. Best of luck!"}
-                
               </ModalBody>
-              {pass? <Avatar
-                my="15"
-                mx="auto"
-                size="2xl"
-                src=""
-                name={badge.title}
-              /> : null}
-              <ModalFooter>
+                {pass? 
+                <Avatar
+                  my="15"
+                  mx="auto"
+                  size="2xl"
+                  src=""
+                  name={badge.title}
+                /> : null}
+                <ModalFooter>
                 {pass?
                 <Button colorScheme="blue" mr={3} onClick={() => {onClose(); window.location.href = "/user/dashboard" }}>
                   Receive Badge
