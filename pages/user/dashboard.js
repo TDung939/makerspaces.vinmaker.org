@@ -1,13 +1,14 @@
 import { ChakraProvider, Flex} from "@chakra-ui/react"
 import NavBar from '../../components/navbar/App'
 import PageShell from '../../components/pageUser/pageshell/App'
-import Settings from '../../components/pageUser/viewSettings/App'
-import Support from '../../components/pageUser/viewSupport/App'
+import CompletedBadges from '../../components/pageUser/views/completed-badges/App'
+import Settings from '../../components/pageUser/views/user-settings/App'
+import Support from '../../components/pageUser/views/help-and-support/App'
 import { useState } from "react"
 import * as React from 'react'
 
 export default function Home() {
-  const [view, setView] = useState("settings");
+  const [view, setView] = useState("completed-badges");
 
   function handleChange(newView) {
     setView(newView);
@@ -15,6 +16,9 @@ export default function Home() {
 
   let display;
   switch (view) {
+    case "completed-badges":
+      display = <CompletedBadges />;
+      break;
     case "settings":
       display = <Settings />;
       break;

@@ -23,10 +23,12 @@ import { BsFillGridFill, BsPlusCircleFill, BsShieldLockFill, BsArrowRight } from
 'react-icons/bs'
 import {ChevronRightIcon} from '@chakra-ui/icons'
 import { Feature } from '../../components/layoutBadges/Feature'
-
+import AuthContext from '../../context/AuthContext'
+import { useContext } from 'react'
 import Link from "next/link"
 
 export default function Home({badge}) {
+  const {user} = useContext(AuthContext)
   return (
     <ChakraProvider>
       <NavBar />
@@ -72,7 +74,7 @@ export default function Home({badge}) {
             >
               {badge.descriptions}
             </Text>
-            <Link as={`/badges/module/${badge.slug}`} href="/badges/module/[id]"
+            <Link as={user? `/badges/module/${badge.slug}` : null } href={user? "/badges/module/[id]" : "/login"}
             >
               <Button
                 size="lg"

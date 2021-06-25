@@ -2,8 +2,11 @@ import { Box, Button, Flex, Heading, HStack, Img, Stack, Text } from '@chakra-ui
 import * as React from 'react'
 import { HiChevronRight } from 'react-icons/hi'
 import Link from 'next/link'
+import AuthContext from '../../../context/AuthContext'
+import { useContext, useState } from 'react'
 
 const App = () => {
+  const {user} = useContext(AuthContext)
   return (
     <Box bg="gray.800" as="section" minH="140px" position="relative">
       <Box py="32" position="relative" zIndex={1}>
@@ -54,7 +57,7 @@ const App = () => {
                   EXPLORE
                 </Button>
               </Link>
-              <Link href="#">
+              <Link href={user? "/user/dashboard": "/login"}>
                 <HStack
                   cursor="default"
                   as="a"
@@ -72,7 +75,7 @@ const App = () => {
                     bg: 'whiteAlpha.300',
                   }}
                 >
-                  <span>LOGIN TO MAKER PORTAL</span>
+                  <span>{user? "GO TO MAKER PORTAL": "LOGIN TO MAKER PORTAL"}</span>
                   <HiChevronRight />
                 </HStack>
               </Link>

@@ -24,7 +24,7 @@ export const AuthProvider = ({children}) => {
         
             // res.data contains data for authenticated user
             setUser(res.data.user)
-            Cookies.set('token', res.data.jwt, { expires: 7, path: "/" })
+            Cookies.set('cresdential', res.data.jwt, { expires: 7, path: "/" })
             Router.push('/')
           } catch (err) {
             console.log(err)
@@ -34,14 +34,14 @@ export const AuthProvider = ({children}) => {
     }
     //Logout user
     const logout = async () => {
-        Cookies.remove('token')
+        Cookies.remove('cresdential')
         setUser(null)
         Router.push('/')
         console.log('Logout');
     }
     //Check if user is logged in
     const checkUserLoggedIn = async (user) => {
-        const token = Cookies.get('token')
+        const token = Cookies.get('cresdential')
         // When the user is authenticated, don't let the user visit the
         // sign-in and sign-up routes
         if (token){

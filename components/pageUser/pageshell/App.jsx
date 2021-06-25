@@ -12,7 +12,7 @@ import {
   BiRecycle,
   BiRedo,
   BiUserCircle,
-  BiWallet,
+  BiBadgeCheck,
 } from 'react-icons/bi'
 import { AccountSwitcher } from './AccountSwitcher'
 import { NavGroup } from './NavGroup'
@@ -37,20 +37,20 @@ const App = (props) => {
                 {/*<NavItem icon={<BiCommentAdd />} label="Inbox" pageView="" onChange={handleChange}/>*/}
               </Stack>
 
-              <NavGroup label="Courses">
-                <NavItem icon={<BiNews />} label="Current Courses" pageView="" onChange={handleChange}/>
+              <NavGroup label="Badges">
+                <NavItem icon={<BiBadgeCheck />} label="Completed Badges" pageView="completed-badges" onChange={handleChange}/>
                 <NavItem icon={<BiEnvelope />} label="Past Courses" pageView="" onChange={handleChange}/>
                 {/*<NavItem icon={<BiPurchaseTagAlt />} label="Plans" />
                 <NavItem icon={<BiRecycle />} label="Subsription" />*/}
               </NavGroup>
 
-              <NavGroup label="Mentors">
-                <NavItem icon={<BiCreditCard />} label="Mentors Booked" pageView="" onChange={handleChange}/>
-                <NavItem icon={<BiUserCircle />} label="Past Mentors" pageView="" onChange={handleChange}/>
+              <NavGroup label="Hands-on Sessions">
+                <NavItem icon={<BiCreditCard />} label="Session Booked" pageView="" onChange={handleChange}/>
+                <NavItem icon={<BiUserCircle />} label="Past Sessions" pageView="" onChange={handleChange}/>
               </NavGroup>
 
               <NavGroup label="Projects">
-                <NavItem icon={<BiNews />} label="Current Projects" pageView="" onChange={handleChange}/>
+                <NavItem icon={<BiNews />} label="Projects Gallery" pageView="" onChange={handleChange}/>
                 {/*<NavItem icon={<BiEnvelope />} label="Invoices" />
                 <NavItem icon={<BiPurchaseTagAlt />} label="Plans" />
                 <NavItem icon={<BiRecycle />} label="Subsription" />*/}

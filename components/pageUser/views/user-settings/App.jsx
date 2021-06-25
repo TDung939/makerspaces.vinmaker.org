@@ -24,7 +24,7 @@ import { HiCloudUpload } from 'react-icons/hi'
 import { FaGithub, FaGoogle } from 'react-icons/fa'
 import { FieldGroup } from './FieldGroup'
 import { LanguageSelect } from './LanguageSelect'
-import AuthContext from '../../../context/AuthContext'
+import AuthContext from '../../../../context/AuthContext'
 import { useContext, useState } from 'react'
 
 const App = () => {

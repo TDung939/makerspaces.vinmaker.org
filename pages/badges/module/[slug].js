@@ -23,11 +23,18 @@ import {
 } from '@chakra-ui/react'
 import * as React from 'react'
 import {ChevronRightIcon} from '@chakra-ui/icons'
-import { useState } from "react"
+import { useState, useContext } from "react"
 import Questions from '../../../components/questions'
 import Router from "next/router"
+import Link from "next/link"
+import AuthContext from '../../../context/AuthContext'
+import Cookies from "js-cookie"
+import axios from "axios"
 
 export default function Home({badge}) {
+
+  const {user} = useContext(AuthContext)
+
   const section = badge.module.section;
   const [view, setView] = useState(0);
   const [score, setScore] = useState(0);
@@ -40,7 +47,6 @@ export default function Home({badge}) {
   if (section[view].__component === "module.quiz") {
     pass = ((score)/(section[view].questions.length)*100) > 80? true : false;
   }
-
   console.log(section[view].__component);
   let display;
   switch (section[view].__component) {
@@ -95,6 +101,33 @@ export default function Home({badge}) {
         </Box>
         );
       break;
+  }
+
+  // Handle Update New Badges
+  const handleReceiveBadge = async () => {
+    let array = [];
+    if (user) {
+      console.log(user)
+      for (const badge of user.badges) {
+        console.log(badge.id);
+        array.push(badge.id);
+      }
+    }
+    array.push(badge.id)
+    try {
+      const token = Cookies.get('cresdential')
+      if (token){
+          const res = await axios.put(`http://localhost:1337/users/${user.id}`, {badges: array}, {
+          headers: {
+              Authorization:
+              `Bearer ${token}`
+          }
+          });
+          console.log(res.data);
+      }
+    } catch(e) {
+      console.log(e)
+    } 
   }
 
   return (
@@ -160,13 +193,20 @@ export default function Home({badge}) {
                 /> : null}
                 <ModalFooter>
                 {pass?
-                <Button colorScheme="blue" mr={3} onClick={() => {onClose(); Router.push("/user/dashboard") }}>
+                <Button colorScheme="blue" mr={3} onClick={() => {onClose();handleReceiveBadge(); window.location.href='/user/dashboard' }}>
                   Receive Badge
                 </Button>
                 : 
-                <Button colorScheme="blue" mr={3} onClick={() => {setView(0), setScore(0), onClose()}}>
-                  Restart
-                </Button>
+                <>
+                  <Link href="/badges">
+                    <Button mr={3} onClick={() => {setView(0), setScore(0), onClose()}}>
+                      Cancel
+                    </Button>
+                  </Link>
+                  <Button colorScheme="blue" mr={3} onClick={() => {setView(0), setScore(0), onClose()}}>
+                    Restart
+                  </Button>
+                </>
                 }
               </ModalFooter>
             </ModalContent>
