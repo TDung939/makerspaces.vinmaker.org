@@ -20,13 +20,9 @@ import { HiEye, HiEyeOff } from 'react-icons/hi'
 import { PasswordField } from './PasswordField'
 
 import {useState} from 'react'
-import firebaseClient from '../../services/firebaseClient'
-import firebase from 'firebase/app'
-import 'firebase/auth'
 import axios from 'axios'
 
 export const LoginForm = React.forwardRef((props, ref) => {
-  firebaseClient();
   const toast = useToast();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");

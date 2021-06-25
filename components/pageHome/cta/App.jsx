@@ -1,10 +1,9 @@
 import { Box, Button, Heading, Stack, Text, useColorModeValue } from '@chakra-ui/react'
 import Link from 'next/link'
 import * as React from 'react'
-import {useAuth} from '../../../services/auth'
 
 const App = () => {
-  const {user} = useAuth();
+
   return (
     <Box as="section">
       <Box

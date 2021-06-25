@@ -3,11 +3,7 @@ import * as React from 'react'
 import { HiChevronRight } from 'react-icons/hi'
 import Link from 'next/link'
 
-import {useAuth} from '../../../services/auth'
-import firebase from "firebase/app";
-
 const App = () => {
-  const {user} = useAuth();
   return (
     <Box bg="gray.800" as="section" minH="140px" position="relative">
       <Box py="32" position="relative" zIndex={1}>

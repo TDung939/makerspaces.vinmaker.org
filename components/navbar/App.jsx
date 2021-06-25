@@ -17,11 +17,8 @@ import { NavLink } from './NavLink'
 import { Logo } from './Logo'
 import { UserProfile } from './UserProfile'
 
-import {useAuth} from '../../services/auth'
-import firebase from "firebase/app";
 
 const App = () => {
-  const {user} =useAuth();
   let display;
   if (!user) {
     display = ( <>
@@ -49,10 +46,12 @@ const App = () => {
     display = (  <>
                   <Link href="/user/dashboard">
                   <Box cursor="default">
+                    {/*
                     <UserProfile 
                       name={user.displayName}
                       email={user.email}
                     />
+                    */}
                   </Box>
                   </Link>
                   
