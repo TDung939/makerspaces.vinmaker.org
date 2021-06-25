@@ -54,7 +54,7 @@ const App = () => {
                   EXPLORE
                 </Button>
               </Link>
-              <Link href={user? "/user/dashboard": "/login"}>
+              <Link href="#">
                 <HStack
                   cursor="default"
                   as="a"
@@ -72,7 +72,7 @@ const App = () => {
                     bg: 'whiteAlpha.300',
                   }}
                 >
-                  <span>{user? "GO TO MAKER PORTAL": "LOGIN TO MAKER PORTAL"}</span>
+                  <span>LOGIN TO MAKER PORTAL</span>
                   <HiChevronRight />
                 </HStack>
               </Link>

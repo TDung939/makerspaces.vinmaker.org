@@ -24,17 +24,12 @@ import { HiCloudUpload } from 'react-icons/hi'
 import { FaGithub, FaGoogle } from 'react-icons/fa'
 import { FieldGroup } from './FieldGroup'
 import { LanguageSelect } from './LanguageSelect'
-
-import {useAuth} from '../../../services/auth'
-import firebaseClient from '../../../services/firebaseClient'
-import firebase from 'firebase/app'
-import 'firebase/auth'
-
-import {useState} from 'react'
+import AuthContext from '../../../context/AuthContext'
+import { useContext, useState } from 'react'
 
 const App = () => {
+  const {user} = useContext(AuthContext)
   const toast = useToast();
-  const {user} = useAuth();
   const [name, setName] = useState("");
   const [avatar, setAvatar] = useState(null);
   return (
@@ -67,7 +62,7 @@ const App = () => {
                 type="text"
                 maxLength={255} 
                 value={name}
-                placeholder={user? user.displayName : ""}
+                placeholder={user? user.username : ""}
                 />
             </FormControl>
 
@@ -89,7 +84,7 @@ const App = () => {
           <Stack direction="row" spacing="6" align="center" width="full">
             <Avatar
               size="xl"
-              name={user? user.displayName : ""}
+              name={user? user.username : ""}
               src={user? user.photoURL : ""}
             />
             <Box>

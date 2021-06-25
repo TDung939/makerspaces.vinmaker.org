@@ -15,17 +15,19 @@ import {
   useMergeRefs,
   useColorModeValue as mode,
 } from '@chakra-ui/react'
-import * as React from 'react'
+import * as React from 'react';
 import { HiEye, HiEyeOff } from 'react-icons/hi'
 import { PasswordField } from './PasswordField'
-
-import {useState} from 'react'
+import {useState, useContext, useEffect} from 'react'
+import AuthContext from '../../context/AuthContext'
 
 export const LoginForm = React.forwardRef((props, ref) => {
   const toast = useToast();
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
 
+  const {login, error } = useContext(AuthContext);
+  useEffect(() => error && toast({title: "An error has occured", status: "error"}))
   const { isOpen, onToggle } = useDisclosure()
   const inputRef = React.useRef(null)
   const mergeRef = useMergeRefs(inputRef, ref)
@@ -43,6 +45,11 @@ export const LoginForm = React.forwardRef((props, ref) => {
         input.setSelectionRange(length, length)
       })
     }
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    login({email, pass})
   }
 
   return (
@@ -105,20 +112,7 @@ export const LoginForm = React.forwardRef((props, ref) => {
           size="lg" 
           fontSize="md"
           isDisabled={email === "" || pass === ""}
-          onClick={ async () => {
-              await firebase.auth().signInWithEmailAndPassword(email, pass).then(function() {
-                  window.location.href = "/"
-              }).catch(function (error) {
-                  const message = error.message;
-                  toast({
-                      title: "An error occured",
-                      description: message,
-                      status: "error",
-                      duration: 9000,
-                      isClosable: true,
-                  })
-              })
-          }}
+          onClick={handleSubmit}
         >
           Sign in
         </Button>

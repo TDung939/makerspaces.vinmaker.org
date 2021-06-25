@@ -13,8 +13,7 @@ import Cta from '../components/pageHome/cta/App'
 
 export default function Home() {
   return (
-    <ChakraProvider>
-      <Banner />
+    <>
       <NavBar />
       <Hero />
       <Features />
@@ -22,6 +21,6 @@ export default function Home() {
       <Testimonials />
       <Cta />
       <Footer />
-    </ChakraProvider>
+    </>
   )
 }

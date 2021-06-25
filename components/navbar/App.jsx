@@ -5,20 +5,17 @@ import {
   HStack,
   useColorModeValue as mode,
   Heading,
-  VisuallyHidden,
-  Text,
-  chakra,
 } from '@chakra-ui/react'
-import * as React from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { MobileNav } from './MobileNav'
 import { NavLink } from './NavLink'
 import { Logo } from './Logo'
 import { UserProfile } from './UserProfile'
-
-
+import AuthContext from '../../context/AuthContext'
+import { useContext } from 'react'
 const App = () => {
+  const {user, logout} = useContext(AuthContext)
   let display;
   if (!user) {
     display = ( <>
@@ -46,12 +43,10 @@ const App = () => {
     display = (  <>
                   <Link href="/user/dashboard">
                   <Box cursor="default">
-                    {/*
                     <UserProfile 
-                      name={user.displayName}
+                      name={user.username}
                       email={user.email}
                     />
-                    */}
                   </Box>
                   </Link>
                   
@@ -59,10 +54,7 @@ const App = () => {
                   color="white"
                   bg="#ae262b"
                   _hover={{ bg: "#9d2227" }}
-                  onClick={async () => {
-                    await firebase.auth().signOut();
-                    window.location.href = "/";
-                  }}
+                  onClick={() => logout()}
                   >
                     Logout
                   </Button>
@@ -140,6 +132,7 @@ const App = () => {
                 }}
               >
                 {display}
+                
               </HStack>
               <Box ml="5">
                 <MobileNav />

@@ -60,7 +60,7 @@ const App = () => {
           maxW="md"
           mx="auto"
         >
-          <Link href={user? "/user/dashboard" : "/login"}>
+          <Link href="#">
           <Button
             as="a"
             href="#"

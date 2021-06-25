@@ -19,14 +19,17 @@ import * as React from 'react'
 import { HiEye, HiEyeOff } from 'react-icons/hi'
 import { PasswordField } from './PasswordField'
 
-import {useState} from 'react'
 import axios from 'axios'
+import {useState, useContext} from 'react'
+import AuthContext from '../../context/AuthContext'
 
 export const LoginForm = React.forwardRef((props, ref) => {
   const toast = useToast();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
+
+  const {register, error } = useContext(AuthContext);
 
   const { isOpen, onToggle } = useDisclosure()
   const inputRef = React.useRef(null)
@@ -45,6 +48,11 @@ export const LoginForm = React.forwardRef((props, ref) => {
         input.setSelectionRange(length, length)
       })
     }
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    register({name, email, pass})
   }
 
   return (
@@ -120,49 +128,7 @@ export const LoginForm = React.forwardRef((props, ref) => {
           size="lg" 
           fontSize="md"
           isDisabled={email === "" || pass === ""}
-          onClick={ async () => {
-              axios.post('http://localhost:1337/auth/local/register', {
-                username: name,
-                email: email,
-                password: pass,
-              })
-              .then(response => {
-                // Handle success.
-                console.log('Well done!');
-                console.log('User profile', response.data.user);
-                console.log('User token', response.data.jwt);
-              })
-              .catch(error => {
-                // Handle error.
-                console.log('An error occurred:', error.response);
-              });
-
-              await firebase.auth().createUserWithEmailAndPassword(email, pass).then()
-              .catch(function (error) {
-                  const message = error.message;
-                  toast({
-                      title: "An error occured",
-                      description: message,
-                      status: "error",
-                      duration: 9000,
-                      isClosable: true,
-                  })
-              });
-              await firebase.auth().currentUser.updateProfile({
-                displayName: name,
-              }).then(function() {
-                window.location.href = "/"
-              }).catch(function(error) {
-                const message = error.message;
-                  toast({
-                      title: "An error occured",
-                      description: message,
-                      status: "error",
-                      duration: 9000,
-                      isClosable: true,
-                  })
-              });
-          }}
+          onClick={handleSubmit}
         >
           Sign Up
         </Button>

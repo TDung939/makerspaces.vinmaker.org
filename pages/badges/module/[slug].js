@@ -25,6 +25,7 @@ import * as React from 'react'
 import {ChevronRightIcon} from '@chakra-ui/icons'
 import { useState } from "react"
 import Questions from '../../../components/questions'
+import Router from "next/router"
 
 export default function Home({badge}) {
   const section = badge.module.section;
@@ -159,7 +160,7 @@ export default function Home({badge}) {
                 /> : null}
                 <ModalFooter>
                 {pass?
-                <Button colorScheme="blue" mr={3} onClick={() => {onClose(); window.location.href = "/user/dashboard" }}>
+                <Button colorScheme="blue" mr={3} onClick={() => {onClose(); Router.push("/user/dashboard") }}>
                   Receive Badge
                 </Button>
                 : 

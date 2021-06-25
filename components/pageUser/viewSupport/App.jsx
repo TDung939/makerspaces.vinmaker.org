@@ -23,10 +23,6 @@ import {
   import { HiCloudUpload } from 'react-icons/hi'
   import { FaGithub, FaGoogle } from 'react-icons/fa'
   
-  import {useAuth} from '../../../services/auth'
-  import firebaseClient from '../../../services/firebaseClient'
-  import firebase from 'firebase/app'
-  import 'firebase/auth'
   
   import {useState} from 'react'
   
