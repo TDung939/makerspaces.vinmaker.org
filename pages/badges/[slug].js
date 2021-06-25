@@ -26,7 +26,8 @@ import { Feature } from '../../components/layoutBadges/Feature'
 import AuthContext from '../../context/AuthContext'
 import { useContext } from 'react'
 import Link from "next/link"
-
+import VerticalSteps from '../../components/verticalSteps/App'
+import Table from '../../components/tableBadge/App'
 export default function Home({badge}) {
   const {user} = useContext(AuthContext)
   return (
@@ -43,7 +44,7 @@ export default function Home({badge}) {
             <BreadcrumbLink href="#">{badge.title} Badge</BreadcrumbLink>
           </BreadcrumbItem>
         </Breadcrumb>
-
+        {/*First section*/}
         <SimpleGrid
           columns={{
             base: 1,
@@ -93,11 +94,22 @@ export default function Home({badge}) {
             </Link>
           </Box>
         </SimpleGrid>
-        
+        {/*Yellow banner*/}
         <Box w="100%" bg="yellow" py="5" my="25" >
-          <Text ml="50" fontSize="md" fontWeight="bold">Get started on this badge by starting the online learning below</Text>
+          <Text ml="50" fontSize="md" fontWeight="bold">Get started on this badge by following the guidelines below</Text>
         </Box>
-        
+        {/*Second section*/}
+        <SimpleGrid
+          columns={{
+            base: 1,
+            md: 2,
+          }}
+          spacing="10"
+        >
+        <Box w="100%" py="5" my="25">
+          <Heading size="xl" fontWeight="extrabold"  mb="4">Learning Checklist</Heading>
+          <VerticalSteps />
+        </Box>
         <Box w="100%" py="5" my="25">
           <Heading size="xl" fontWeight="extrabold"  mb="4">Machine Access</Heading>
           <Text
@@ -107,8 +119,7 @@ export default function Home({badge}) {
               mb="6"
               maxW="lg"
             >
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-              incididunt ut labore et dolore magna aliqua.
+             Once you have learnt this badge you will be granted access to the following machines:
             </Text>
             <UnorderedList>
               {(badge.machines).map((machine, i) => { 
@@ -120,6 +131,10 @@ export default function Home({badge}) {
               })}
             </UnorderedList>
         </Box>
+        </SimpleGrid>
+        <Heading size="xl" fontWeight="extrabold"  mb="4">Hands-on Session</Heading>
+        <Table />
+
       </Layout>
       <Footer />
     </ChakraProvider>

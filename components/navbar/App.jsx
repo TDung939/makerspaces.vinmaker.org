@@ -119,7 +119,7 @@ const App = () => {
                 <Link href="/"><NavLink.Desktop>Home</NavLink.Desktop></Link>
                 <Link href="/get-started"><NavLink.Desktop >Get Started</NavLink.Desktop></Link>
                 <Link href="/badges"><NavLink.Desktop >Badges</NavLink.Desktop></Link>
-                <Link href="/learn"><NavLink.Desktop >Learn</NavLink.Desktop></Link>
+                {/*<Link href="/learn"><NavLink.Desktop >Learn</NavLink.Desktop></Link>*/}
                 <Link href="/machines"><NavLink.Desktop >Machines</NavLink.Desktop></Link>
               </HStack>
             </HStack>

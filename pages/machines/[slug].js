@@ -5,7 +5,6 @@ import Badges from '../../components/pageBadges/user-cards/App'
 import Footer from '../../components/footer/App'
 import {fetchAPI} from '../../lib/api'
 import Layout from '../../components/layoutBadges/App'
-
 import {
   Box,
   Button,
@@ -20,13 +19,10 @@ import {
 } from '@chakra-ui/react'
 import { HiShieldCheck } from 'react-icons/hi'
 import * as React from 'react'
-import { BsFillGridFill, BsPlusCircleFill, BsShieldLockFill, BsArrowRight } from 
-'react-icons/bs'
 import {ChevronRightIcon} from '@chakra-ui/icons'
-import { Feature } from '../../components/layoutBadges/Feature'
-
 import Link from "next/link"
-import { Card } from "../../components/pageMachines/user-cards/Card"
+import Table from '../../components/tableMachine/App'
+
 
 export default function Home({machine}) {
   return (
@@ -214,6 +210,9 @@ export default function Home({machine}) {
             </UnorderedList>
         </Box>
             */}
+        <Heading size="xl" fontWeight="extrabold"  mb="4">Machine Location</Heading>
+        <Table props = {machine.location}/>
+
       </Layout>
       <Footer />
     </ChakraProvider>
