@@ -5,9 +5,14 @@ import {
   HStack,
   useColorModeValue as mode,
   Heading,
+  Menu, 
+  MenuButton,
+  MenuList,
+  MenuItem,
+  Image
 } from '@chakra-ui/react'
+import { ChevronDownIcon } from '@chakra-ui/icons'
 import Link from 'next/link'
-import Image from 'next/image'
 import { MobileNav } from './MobileNav'
 import { NavLink } from './NavLink'
 import { Logo } from './Logo'
@@ -62,7 +67,7 @@ const App = () => {
                 )
   }
   return (
-    <Box maxH="480px">
+    <Box maxH="480px" pos="sticky" top="0" zIndex="2">
        {/*Create the Red line 
         <Box
             pos="relative"
@@ -114,13 +119,43 @@ const App = () => {
                   base: 'none',
                   lg: 'flex',
                 }}
-                spacing="8"
+                spacing="5"
               >
                 <Link href="/"><NavLink.Desktop>Home</NavLink.Desktop></Link>
                 <Link href="/get-started"><NavLink.Desktop >Get Started</NavLink.Desktop></Link>
-                <Link href="/badges"><NavLink.Desktop >Badges</NavLink.Desktop></Link>
+                <Menu>
+                  <MenuButton as={Button} mx="0" pl="2" pr="0" bg="transparent" rightIcon={<ChevronDownIcon />}>
+                    Our Network
+                  </MenuButton>
+                  <MenuList >
+                    <Link href='/badges'><MenuItem>Badges</MenuItem></Link>
+                    <Link href='/machines'><MenuItem>Machines</MenuItem></Link>
+                    <MenuItem>Makerspaces</MenuItem>
+                  </MenuList>
+                </Menu>
                 {/*<Link href="/learn"><NavLink.Desktop >Learn</NavLink.Desktop></Link>*/}
-                <Link href="/machines"><NavLink.Desktop >Machines</NavLink.Desktop></Link>
+              
+                <Menu>
+                  <MenuButton as={Button} mx="0" pl="2" pr="0" bg="transparent" rightIcon={<ChevronDownIcon />}>
+                    Services
+                  </MenuButton>
+                  <MenuList >
+                    <MenuItem>3D printing</MenuItem>
+                    <MenuItem>Borrow Equipments</MenuItem>
+                  </MenuList>
+                </Menu>
+
+                <Menu>
+                  <MenuButton as={Button} mx="0" pl="2" pr="0"  bg="transparent" rightIcon={<ChevronDownIcon />}>
+                    About
+                  </MenuButton>
+                  <MenuList >
+                    <MenuItem>Safety</MenuItem>
+                    <MenuItem>About us</MenuItem>
+                    <MenuItem>Become an Instructor</MenuItem>
+                  </MenuList>
+                </Menu>
+
               </HStack>
             </HStack>
             <Flex align="center">
