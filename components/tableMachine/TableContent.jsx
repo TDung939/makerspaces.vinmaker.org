@@ -9,7 +9,7 @@ import {
   useColorModeValue as mode,
 } from '@chakra-ui/react'
 import * as React from 'react'
-import { columns, data } from './_data'
+import { columns } from './_data'
 
 export const TableContent = ({props}) => {
   const location = props;

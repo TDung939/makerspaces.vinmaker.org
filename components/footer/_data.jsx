@@ -23,14 +23,6 @@ export const links = [
           </Badge>
         ),
       },
-      {
-        label: 'Pricing',
-        href: '#',
-      },
-      {
-        label: 'Examples',
-        href: '#',
-      },
     ],
   },
   {
@@ -42,10 +34,6 @@ export const links = [
       },
       {
         label: 'Support',
-        href: '#',
-      },
-      {
-        label: 'Slack Community',
         href: '#',
       },
       {
@@ -66,7 +54,7 @@ export const links = [
     title: 'About',
     links: [
       {
-        label: 'Our Story',
+        label: 'Our Community',
         href: '#',
       },
       {
@@ -91,15 +79,15 @@ export const links = [
         href: '#',
       },
       {
-        label: 'Sign in',
+        label: 'Makerspaces',
         href: '#',
       },
       {
-        label: 'Download MacOS',
+        label: 'Badges',
         href: '#',
       },
       {
-        label: 'Download Windows',
+        label: 'Machines',
         href: '#',
       },
     ],

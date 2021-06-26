@@ -3,14 +3,10 @@ import * as React from 'react'
 import {
   BiBuoy,
   BiCog,
-  BiCommentAdd,
   BiCreditCard,
   BiEnvelope,
   BiHome,
   BiNews,
-  BiPurchaseTagAlt,
-  BiRecycle,
-  BiRedo,
   BiUserCircle,
   BiBadgeCheck,
 } from 'react-icons/bi'

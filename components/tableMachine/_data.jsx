@@ -1,21 +1,5 @@
 import { Badge } from '@chakra-ui/react'
 import * as React from 'react'
-import { User } from './User'
-
-export const data = [
-  {
-    status: 'available',
-    num: 5,
-    location: 'Building G',
-    makerspace: "Rapid Prototype Lab"
-  },
-  {
-    status: 'unavailable',
-    num: 2,
-    location: 'Building G',
-    makerspace: "Open Project Lab"
-  },
-]
 
 
 const badgeEnum = {
