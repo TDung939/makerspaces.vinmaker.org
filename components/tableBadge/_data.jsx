@@ -8,7 +8,7 @@ export const data = [
     status: 'available',
     seats: '5/12',
     location: 'Open Project Lab',
-    user: {
+    instructor: {
       image:
         'https://images.unsplash.com/photo-1512485694743-9c9538b4e6e0?ixid=MXwxMjA3fDB8MHxzZWFyY2h8NDN8fGd1eSUyMGZhY2V8ZW58MHx8MHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=60',
       name: 'Marion Watson',
@@ -20,7 +20,7 @@ export const data = [
     status: 'canceled',
     seats: '-',
     location: 'Open Project Lab',
-    user: {
+    instructor: {
       image:
         'https://images.unsplash.com/photo-1512485694743-9c9538b4e6e0?ixid=MXwxMjA3fDB8MHxzZWFyY2h8NDN8fGd1eSUyMGZhY2V8ZW58MHx8MHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=60',
       name: 'Marion Watson',
@@ -36,7 +36,7 @@ const badgeEnum = {
 export const columns = [
   {
     Header: 'Instructor',
-    accessor: 'user',
+    accessor: 'instructor',
     Cell: function MemberCell(data) {
       return <User data={data} />
     },
@@ -61,7 +61,7 @@ export const columns = [
     },
   },
   {
-    Header: 'Seats',
-    accessor: 'seats',
+    Header: 'Max Seats',
+    accessor: 'maxseats',
   },
 ]

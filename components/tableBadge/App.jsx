@@ -2,7 +2,7 @@ import { Box, Heading } from '@chakra-ui/react'
 import * as React from 'react'
 import { TableContent } from './TableContent'
 
-const App = () => {
+const App = ({props}) => {
   return (
       <Box
         maxW={{
@@ -12,7 +12,7 @@ const App = () => {
         mx="auto"
       >
         <Box overflowX="auto">
-          <TableContent />
+          <TableContent props={props}/>
         </Box>
       </Box>
   )

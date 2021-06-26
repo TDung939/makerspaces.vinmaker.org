@@ -133,7 +133,7 @@ export default function Home({badge}) {
         </Box>
         </SimpleGrid>
         <Heading size="xl" fontWeight="extrabold"  mb="4">Hands-on Session</Heading>
-        <Table />
+        <Table props = {badge.session}/>
 
       </Layout>
       <Footer />
