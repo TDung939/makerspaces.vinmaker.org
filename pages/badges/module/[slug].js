@@ -117,7 +117,7 @@ export default function Home({badge}) {
     try {
       const token = Cookies.get('cresdential')
       if (token){
-          const res = await axios.put(`http://localhost:1337/users/${user.id}`, {badges: array}, {
+          const res = await axios.put(`https://vinuni-makerspace.herokuapp.com/users/${user.id}`, {badges: array}, {
           headers: {
               Authorization:
               `Bearer ${token}`
@@ -125,6 +125,7 @@ export default function Home({badge}) {
           });
           console.log(res.data);
       }
+      window.location.href='/user/dashboard';
     } catch(e) {
       console.log(e)
     } 
@@ -193,7 +194,7 @@ export default function Home({badge}) {
                 /> : null}
                 <ModalFooter>
                 {pass?
-                <Button colorScheme="blue" mr={3} onClick={() => {onClose();handleReceiveBadge(); window.location.href='/user/dashboard' }}>
+                <Button colorScheme="blue" mr={3} onClick={() => {onClose();handleReceiveBadge();}}>
                   Receive Badge
                 </Button>
                 : 
