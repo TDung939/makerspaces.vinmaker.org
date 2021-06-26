@@ -17,7 +17,7 @@ export const AuthProvider = ({children}) => {
     //Login user
     const login = async ({email:identifier, pass}) => {
         try {
-            const res = await axios.post("http://localhost:1337/auth/local", {
+            const res = await axios.post("https://vinuni-makerspace.herokuapp.com/auth/local", {
               identifier: identifier,
               password: pass,
             });
@@ -45,7 +45,7 @@ export const AuthProvider = ({children}) => {
         // When the user is authenticated, don't let the user visit the
         // sign-in and sign-up routes
         if (token){
-            const res = await axios.get("http://localhost:1337/users/me", {
+            const res = await axios.get("https://vinuni-makerspace.herokuapp.com/users/me", {
             headers: {
                 Authorization:
                 `Bearer ${token}`
