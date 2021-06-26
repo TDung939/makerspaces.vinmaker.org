@@ -130,7 +130,7 @@ const App = () => {
                   <MenuList >
                     <Link href='/badges'><MenuItem>Badges</MenuItem></Link>
                     <Link href='/machines'><MenuItem>Machines</MenuItem></Link>
-                    <MenuItem>Makerspaces</MenuItem>
+                    <MenuItem isDisabled>Makerspaces</MenuItem>
                   </MenuList>
                 </Menu>
                 {/*<Link href="/learn"><NavLink.Desktop >Learn</NavLink.Desktop></Link>*/}
@@ -140,8 +140,8 @@ const App = () => {
                     Services
                   </MenuButton>
                   <MenuList >
-                    <MenuItem>3D printing</MenuItem>
-                    <MenuItem>Borrow Equipments</MenuItem>
+                    <MenuItem isDisabled>3D printing</MenuItem>
+                    <MenuItem isDisabled>Borrow Equipments</MenuItem>
                   </MenuList>
                 </Menu>
 
@@ -150,9 +150,9 @@ const App = () => {
                     About
                   </MenuButton>
                   <MenuList >
-                    <MenuItem>Safety</MenuItem>
-                    <MenuItem>About us</MenuItem>
-                    <MenuItem>Become an Instructor</MenuItem>
+                    <MenuItem isDisabled>Safety</MenuItem>
+                    <MenuItem isDisabled>About us</MenuItem>
+                    <MenuItem isDisabled>Become an Instructor</MenuItem>
                   </MenuList>
                 </Menu>
 
