@@ -22,7 +22,7 @@ export async function getStaticProps() {
 
   return {
     props: { machines },
-
+    revalidate: 1,
   };
 }
 
