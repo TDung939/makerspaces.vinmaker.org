@@ -228,7 +228,7 @@ export async function getStaticPaths() {
       },
     })),
     fallback: false,
-    revalidate: 1,
+    
   };
 }
 
