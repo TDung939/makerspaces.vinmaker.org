@@ -220,26 +220,10 @@ export default function Home({badge}) {
   )
 }
 
-export async function getStaticPaths() {
-  const badges = await fetchAPI("/badges");
-  return {
-    paths: badges.map((badge) => ({
-      params: {
-        slug: badge.slug,
-      },
-    })),
-    fallback: false,
-    
-  };
-}
-
-export async function getStaticProps({ params }) {
+export async function getServerSideProps(context) {
+  const { slug } = context.query;
   const badges = await fetchAPI(
-    `/badges?slug=${params.slug}`
+    `/badges?slug=${slug}`
   );
-
-  return {
-    props: { badge: badges[0]},
-    revalidate: 1,
-  };
+  return { props: { badge: badges[0]} };
 }

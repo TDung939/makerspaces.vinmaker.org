@@ -21,13 +21,11 @@ const App = () => {
       minH="400px"
     >
       <Steps activeStep={activeStep}>
-        <Step title="Select campaign settings">
+        <Step title="Complete Online Components">
           <StepContent>
             <Stack shouldWrapChildren spacing="4">
               <Text>
-                For each ad campaign that you create, you can control how much you&apos;re willing
-                to spend on clicks and conversions, which networks and geographical locations you
-                want your ads to show on, and more.
+              You will need to follow the link to the Learning Module page where you will find information about using the related machines, please complete the quizzes thoroughly to earn the Online Badge.
               </Text>
               <HStack>
                 <Button size="sm" variant="ghost" isDisabled>
@@ -40,11 +38,11 @@ const App = () => {
             </Stack>
           </StepContent>
         </Step>
-        <Step title="Create an ad group">
+        <Step title="Receive Online Badges and book Hands-on Training">
           <StepContent>
             <Stack shouldWrapChildren spacing="4">
               <Text>
-                An ad group contains one or more ads which target a shared set of keywords.
+                You will need to book an offline session to get familiar with the machines and learn safety procedures when operating.
               </Text>
               <HStack>
                 <Button size="sm" onClick={prevStep} variant="ghost">
@@ -57,14 +55,11 @@ const App = () => {
             </Stack>
           </StepContent>
         </Step>
-        <Step title="Create an ad">
+        <Step title="Finish Hands-on Training to gain access">
           <StepContent>
             <Stack shouldWrapChildren spacing="4">
               <Text>
-                Try out different ad text to see what brings in the most customers, and learn how to
-                enhance your ads using features like ad extensions. If you run into any problems
-                with your ads, find out how to tell if they&apos;re running and how to resolve
-                approval issues.
+              Learn practical machine and workshop skills in this 3 hour group badge training session. This badge training session is assessed and if you are deemed competent you will receive your badge.
               </Text>
               <HStack>
                 <Button size="sm" onClick={prevStep} variant="ghost">

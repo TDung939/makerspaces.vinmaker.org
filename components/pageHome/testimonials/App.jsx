@@ -65,14 +65,11 @@ const App = () => {
               Join our community
             </Button>
             <Testimonial
-              logo={<SampleLogo />}
               author="Nguyen Hoang Trung Dung"
               company="Executive director"
               image="https://vinmakersoc.github.io/site/assets/pictures/Profile/Trung-Dung.jpg"
             >
-              &ldquo; At volutpat diam ut venenatis tellus. Sit amet consectetur adipiscing elit
-              duis. Quis hendrerit dolor magna eget est. Amet est placerat in egestas erat imperdiet
-              sed euismod. &rdquo;
+              &ldquo; By maintaining an active community of like-minded ‘makers’ and providing resources, knowledge, and technology, the club seeks to foster an environment where anyone, regardless of their background, can be inspired to turn their ideas into designs, prototypes, and products. &rdquo;
             </Testimonial>
           </Box>
           <Box>
@@ -112,16 +109,13 @@ const App = () => {
               }}
             >
               <Feature title="Strong and active community">
-                At volutpat diam ut venenatis tellus. Sit amet consectetur adipiscing elit duis.
-                Quis hendrerit dolor magna eget est.
+              We organize and run weekly events, including Trivia, Movie, Boardgame Nights, LAN Parties, Workshops, Code Jams, and Weekly BBQ. Events are open to all members, and nearly all are free to attend.
               </Feature>
               <Feature title="Technical Workshops">
-                Vestibulum sed arcu non odio euismod. Tristique senectus et netus et malesuada fames
-                ac turpis mako.
+              We provide technical events to teach you new skills, as well as a fortnightly magazine to keep you updated on what's new and exciting within the university, school, and industry.
               </Feature>
               <Feature title="Fun and cool projects">
-                Convallis a cras semper auctor. Curabitur vitae nunc sed velit. Arcu non odio
-                euismod lacinia at quis risus.
+              More opportunities for students to have more hands-on experience as they can apply their theoretical knowledge through myriads of practical activities, projects, and competitions.
               </Feature>
             </SimpleGrid>
           </Box>

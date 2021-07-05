@@ -219,26 +219,10 @@ export default function Home({machine}) {
   )
 }
 
-export async function getStaticPaths() {
-  const machines = await fetchAPI("/machines");
-  return {
-    paths: machines.map((machine) => ({
-      params: {
-        slug: machine.slug,
-      },
-    })),
-    fallback: false,
-    
-  };
-}
-
-export async function getStaticProps({ params }) {
+export async function getServerSideProps(context) {
+  const { slug } = context.query;
   const machines = await fetchAPI(
-    `/machines?slug=${params.slug}`
+    `/machines?slug=${slug}`
   );
-
-  return {
-    props: { machine: machines[0]},
-    revalidate: 1,
-  };
+  return { props: { machine: machines[0]} };
 }

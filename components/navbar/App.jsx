@@ -33,6 +33,7 @@ const App = () => {
                     Login
                   </Button>
                 </Link>
+                {/* 
                 <Link href="/signup">
                   <Button 
                   color="white"
@@ -41,7 +42,8 @@ const App = () => {
                   >
                     Sign Up
                   </Button>
-                </Link>
+                </Link> 
+                */}
                 </>
                 )
   } else {
