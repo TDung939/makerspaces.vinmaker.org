@@ -126,7 +126,7 @@ export default function Home({badge}) {
           });
           console.log(res.data);
       }
-      window.location.href='/user/dashboard';
+      Router.back();
     } catch(e) {
       console.log(e)
     } 

@@ -15,6 +15,7 @@ import { columns, data } from './_data'
 import moment from 'moment';
 import {useContext} from 'react'
 import AuthContext from '../../context/AuthContext'
+import Router from 'next/router';
 
 export const TableContent = ({props}) => {
   const { user } = useContext(AuthContext);
@@ -22,15 +23,18 @@ export const TableContent = ({props}) => {
   const id = props.id
  
   const handleSubmit = () => {
-    let online_completed = false
-    for( var i in user.online_module_badges) {
-      if (id === user?.online_module_badges[i].id) {
-        online_completed = true
-        break;
-      } 
+    if (user) {
+      let online_completed = false
+      for( var i in user.online_module_badges) {
+        if (id === user?.online_module_badges[i].id) {
+          online_completed = true
+          break;
+        } 
+      }
+      online_completed? toast({title: "Successfully booked", status: "success"}) : toast({title: "Complete the online components first", status: "info"});
+    } else {
+      Router.push('/login')
     }
-    online_completed? toast({title: "Successfully booked", status: "success"}) : toast({title: "Complete the online components first", status: "info"});
-    if(user.online_module_badges.length==0) toast({title: "Complete the online components first", status: "info"})
   }
   const sessions = props.session
   return (
