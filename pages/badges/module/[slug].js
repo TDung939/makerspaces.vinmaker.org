@@ -183,7 +183,7 @@ export default function Home({badge}) {
             <ModalContent>
               <ModalHeader>Result</ModalHeader>
               <ModalBody>
-                {pass? `Congratulations! You have successfully received ${badge.title} Badge. You are now ready to book a hands-on session.` : "Unforturnately, you did not surpass 80% of the quiz. Please watch the videos carefully and try again. Best of luck!"}
+                {pass? `Congratulations! You have successfully completed the online components for ${badge.title} Badge. You are now ready to book a hands-on session.` : "Unforturnately, you did not surpass 80% of the quiz. Please watch the videos carefully and try again. Best of luck!"}
               </ModalBody>
                 {pass? 
                 <Avatar
@@ -196,7 +196,7 @@ export default function Home({badge}) {
                 <ModalFooter>
                 {pass?
                 <Button colorScheme="blue" mr={3} onClick={() => {onClose();handleReceiveBadge();}}>
-                  Receive Badge
+                  Go back
                 </Button>
                 : 
                 <>
