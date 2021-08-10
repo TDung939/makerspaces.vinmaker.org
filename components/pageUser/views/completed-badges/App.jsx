@@ -28,7 +28,7 @@ const App = () => {
         spacing="6"
       >
         
-      {user? user.badges.map((badge) => {
+      {user? user.badges_completed.map((badge) => {
             const name = badge.title
             return (
               <CardWithAvatar

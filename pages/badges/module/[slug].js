@@ -109,7 +109,7 @@ export default function Home({badge}) {
     let array = [];
     if (user) {
       console.log(user)
-      for (const badge of user.badges) {
+      for (const badge of user.online_module_badges) {
         console.log(badge.id);
         array.push(badge.id);
       }
@@ -118,7 +118,7 @@ export default function Home({badge}) {
     try {
       const token = Cookies.get('cresdential')
       if (token){
-          const res = await axios.put(`${STRAPI_URL}/users/${user.id}`, {badges: array}, {
+          const res = await axios.put(`${STRAPI_URL}/users/${user.id}`, {online_module_badges: array}, {
           headers: {
               Authorization:
               `Bearer ${token}`
