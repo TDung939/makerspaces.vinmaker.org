@@ -12,7 +12,7 @@ import * as React from 'react'
 import { columns, data } from './_data'
 import moment from 'moment';
 export const TableContent = ({props}) => {
-  const session = props
+  const sessions = props
   return (
     <Table my="8" borderWidth="1px" fontSize="sm">
       <Thead bg={mode('gray.50', 'gray.800')}>
@@ -26,7 +26,7 @@ export const TableContent = ({props}) => {
         </Tr>
       </Thead>
       <Tbody>
-        {session.map((row, index) => (
+        {sessions.map((row, index) => (
           <Tr key={index}>
             {columns.map((column, index) => {
               let cell

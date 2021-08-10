@@ -30,6 +30,7 @@ import Link from "next/link"
 import AuthContext from '../../../context/AuthContext'
 import Cookies from "js-cookie"
 import axios from "axios"
+import { STRAPI_URL } from "../../../lib/const"
 
 export default function Home({badge}) {
 
@@ -117,7 +118,7 @@ export default function Home({badge}) {
     try {
       const token = Cookies.get('cresdential')
       if (token){
-          const res = await axios.put(`https://vinuni-makerspace.herokuapp.com/users/${user.id}`, {badges: array}, {
+          const res = await axios.put(`${STRAPI_URL}/users/${user.id}`, {badges: array}, {
           headers: {
               Authorization:
               `Bearer ${token}`

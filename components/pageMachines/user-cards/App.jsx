@@ -16,6 +16,7 @@ import Link from 'next/link'
 import { HiCash, HiLocationMarker, HiShieldCheck } from 'react-icons/hi'
 import { Card } from './Card'
 import { CustomerReviews } from './CustomerReviews'
+import { getStrapiMedia } from '../../../lib/media'
 
 const App = ({machines}) => (
   <Box as="section" py="12" ml="50" maxWidth="70%">
@@ -45,7 +46,7 @@ const App = ({machines}) => (
             <Stack spacing="4">
               <Avatar
                 size="2xl"
-                src="https://res.cloudinary.com/dpec7wjtk/image/upload/v1623827197/VinMakerSpace%20Network/badges/badge-makerspace-safety-induction_vzdccd.png"
+                src={machine?.displayImage? getStrapiMedia(machine?.displayImage) : ''}
                 name={machine.name}
               />
             </Stack>

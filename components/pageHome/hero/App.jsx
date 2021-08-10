@@ -22,9 +22,9 @@ const App = () => {
           }}
           color="white"
         >
-          <Box maxW="xl">
+          <Box maxW="2xl">
             <Heading as="h1" size="3xl" fontWeight="extrabold">
-              Creativity knows no bounds
+              VinUniversity Makerspace Network
             </Heading>
             <Text
               fontSize={{
@@ -32,8 +32,9 @@ const App = () => {
               }}
               mt="4"
               maxW="lg"
+              fontWeight='bold'
             >
-              Tools and Tech for Everyone
+              A project by 
             </Text>
             <Stack
               direction={{
@@ -95,7 +96,7 @@ const App = () => {
       >
         <Box position="relative" w="full" h="full">
           <Img
-            src="https://res.cloudinary.com/dpec7wjtk/image/upload/v1622779109/VinMakerSpace%20Network/hero_is989d.png"
+            src="/hero.png"
             alt="Main Image"
             w="full"
             h="full"

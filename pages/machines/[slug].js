@@ -22,9 +22,12 @@ import * as React from 'react'
 import {ChevronRightIcon} from '@chakra-ui/icons'
 import Link from "next/link"
 import Table from '../../components/tableMachine/App'
+import { getStrapiMedia } from "../../lib/media"
 
 
 export default function Home({machine}) {
+  const displayImage = getStrapiMedia(machine?.displayImage)
+  const manuals_link = machine?.manuals? getStrapiMedia(machine?.manuals) : null
   return (
     <ChakraProvider>
       <NavBar />
@@ -54,7 +57,7 @@ export default function Home({machine}) {
               md: '320px',
             }}
             objectFit="cover"
-            src="https://images.unsplash.com/photo-1534949752991-a065b0f5dfaa?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MTYxfHxkZXZpY2V8ZW58MHx8MHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60"
+            src={displayImage}
             alt="state of the art speaker"
           />
           <Box>
@@ -69,6 +72,19 @@ export default function Home({machine}) {
               maxW="md"
             >
               {machine.descriptions}
+            </Text>
+            <Text
+              as='a'
+              color='blue'
+              textDecor='underline'
+              href={manuals_link}
+              fontSize={{
+                md: 'lg',
+              }}
+              mb="6"
+              maxW="md"
+            >
+              {machine?.manuals?.name}
             </Text>
           </Box>
         </SimpleGrid>

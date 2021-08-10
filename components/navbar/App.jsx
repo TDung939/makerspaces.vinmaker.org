@@ -33,7 +33,7 @@ const App = () => {
                     Login
                   </Button>
                 </Link>
-                {/* 
+                
                 <Link href="/signup">
                   <Button 
                   color="white"
@@ -43,7 +43,7 @@ const App = () => {
                     Sign Up
                   </Button>
                 </Link> 
-                */}
+               
                 </>
                 )
   } else {
@@ -130,8 +130,8 @@ const App = () => {
                     Our Network
                   </MenuButton>
                   <MenuList >
-                    <Link href='/badges'><MenuItem>Badges</MenuItem></Link>
                     <Link href='/machines'><MenuItem>Machines</MenuItem></Link>
+                    <Link href='/badges'><MenuItem>Badges</MenuItem></Link>
                     <MenuItem isDisabled>Makerspaces</MenuItem>
                   </MenuList>
                 </Menu>

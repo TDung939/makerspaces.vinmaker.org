@@ -1,4 +1,4 @@
-import { ChakraProvider} from "@chakra-ui/react"
+import { Avatar, Center, ChakraProvider} from "@chakra-ui/react"
 import NavBar from '../../components/navbar/App'
 import Hero from '../../components/pageBadges/hero/App'
 import Badges from '../../components/pageBadges/user-cards/App'
@@ -52,16 +52,11 @@ export default function Home({badge}) {
           }}
           spacing="10"
         >
-          <Img
-            htmlWidth="500px"
-            htmlHeight="320px"
-            height={{
-              md: '320px',
-            }}
-            objectFit="cover"
-            src="https://images.unsplash.com/photo-1534949752991-a065b0f5dfaa?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MTYxfHxkZXZpY2V8ZW58MHx8MHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60"
-            alt="state of the art speaker"
-          />
+          <Center>
+            <Avatar mx='auto' name={badge.title} size='2xl'/>
+          </Center>
+          
+          
           <Box>
             <Heading size="xl" mb="4" fontWeight="extrabold">
               {badge.title}

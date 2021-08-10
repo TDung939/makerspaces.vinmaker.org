@@ -1,8 +1,9 @@
 import { createContext, useState, useEffect } from "react";
 import axios from "axios";
 import Router from "next/router";
-import { setCookie } from "nookies";
 import Cookies from 'js-cookie'
+import { STRAPI_URL } from "../lib/const";
+
 const AuthContext = createContext()
 
 export const AuthProvider = ({children}) => {
@@ -11,13 +12,28 @@ export const AuthProvider = ({children}) => {
 
     useEffect(() => checkUserLoggedIn(), [])
     //Register user 
-    const register = async (user) => {
-        console.log(user);
+    const register = async ({name, email, pass}) => {
+        try {
+            const res = await axios.post(`${STRAPI_URL}/auth/local/register`, {
+              username: name,
+              email: email,
+              password: pass,
+            });
+        
+            // res.data contains data for authenticated user
+            setUser(res.data.user)
+            Cookies.set('cresdential', res.data.jwt, { expires: 7, path: "/" })
+            Router.push('/')
+          } catch (err) {
+            console.log(err)
+            setError(err)
+            setError(null)
+          }
     }
     //Login user
     const login = async ({email:identifier, pass}) => {
         try {
-            const res = await axios.post("https://vinuni-makerspace.herokuapp.com/auth/local", {
+            const res = await axios.post(`${STRAPI_URL}/auth/local`, {
               identifier: identifier,
               password: pass,
             });
@@ -45,7 +61,7 @@ export const AuthProvider = ({children}) => {
         // When the user is authenticated, don't let the user visit the
         // sign-in and sign-up routes
         if (token){
-            const res = await axios.get("https://vinuni-makerspace.herokuapp.com/users/me", {
+            const res = await axios.get(`${STRAPI_URL}/users/me`, {
             headers: {
                 Authorization:
                 `Bearer ${token}`

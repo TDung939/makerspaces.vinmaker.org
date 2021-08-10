@@ -53,7 +53,7 @@ const App = () => {
               h="full"
               htmlWidth="576px"
               htmlHeight="420px"
-              src="https://res.cloudinary.com/dpec7wjtk/image/upload/v1622791654/VinMakerSpace%20Network/TIEN9731_1_1_k4s1vh.png"
+              src="/picture_1.png"
               alt="Bring team together"
             />
           </Center>

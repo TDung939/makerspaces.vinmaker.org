@@ -55,6 +55,9 @@ const App = () => {
             VinMaker Society is the first engineering society at VinUniversity. We aim for the development of students’ skills in engineering, through various creative projects and industry events.
             </Text>
             <Button 
+              as='a'
+              href='https://vinmaker.vn'
+              
               size="lg" 
               color="white"
               bg="#ae262b"
@@ -64,13 +67,13 @@ const App = () => {
             >
               Join our community
             </Button>
-            <Testimonial
+            {/* <Testimonial
               author="Nguyen Hoang Trung Dung"
               company="Executive director"
               image="https://vinmakersoc.github.io/site/assets/pictures/Profile/Trung-Dung.jpg"
             >
               &ldquo; By maintaining an active community of like-minded ‘makers’ and providing resources, knowledge, and technology, the club seeks to foster an environment where anyone, regardless of their background, can be inspired to turn their ideas into designs, prototypes, and products. &rdquo;
-            </Testimonial>
+            </Testimonial> */}
           </Box>
           <Box>
             <Center
@@ -88,7 +91,7 @@ const App = () => {
             >
             
             {/*This little guy plays the Video. Find him in /components/testimonials/modal.jsx*/}
-            <Modal />
+            
 
             </Center>
             <SimpleGrid

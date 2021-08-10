@@ -20,7 +20,7 @@ import { HiEye, HiEyeOff } from 'react-icons/hi'
 import { PasswordField } from './PasswordField'
 
 import axios from 'axios'
-import {useState, useContext} from 'react'
+import {useState, useContext, useEffect} from 'react'
 import AuthContext from '../../context/AuthContext'
 
 export const LoginForm = React.forwardRef((props, ref) => {
@@ -30,7 +30,12 @@ export const LoginForm = React.forwardRef((props, ref) => {
   const [pass, setPass] = useState("");
 
   const {register, error } = useContext(AuthContext);
+  useEffect(() => error && toast({title: "An error has occured", status: "error"}))
 
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    register({name, email, pass})
+  }
   const { isOpen, onToggle } = useDisclosure()
   const inputRef = React.useRef(null)
   const mergeRef = useMergeRefs(inputRef, ref)
@@ -48,11 +53,6 @@ export const LoginForm = React.forwardRef((props, ref) => {
         input.setSelectionRange(length, length)
       })
     }
-  }
-
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    register({name, email, pass})
   }
 
   return (
