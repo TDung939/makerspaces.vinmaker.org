@@ -34,7 +34,7 @@ const App = () => {
               maxW="lg"
               fontWeight='bold'
             >
-              A project by 
+              Creativity know no bounds
             </Text>
             <Stack
               direction={{
