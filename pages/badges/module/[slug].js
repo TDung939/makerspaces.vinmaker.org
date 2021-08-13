@@ -31,11 +31,12 @@ import AuthContext from '../../../context/AuthContext'
 import Cookies from "js-cookie"
 import axios from "axios"
 import { STRAPI_URL } from "../../../lib/const"
+import { parseCookies } from "../../../helpers"
 
-export default function Home({badge}) {
+export default function Home({badge, token}) {
 
   const {user} = useContext(AuthContext)
-
+  console.log(token);
   const section = badge.module.section;
   const [view, setView] = useState(0);
   const [score, setScore] = useState(0);
@@ -44,7 +45,7 @@ export default function Home({badge}) {
     setScore(newScore);
   }
   const { isOpen, onOpen, onClose } = useDisclosure()
-  let pass = false
+  let pass = true;
   if (section[view].__component === "module.quiz") {
     pass = ((score)/(section[view].questions.length)*100) > 80? true : false;
   }
@@ -116,7 +117,6 @@ export default function Home({badge}) {
     }
     array.push(badge.id)
     try {
-      const token = Cookies.get('cresdential')
       if (token){
           const res = await axios.put(`${STRAPI_URL}/users/${user.id}`, {online_module_badges: array}, {
           headers: {
@@ -126,7 +126,7 @@ export default function Home({badge}) {
           });
           console.log(res.data);
       }
-      Router.back();
+      Router.push('/badges/[id]', `/badges/${badge.slug}`);
     } catch(e) {
       console.log(e)
     } 
@@ -221,10 +221,10 @@ export default function Home({badge}) {
   )
 }
 
-export async function getServerSideProps(context) {
-  const { slug } = context.query;
+export async function getServerSideProps({ params: { slug }, req }) {
+  const  { token }  = parseCookies(req)
   const badges = await fetchAPI(
     `/badges?slug=${slug}`
   );
-  return { props: { badge: badges[0]} };
+  return { props: { badge: badges[0], token} };
 }

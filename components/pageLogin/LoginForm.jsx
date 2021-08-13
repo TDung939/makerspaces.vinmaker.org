@@ -24,8 +24,8 @@ import AuthContext from '../../context/AuthContext'
 export const LoginForm = React.forwardRef((props, ref) => {
   const toast = useToast();
   const [email, setEmail] = useState("");
-  const [pass, setPass] = useState("");
-
+  const [password, setPassword] = useState("");
+  console.log(password);
   const {login, error } = useContext(AuthContext);
   useEffect(() => error && toast({title: "An error has occured", status: "error"}))
   const { isOpen, onToggle } = useDisclosure()
@@ -49,7 +49,7 @@ export const LoginForm = React.forwardRef((props, ref) => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    login({email, pass})
+    login({email, password})
   }
 
   return (
@@ -91,9 +91,9 @@ export const LoginForm = React.forwardRef((props, ref) => {
               />
             </InputRightElement>
             <Input
-              onChange={(e) => setPass(e.target.value)}
+              onChange={(e) => setPassword(e.target.value)}
               id="pass"
-              value={pass}
+              value={password}
               aria-describedby="password-helper-text"
               ref={mergeRef}
               name="password"
@@ -111,7 +111,7 @@ export const LoginForm = React.forwardRef((props, ref) => {
           _hover={{ bg: "#9d2227" }} 
           size="lg" 
           fontSize="md"
-          isDisabled={email === "" || pass === ""}
+          isDisabled={email === "" || password === ""}
           onClick={handleSubmit}
         >
           Sign in

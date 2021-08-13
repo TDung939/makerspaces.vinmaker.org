@@ -25,16 +25,16 @@ import AuthContext from '../../context/AuthContext'
 
 export const LoginForm = React.forwardRef((props, ref) => {
   const toast = useToast();
-  const [name, setName] = useState("");
+  const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
-  const [pass, setPass] = useState("");
+  const [password, setPassword] = useState("");
 
   const {register, error } = useContext(AuthContext);
   useEffect(() => error && toast({title: "An error has occured", status: "error"}))
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    register({name, email, pass})
+    register({username, email, password})
   }
   const { isOpen, onToggle } = useDisclosure()
   const inputRef = React.useRef(null)
@@ -66,10 +66,10 @@ export const LoginForm = React.forwardRef((props, ref) => {
         <FormControl id="name">
           <FormLabel>Full Name</FormLabel>
           <Input 
-          onChange={(e) => setName(e.target.value)}
+          onChange={(e) => setUsername(e.target.value)}
           type="text" 
           id="fullName"
-          value={name}
+          value={username}
           aria-describedby="name-helper-text"
           autoComplete="name" 
           required 
@@ -107,9 +107,9 @@ export const LoginForm = React.forwardRef((props, ref) => {
               />
             </InputRightElement>
             <Input
-              onChange={(e) => setPass(e.target.value)}
+              onChange={(e) => setPassword(e.target.value)}
               id="pass"
-              value={pass}
+              value={password}
               aria-describedby="password-helper-text"
               ref={mergeRef}
               name="password"
@@ -127,7 +127,7 @@ export const LoginForm = React.forwardRef((props, ref) => {
           _hover={{ bg: "#9d2227" }} 
           size="lg" 
           fontSize="md"
-          isDisabled={email === "" || pass === ""}
+          isDisabled={email === "" || password === ""}
           onClick={handleSubmit}
         >
           Sign Up
