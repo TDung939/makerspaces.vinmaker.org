@@ -1,11 +1,16 @@
 import { ChakraProvider, theme } from "@chakra-ui/react"
-import 'react-modal-video/css/modal-video.css';
 import {AuthProvider} from '../context/AuthContext'
+import { QueryClientProvider, QueryClient } from "react-query";
+
+const queryClient = new QueryClient()
+
 function MyApp({ Component, pageProps }) {
   return (
     <ChakraProvider theme={theme}>
       <AuthProvider>
-        <Component {...pageProps} />
+        <QueryClientProvider client={queryClient}>
+          <Component {...pageProps} />
+        </QueryClientProvider>
       </AuthProvider>
     </ChakraProvider>
   )

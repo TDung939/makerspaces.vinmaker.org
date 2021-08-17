@@ -12,9 +12,6 @@ import {
 } from '@chakra-ui/react'
 import * as React from 'react'
 import { BiRightArrowAlt } from 'react-icons/bi'
-import { SampleLogo } from './SampleLogo'
-import { Testimonial } from './Testimonial'
-import Modal from './Modal'
 
 const Feature = (props) => {
   const { title, children } = props

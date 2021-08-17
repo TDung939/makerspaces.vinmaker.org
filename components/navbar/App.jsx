@@ -113,7 +113,7 @@ const App = () => {
             <HStack spacing="8">
               <Box as="a" href="/" rel="home" textAlign="left">
               {/* <Image src="/assets/logo.svg" height={30} width={150}/> */}
-                <Heading as="h3" fontSize="lg">VINUNI MAKERSPACE NETWORK</Heading>
+                <Heading as="h3" fontSize="lg">MAKERSPACE NETWORK</Heading>
               </Box>
               <HStack
                 display={{

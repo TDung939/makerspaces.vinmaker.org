@@ -5,12 +5,12 @@ import Badges from '../components/pageBadges/user-cards/App'
 import Footer from '../components/footer/App'
 import {fetchAPI} from '../lib/api'
 
-export default function Home({badges}) {
+export default function Home({badges, machines}) {
   return (
     <ChakraProvider>
       <NavBar />
       <Hero />
-      <Badges badges={badges}/>
+      <Badges badges={badges} machines={machines}/>
       <Footer />
     </ChakraProvider>
   )
@@ -18,10 +18,13 @@ export default function Home({badges}) {
 
 export async function getStaticProps() {
   // Run API calls in parallel
-  const badges = await fetchAPI("/badges");
+  const [badges, machines] = await Promise.all([
+    fetchAPI("/badges"),
+    fetchAPI("/machines")
+  ]);
 
   return {
-    props: { badges },
+    props: { badges, machines},
     revalidate: 1,
   };
 }

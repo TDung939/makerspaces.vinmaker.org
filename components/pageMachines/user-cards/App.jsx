@@ -2,6 +2,7 @@ import {
   Avatar,
   Box,
   Button,
+  Flex,
   HStack,
   Icon,
   SimpleGrid,
@@ -17,9 +18,67 @@ import { HiCash, HiLocationMarker, HiShieldCheck } from 'react-icons/hi'
 import { Card } from './Card'
 import { CustomerReviews } from './CustomerReviews'
 import { getStrapiMedia } from '../../../lib/media'
+import Select from 'react-select'
+import { useQuery, useQueryClient } from 'react-query'
+import { fetchAPI } from '../../../lib/api'
+import { useState } from 'react'
 
-const App = ({machines}) => (
-  <Box as="section" py="12" ml="50" maxWidth="70%">
+const getMachines = async(key) => {
+  console.log(key);
+  const processId = key.queryKey[1].process
+  const materialId = key.queryKey[2].material
+  if(processId && materialId) {
+    const machinesData = await fetchAPI(`/machines?processes.id=${processId}&suitable_materials.id=${materialId}`)
+    return machinesData
+  }
+  if(processId) {
+    const machinesData = await fetchAPI(`/machines?processes.id=${processId}`)
+    return machinesData
+  }
+  if(materialId) {
+    const machinesData = await fetchAPI(`/machines?suitable_materials.id=${materialId}`)
+    return machinesData
+  }
+  const machinesData = await fetchAPI("/machines")
+  return machinesData
+}
+
+const App = ({machines, processes, badges, materials}) => {
+
+  const queryClient = useQueryClient();
+
+  const [processId, setProcessId] = useState(null)
+  const [materialId, setMaterialId] = useState(null)
+  const {data, status} = useQuery(['machines', {process: processId}, {material: materialId}], getMachines, {initialData: machines})
+
+  return (
+  <Box as="section" py="12" maxW={{
+            base: 'xl',
+            md: '7xl',
+          }}
+          mx='auto'
+          >
+    <Flex>
+    <Stack w='sm' mr={16}>
+      <Select
+      getOptionLabel={option => `${option.name}`}
+      getOptionValue={option => option.id}
+      options={processes}
+      instanceId='processes'
+      isClearable
+      placeholder='Filter by Processes' 
+      onChange={value => setProcessId(value? value.id : null)}
+      />
+      <Select
+      getOptionLabel={option => `${option.name}`}
+      getOptionValue={option => option.id}
+      options={materials}
+      instanceId='materials'
+      isClearable
+      placeholder='Filter by Materials' 
+      onChange={value => setMaterialId(value? value.id : null)}
+      />
+    </Stack>
     <SimpleGrid 
       columns={{
         md: "2",
@@ -27,7 +86,7 @@ const App = ({machines}) => (
       }} 
       spacing={10}
     >
-      {machines.map((machine, i) => {
+      {data.map((machine, i) => {
         return (
         <Link as={`/machines/${machine.slug}`} href="/machines/[id]">
         <Card width="100%">
@@ -84,7 +143,9 @@ const App = ({machines}) => (
         );
       })}
     </SimpleGrid>
+    </Flex>
   </Box>
 )
+}
 
 export default App;

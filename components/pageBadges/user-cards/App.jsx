@@ -1,6 +1,7 @@
 import {
   Avatar,
   Box,
+  Flex,
   HStack,
   Icon,
   SimpleGrid,
@@ -11,9 +12,70 @@ import * as React from 'react'
 import Link from 'next/link'
 import { HiShieldCheck } from 'react-icons/hi'
 import { Card } from './Card'
+import Select from 'react-select'
+import { useQuery, useQueryClient } from 'react-query'
+import { fetchAPI } from '../../../lib/api'
+import { useState } from 'react'
 
-const App = ({badges}) => (
-  <Box as="section" py="12" ml="50" maxWidth="70%">
+const getBadges = async(key) => {
+
+  const levelType = key.queryKey[1].level
+  const machineId = key.queryKey[2].machine
+  console.log(key);
+  if(levelType && machineId) {
+    const badgesData = await fetchAPI(`/badges?machines.id=${machineId}&level=${levelType}`)
+    return badgesData
+  }
+  if(machineId) {
+    const badgesData = await fetchAPI(`/badges?machines.id=${machineId}`)
+    return badgesData
+  }
+  if(levelType) {
+    const badgesData = await fetchAPI(`/badges?level=${levelType}`)
+    return badgesData
+  }
+
+  const badgesData = await fetchAPI("/badges")
+  return badgesData
+} 
+
+const App = ({badges, machines}) => {
+  const queryClient = useQueryClient();
+
+  const [levelType, setLevelType] = useState(null)
+  const [machineId, setMachineId] = useState(null)
+  const {data, status} = useQuery(['badges', {level: levelType}, {machine: machineId}], getBadges, {initialData: badges})
+
+  return (
+  <Box as="section" py="12" ml="50" maxW={{
+    base: 'xl',
+    md: '7xl',
+  }}
+  mx='auto'>
+    <Flex>
+    <Stack w='sm' mr={16}>
+      <Select
+      getOptionLabel={option => `${option.name}`}
+      getOptionValue={option => option.id}
+      options={machines}
+      instanceId='machines'
+      isClearable
+      placeholder='Filter by Machines' 
+      onChange={value => setMachineId(value? value.id : null)}
+      />
+      <Select 
+        getOptionValue={option => option.value}
+        options={[
+          { value: 'entry', label: 'Entry' },
+          { value: 'intermediate', label: 'Intermediate' },
+          { value: 'advanced', label: 'Advanced' }
+        ]}
+        instanceId='level'
+        isClearable
+        placeholder='Filter by Level' 
+        onChange={value => setLevelType(value? value.value : null)}
+      />
+    </Stack>
     <SimpleGrid 
       columns={{
         md: "2",
@@ -21,7 +83,7 @@ const App = ({badges}) => (
       }} 
       spacing={10}
     >
-      {badges.map((badge, i) => {
+      {data.map((badge, i) => {
         return (
         <Link as={`/badges/${badge.slug}`} href="/badges/[id]">
         <Card>
@@ -79,7 +141,8 @@ const App = ({badges}) => (
         );
       })}
     </SimpleGrid>
+    </Flex>
   </Box>
-)
+)}
 
 export default App;
