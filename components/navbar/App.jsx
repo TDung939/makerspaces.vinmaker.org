@@ -15,7 +15,6 @@ import { ChevronDownIcon } from '@chakra-ui/icons'
 import Link from 'next/link'
 import { MobileNav } from './MobileNav'
 import { NavLink } from './NavLink'
-import { Logo } from './Logo'
 import { UserProfile } from './UserProfile'
 import AuthContext from '../../context/AuthContext'
 import { useContext } from 'react'
@@ -113,8 +112,8 @@ const App = () => {
           <Flex as="nav"  justify="space-between">
             <HStack spacing="8">
               <Box as="a" href="/" rel="home" textAlign="left">
-              <Image src="/assets/logo.svg" height={30} width={150}/>
-                <Heading as="h3" fontSize="lg">MAKERSPACE NETWORK</Heading>
+              {/* <Image src="/assets/logo.svg" height={30} width={150}/> */}
+                <Heading as="h3" fontSize="lg">VINUNI MAKERSPACE NETWORK</Heading>
               </Box>
               <HStack
                 display={{
