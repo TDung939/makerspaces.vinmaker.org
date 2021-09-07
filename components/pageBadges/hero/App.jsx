@@ -5,12 +5,15 @@ import { HiChevronRight } from 'react-icons/hi'
 const App = () => {
   return (
     <Box as="section" minH="140px" position="relative"
-            bg='linear-gradient(30deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0)),url(/badges_background.jpg)'
-            bgRepeat='no-repeat'
-            bgSize='cover'
-            backgroundAttachment='fixed'
-            backgroundPosition='center'
-            zIndex={1}>
+    bg='linear-gradient(0deg, #2A5FFF85, #2A5FFF85),url(/badges_background.jpg)'
+    bgRepeat='no-repeat'
+    bgSize='cover'
+    backgroundPosition='center'
+    zIndex={1}
+    mt='8'
+    maxW='7xl'
+    mx='auto'
+    borderRadius='3xl'>
       <Box py="32" position="relative" zIndex={1}>
         <Box
           maxW={{

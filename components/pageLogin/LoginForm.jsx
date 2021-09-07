@@ -107,10 +107,10 @@ export const LoginForm = React.forwardRef((props, ref) => {
         <Button 
           type="submit" 
           color="white"
-          bg="#ae262b"
-          _hover={{ bg: "#9d2227" }} 
-          size="lg" 
-          fontSize="md"
+          fontFamily='Space mono'
+          bg="#2A5FFF"
+          borderRadius='0 25px 0 0'
+          _hover={{ bg: "transparent", color:'#2A5FFF', border:'1px solid #2A5FFF' }} 
           isDisabled={email === "" || password === ""}
           onClick={handleSubmit}
         >

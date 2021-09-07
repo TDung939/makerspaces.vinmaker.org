@@ -5,7 +5,7 @@ export const Feature = (props) => {
   const { title, children, icon } = props
   return (
     <Box>
-      <Box color="black" fontSize="5xl">
+      <Box color="#2A5FFF" fontSize="5xl">
         {icon}
       </Box>
       <Stack mt="6">

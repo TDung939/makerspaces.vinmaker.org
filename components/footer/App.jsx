@@ -1,114 +1,103 @@
 import {
   Box,
+  Button,
+  Divider,
   Flex,
   HStack,
+  Img,
   SimpleGrid,
   Stack,
   Text,
-  useColorModeValue as mode,
+  useColorMode,
+  useColorModeValue,
+  Wrap,
+  WrapItem,
 } from '@chakra-ui/react'
 import * as React from 'react'
-import { FaHeart } from 'react-icons/fa'
-import Image from 'next/image'
-import { SocialLink } from './SocialLink'
-import { links, socialLinks } from './_data'
-import { LinkGroup } from './LinkGroup'
-import { SubscribeForm } from './SubscribeForm'
+import { LanguageSwitcher } from './LanguageSwitcher'
+import { SocialButton } from './SocialButton'
+import { footerLinks, links, socialLinks } from './_data'
 
-const App = () => (
-  <Box as="footer" bg="#313131">
-    <Box
-      maxW={{
-        base: 'xl',
-        md: '7xl',
-      }}
-      mx="auto"
-      px={{
-        base: '6',
-        md: '8',
-      }}
-      py={{
-        base: '12',
-        md: '20',
-      }}
-    >
+const App = () => {
+const {colorMode, toggleColorMode} = useColorMode()
+const {colorTheme} = useColorModeValue('Light theme', 'Dark theme')
+return (
+  <Box as="footer"  color="black" py="64px" bg='white'>
+    <Box maxW="7xl" px="8" mx="auto">
       <Flex
         direction={{
           base: 'column',
           lg: 'row',
         }}
         justify="space-between"
-        mb={{
-          base: '10',
-          lg: '16',
-        }}
+        pb="8"
         align="flex-start"
         id="top"
       >
-        <Image src="/assets/logo-white.svg" width={164} height={100}/>
-        <SimpleGrid
-          flex="1"
-          w={{
-            base: 'full',
-            lg: 'auto',
-          }}
-          maxW={{
-            lg: '2xl',
-          }}
-          columns={{
-            base: 1,
-            md: 2,
-            lg: 4,
-          }}
-          spacing={{
-            base: '12',
-            md: '10',
-          }}
-          fontSize="sm"
-          marginEnd={{
-            md: '4',
-            lg: '16',
-          }}
-        >
-          {links.map((group, idx) => (
-            <LinkGroup key={idx} data={group} />
-          ))}
-        </SimpleGrid>
-       {/* <Box
-          flex="2"
-          maxW={{
-            lg: '420px',
-          }}
-          ml={{
-            lg: 'auto',
-          }}
-          fontSize="sm"
-          mt={{
-            base: '12',
+        <Box
+          paddingEnd="12"
+          mb={{
+            base: '10',
             lg: 0,
           }}
         >
-          <Text
-            casing="uppercase"
-            mb={{
-              base: 6,
-              lg: 10,
-            }}
-            fontWeight="bold"
-            letterSpacing="wide"
-          >
-            Subscribe to our newsletter!
-          </Text>
-          <Text lineHeight="tall">
-            Get Overflow resources, curated content, and design inspiration delivered straight into
-            your inbox. Be the first to learn the news about new features and product updates.
-          </Text>
-          <SubscribeForm />
-        </Box>*/}
+          <Img src='/Logo.svg' height='100' />
+          <HStack spacing="4" mt="8" as="ul">
+            {socialLinks.map((link, idx) => (
+              <SocialButton key={idx} href={link.href}>
+                <Box srOnly>{link.label}</Box>
+                {link.icon}
+              </SocialButton>
+            ))}
+          </HStack>
+        </Box>
+        <SimpleGrid
+          w="full"
+          maxW={{
+            base: 'unset',
+            lg: '2xl',
+          }}
+          columns={{
+            base: 2,
+            lg: 4,
+          }}
+          spacing={{
+            base: '8',
+            md: '4',
+          }}
+          fontSize="sm"
+        >
+          {links.map((group, idx) => (
+            <Box key={idx}>
+              <Text fontWeight="bold" mb="4" fontFamily='Space Mono'>
+                {group.title}
+              </Text>
+              <Stack as="ul" listStyleType="none">
+                {group.links.map((link, idx) => (
+                  <Box as="li" key={idx} fontFamily='Space Mono'>
+                    <Box
+                      as="a"
+                      href={link.href}
+                      _hover={{
+                        textDecor: 'underline',
+                      }}
+                    >
+                      {link.label}
+                      {link.badge && (
+                        <Box as="span" marginStart="2">
+                          {link.badge}
+                        </Box>
+                      )}
+                    </Box>
+                  </Box>
+                ))}
+              </Stack>
+            </Box>
+          ))}
+        </SimpleGrid>
       </Flex>
-
+      <Divider my="10" borderColor="gray.300" />
       <Flex
-        color="white"
         direction={{
           base: 'column-reverse',
           lg: 'row',
@@ -120,101 +109,35 @@ const App = () => (
         justify="space-between"
         fontSize="sm"
       >
-        <Stack
-          direction={{
-            base: 'column',
-            md: 'row',
-          }}
+        <Wrap
+          id="bottom"
           spacing={{
             base: '4',
-            md: '12',
+            lg: '8',
           }}
           mt={{
-            base: '8',
-            lg: 0,
-          }}
-          w={{
-            base: 'full',
-            lg: 'auto',
-          }}
-          justify={{
-            base: 'space-between',
-            lg: 'flex-start',
-          }}
-          align={{
-            base: 'flex-start',
-            md: 'center',
+            base: '4',
+            lg: '0',
           }}
         >
-          {/*Logo*/}
-          <HStack
-            spacing="2"
-            mt={{
-              lg: '8',
-            }}
-            as="ul"
-            listStyleType="none"
-          >
-            {socialLinks.map((link, idx) => (
-              <Box as="li" key={idx}>
-                <SocialLink href={link.href}>
-                  <Box srOnly>{link.label}</Box>
-                  {link.icon}
-                </SocialLink>
+          <WrapItem>
+            <Box>&copy; {new Date().getFullYear()} VinMaker Society</Box>
+          </WrapItem>
+          {footerLinks.map((link, idx) => (
+            <WrapItem key={idx}>
+              <Box as="a" href={link.href}>
+                {link.label}
               </Box>
-            ))}
-          </HStack>
-        </Stack>
-        <Box color="white">
-          <Text mt="2">
-            Made with <Heart /> by VinMaker Society.
-          </Text>
-        </Box>
+            </WrapItem>
+          ))}
+        </Wrap>
+        {/* <LanguageSwitcher />
+         */}
+          {/* <Button size="sm" onClick={toggleColorMode}>
+            {colorMode} mode
+          </Button> */}
       </Flex>
     </Box>
-    {/*Create the Red line */}
-    <Box
-        pos="absolute"
-        bg="#ae262b"
-        w="100%"
-        h="3.6875rem"
-    >
-    </Box>
-    {/*Create the Blue line */}
-    <Box
-        pos="absolute"
-        right="0"
-        bg="#2d4d73"
-        w="20%"
-        h="5.125rem"
-        bottom="-3.6875rem"
-        transformOrigin="top left"
-    >
-    </Box>
-    <Box
-        pos="absolute"
-        right="0"
-        bg="#2d4d73"
-        w="45%"
-        h="5.125rem"
-        bottom="-3.6875rem"
-        transformOrigin="top left"
-        transform="skew(-17deg, 0deg)"
-    >
-    </Box>
   </Box>
-)
-
-const Heart = () => (
-  <Box
-    display="inline-block"
-    mx="1"
-    color="#ae262b"
-    fontSize="xs"
-    role="img"
-    aria-label="Love"
-    as={FaHeart}
-  />
-)
-
+)}
 export default App;

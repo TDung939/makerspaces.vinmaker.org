@@ -140,7 +140,7 @@ export const MobileNav = () => {
             <Box pt="5" pb="6" px="5">
               <Flex justify="space-between" align="center">
                 {/*Logo*/}
-                <Heading>MakerSpaces</Heading>
+                {/* <Heading>MakerSpaces</Heading> */}
                 <Box mr="-2" mt="-2">
                   <Center
                     as="button"

@@ -25,21 +25,25 @@ const App = () => {
     display = ( <>
                 <Link href="/login">
                   <Button 
-                  color="#ae262b"
-                  bg="transparent"
-                  
+                   color="white"
+                   borderRadius='25px 0 0 0'
+                   bg="#161616"
+                   fontWeight='normal'
+                   _hover={{ bg: "transparent", color:'#161616', border:'1px solid #161616' }}
                   >
-                    Login
+                    Sign in
                   </Button>
                 </Link>
                 
                 <Link href="/signup">
-                  <Button 
+                  <Button
+                  fontWeight='normal'
+                  borderRadius='0 25px 0 0'
                   color="white"
-                  bg="#ae262b"
-                  _hover={{ bg: "#9d2227" }}
+                  bg="#2A5FFF"
+                  _hover={{ bg: "transparent", color:'#2A5FFF', border:'1px solid #2A5FFF' }}
                   >
-                    Sign Up
+                    Create an account
                   </Button>
                 </Link> 
                
@@ -58,48 +62,20 @@ const App = () => {
                   
                   <Button 
                   color="white"
-                  bg="#ae262b"
-                  _hover={{ bg: "#9d2227" }}
+                  borderRadius='0 25px 0 0'
+                  bg="#161616"
+                  fontWeight='normal'
+                  _hover={{ bg: "transparent", color:'#161616', border:'1px solid #161616' }}
                   onClick={() => logout()}
                   >
-                    Logout
+                    Log out
                   </Button>
                 </>
                 )
   }
   return (
-    <Box maxH="480px" pos="sticky" top="0" zIndex="2">
-       {/*Create the Red line 
-        <Box
-            pos="relative"
-            bg="#2d4d73"
-            w="100%"
-            h="50px"
-            zIndex="-1"
-        >
-        </Box>
-        Create the Blue line
-        <Box
-            pos="absolute"
-            right="0"
-            bg="#ae262b"
-            w="20%"
-            h="83px"
-            top="0"
-        >
-        </Box>
-        <Box
-            pos="absolute"
-            right="0"
-            bg="#ae262b"
-            w="45%"
-            h="83px"
-            top="0"
-            transformOrigin="top left"
-            transform="skew(17deg, 0deg)"
-        >
-        </Box>*/}
-      <Box as="header" bg={mode('white', 'gray.800')} borderBottomWidth="1px">
+    <Box maxH="480px" pos="sticky" top="0" zIndex="3" style={{background:'hsla(0,0%,100%,0.8)', backdropFilter:'blur(8px)', border: '1px solid rgba(0,0,0,0.1)'}}>
+      <Box as="header" fontFamily='Space mono' fontWeight='normal'>
         <Box
           maxW="7xl"
           mx="auto"
@@ -113,7 +89,7 @@ const App = () => {
             <HStack spacing="8">
               <Box as="a" href="/" rel="home" textAlign="left">
               {/* <Image src="/assets/logo.svg" height={30} width={150}/> */}
-                <Heading as="h3" fontSize="lg">MAKERSPACE NETWORK</Heading>
+                <Heading as="h3" fontSize="lg" >MAKERSPACE NETWORK</Heading>
               </Box>
               <HStack
                 display={{
@@ -122,13 +98,12 @@ const App = () => {
                 }}
                 spacing="5"
               >
-                <Link href="/"><NavLink.Desktop>Home</NavLink.Desktop></Link>
-                <Link href="/get-started"><NavLink.Desktop >Get Started</NavLink.Desktop></Link>
+                {/* <Link href="/get-started"><NavLink.Desktop >Get Started</NavLink.Desktop></Link> */}
                 <Menu>
-                  <MenuButton as={Button} mx="0" pl="2" pr="0" bg="transparent" rightIcon={<ChevronDownIcon />}>
+                  <MenuButton fontWeight='normal' as={Button} mx="0" pl="2" pr="0" bg="transparent" rightIcon={<ChevronDownIcon />}>
                     Our Network
                   </MenuButton>
-                  <MenuList >
+                  <MenuList border='0' >
                     <Link href='/machines'><MenuItem>Machines</MenuItem></Link>
                     <Link href='/badges'><MenuItem>Badges</MenuItem></Link>
                     <MenuItem isDisabled>Makerspaces</MenuItem>
@@ -136,21 +111,21 @@ const App = () => {
                 </Menu>
                 {/*<Link href="/learn"><NavLink.Desktop >Learn</NavLink.Desktop></Link>*/}
               
-                <Menu>
-                  <MenuButton as={Button} mx="0" pl="2" pr="0" bg="transparent" rightIcon={<ChevronDownIcon />}>
+                <Menu >
+                  <MenuButton fontWeight='normal' as={Button} mx="0" pl="2" pr="0" bg="transparent" rightIcon={<ChevronDownIcon />}>
                     Services
                   </MenuButton>
-                  <MenuList >
+                  <MenuList  border='0'>
                     <MenuItem isDisabled>3D printing</MenuItem>
                     <MenuItem isDisabled>Borrow Equipments</MenuItem>
                   </MenuList>
                 </Menu>
 
                 <Menu>
-                  <MenuButton as={Button} mx="0" pl="2" pr="0"  bg="transparent" rightIcon={<ChevronDownIcon />}>
+                  <MenuButton fontWeight='normal' as={Button} mx="0" pl="2" pr="0"  bg="transparent" rightIcon={<ChevronDownIcon />}>
                     About
                   </MenuButton>
-                  <MenuList >
+                  <MenuList  border='0'>
                     <MenuItem isDisabled>Safety</MenuItem>
                     <MenuItem isDisabled>About us</MenuItem>
                     <MenuItem isDisabled>Become an Instructor</MenuItem>

@@ -22,8 +22,8 @@ export const UserProfile = (props) => {
         }}
         flex="1"
       >
-        <Avatar name={name} src={avatarUrl} size="sm" />
-        <Flex
+        <Avatar name={name} src={avatarUrl} size="md" />
+        {/* <Flex
           direction="column"
           display={{
             base: 'flex',
@@ -36,7 +36,7 @@ export const UserProfile = (props) => {
           <Text fontSize="sm" lineHeight="shorter" opacity={0.7}>
             {email}
           </Text>
-        </Flex>
+        </Flex> */}
       </HStack>
     </Box>
   )

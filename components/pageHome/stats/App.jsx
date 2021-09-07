@@ -12,7 +12,7 @@ const App = ({badges_num, machines_num, makerspaces_num}) => (
     mx="auto"
     px={{
       base: '4',
-      sm: '6',
+      sm: '0',
     }}
     py={{
       base: '8',
@@ -25,18 +25,11 @@ const App = ({badges_num, machines_num, makerspaces_num}) => (
         lg: 'unset',
       }}
       mx="auto"
-      pl={{
-        lg: '10',
-      }}
+     
     >
       <Box textAlign="center" maxW="2xl" mx="auto">
         <Heading
-          mt="6"
-          fontSize={{
-            base: '3xl',
-            sm: '5xl',
-          }}
-          fontWeight="extrabold"
+          fontFamily='Space mono'
         >
           Boasts a diverse range of skills and equipment
         </Heading>
@@ -50,7 +43,7 @@ const App = ({badges_num, machines_num, makerspaces_num}) => (
         </Text>
       </Box>
       <SimpleGrid
-        mt="12"
+        mt="24"
         columns={{
           base: 1,
           md: 3,

@@ -26,7 +26,7 @@ const App = () => {
         mx="auto"
         px={{
           base: '6',
-          md: '8',
+          md: '0',
         }}
       >
         <Stack
@@ -41,20 +41,19 @@ const App = () => {
         >
           <Center
             flex="1"
-            shadow="lg"
             minH="26rem"
             maxW={{
               lg: 'xl',
             }}
           >
             <Img
+              borderRadius='3xl'
               objectFit="cover"
               w="full"
               h="full"
-              htmlWidth="576px"
-              htmlHeight="420px"
               src="/picture_1.png"
-              alt="Bring team together"
+              alt="feature"
+              filter='brightness(0.45) grayscale(1)'
             />
           </Center>
           <Box
@@ -63,13 +62,11 @@ const App = () => {
             }}
           >
             <Heading
-              size="2xl"
+              size="xl"
               mt="10"
-              fontWeight="extrabold"
-              letterSpacing="tight"
-              lineHeight="normal"
+              fontFamily='Space mono'
             >
-              VinUniversity Makerspace Network
+              What is VinUniversity Makerspace Network?
             </Heading>
             <Text fontSize="lg" mt="6" color={mode('gray.600', 'gray.400')}>
             VinUniversity is proud of its many makerspaces and labs. View all Makerspaces in the VinUniversity Makerspace Network. Find the right space for your project.
@@ -77,12 +74,15 @@ const App = () => {
             <Button
               className="group"
               mt="8"
-              color="white"
-              bg="#ae262b"
-              _hover={{ bg: "#9d2227" }}
+              color='white'
+              bgColor='#2A5FFF'
+              fontFamily='Space mono'
+
+              borderRadius='0 25px 0 0'
+              _hover={{
+              }}
               size="lg"
               px="8"
-              fontWeight="bold"
               h="14"
               iconSpacing="3"
               rightIcon={
@@ -100,52 +100,6 @@ const App = () => {
             </Button>
           </Box>
         </Stack>
-        
-        <Divider my="20" opacity={0} />
-
-        <SimpleGrid
-          columns={{
-            base: 1,
-            md: 3,
-          }}
-          spacing={{
-            base: '12',
-            md: '8',
-          }}
-        >
-          <Box>
-            <Feature title="Learn Modules" icon={<FaChalkboard />}>
-            Take a look at our online learning resources. Learn new skills or expand your knowledge.
-            </Feature>
-            <Button mt="25px"> 
-              Learn more
-            </Button>
-          </Box>
-    
-          <Box>
-            <Feature title="Machines" icon={<FaTools />}>
-            VinUniversity has a wide range of machines for makers to tinker and design prototype. View the Makerspace Network machine database. Search by location, material or Badge.
-            </Feature>
-            <Link href="/machines">
-              <Button mt="25px"> 
-                Learn more
-              </Button>
-            </Link>
-          </Box>
-          
-          <Box>
-            <Feature title="Makerspace Badges" icon={<FaCertificate />}>
-            Badging is how we ensure VinUniversity Makers have the skills to safely and efficiently use our network of materials, machines and spaces.
-            </Feature>
-            <Link href="/badges">
-              <Button mt="25px"> 
-                Learn more
-              </Button>
-            </Link>
-          </Box>
-          
-        </SimpleGrid>
-        
       </Box>
     </Box>
   )

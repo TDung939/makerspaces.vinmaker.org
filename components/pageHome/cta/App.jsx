@@ -19,25 +19,22 @@ const App = () => {
         }}
         textAlign="center"
       >
-        <Text fontWeight="semibold" color="#ae262b">
+        <Text fontWeight="semibold" color="#2A5FFF">
           Want More Access?
         </Text>
         <Heading
+          fontFamily='Space mono'
           my="4"
-          as="h2"
           fontSize={{
             base: '4xl',
-            md: '6xl',
+            md: '5xl',
           }}
-          fontWeight="extrabold"
-          letterSpacing="tight"
-          lineHeight="1.2"
         >
           Get your MakerSpace Safety Badge and begin {' '}
           <Box
             as="mark"
             bg="unset"
-            color="#ae262b"
+            color="#2A5FFF"
             whiteSpace="nowrap"
           >
             Making
@@ -62,15 +59,12 @@ const App = () => {
         >
           <Link href="#">
           <Button
-            as="a"
-            href="#"
-            size="lg"
-            h="16"
-            px="10"
+            fontFamily='Space mono'
+            fontWeight='normal'
             color="white"
-            bg="#ae262b"
-            _hover={{ bg: "#9d2227" }}
-            fontWeight="bold"
+            bg="#161616"
+            borderRadius='25px 0 0 0'
+            _hover={{ bg: "transparent", color:'#161616', border:'1px solid #161616' }}
             flex={{
               md: '1',
             }}
@@ -79,16 +73,15 @@ const App = () => {
           </Button>
           </Link>
           <Button
-            as="a"
+            fontFamily='Space mono'
+            fontWeight='normal'
+            color="white"
+            bg="#2A5FFF"
+            borderRadius=' 0 25px 0 0'
+            _hover={{ bg: "transparent", color:'#2A5FFF', border:'1px solid #2A5FFF' }}
             flex={{
               md: '1',
             }}
-            variant="outline"
-            href="#"
-            size="lg"
-            h="16"
-            px="10"
-            fontWeight="bold"
           >
             BOOK A TRAINING
           </Button>

@@ -21,13 +21,13 @@ const App = () => (
       lg: '8',
     }}
   >
-    <Box maxW="md" mx="auto">
-      <Heading textAlign="center" size="xl" fontWeight="extrabold" mt="4" mb="8">
+    <Box maxW="lg" mx="auto">
+      <Heading textAlign="center" fontFamily='Space mono' mt="4" mb="8">
         Sign up with your VinUniversity account
       </Heading>
       <Card>
         <LoginForm />
-        <Text mt={8} textAlign="center" fontSize="md">Already have an account? <Link href="/login"><chakra.a cursor="pointer" _hover={{color: "#ae262b"}}>Login</chakra.a></Link></Text> 
+        <Text mt={8} textAlign="center" fontSize="md">Already have an account? <Link href="/login"><chakra.a cursor="pointer" _hover={{color: "#2A5FFF"}}>Login</chakra.a></Link></Text> 
       </Card>
     </Box>
   </Box>

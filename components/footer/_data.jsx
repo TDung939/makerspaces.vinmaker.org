@@ -1,27 +1,58 @@
-import { Badge } from '@chakra-ui/react'
+import { Badge, LightMode } from '@chakra-ui/react'
 import * as React from 'react'
-import { FaFacebook, FaInstagram, FaLinkedin, FaTwitter } from 'react-icons/fa'
+import { FaFacebook, FaGithub, FaInstagram, FaLinkedin, FaTwitter, FaYoutube } from 'react-icons/fa'
 
 export const links = [
   {
-    title: 'Engage with us',
+    title: 'Community',
     links: [
       {
-        label: 'Contact us',
-        href: '#',
+        label: 'Our story',
+        href: '/about',
       },
       {
-        label: 'Features',
-        href: '#',
-      },
-      {
-        label: 'Integrations',
-        href: '#',
+        label: 'Volunteer',
+        href: '/recruitment',
         badge: (
-          <Badge color="white" bg="#ae262b" variant="solid" fontSize="0.625rem">
-            New
-          </Badge>
+          <LightMode>
+            <Badge color='white' bg='#2A5FFF' fontSize="0.625rem">
+              New
+            </Badge>
+          </LightMode>
         ),
+      },
+      {
+        label: 'Media Assets',
+        href: '/media/media-kit',
+      },
+      {
+        label: 'FAQ',
+        href: '/faq',
+      },
+    ],
+  },
+  {
+    title: 'Projects',
+    links: [
+      {
+        label: 'Student projects',
+        href: '/projects',
+      },
+      {
+        label: 'Makerspaces Network',
+        href: 'https://makerspaces.vinmaker.org/',
+      },
+      // {
+      //   label: 'Makers4Kindness',
+      //   href: '#',
+      // },
+      // {
+      //   label: 'VinUniverse',
+      //   href: '#',
+      // },
+      {
+        label: 'Propose a project',
+        href: '#',
       },
     ],
   },
@@ -29,66 +60,33 @@ export const links = [
     title: 'Resources',
     links: [
       {
-        label: 'Learn Center',
-        href: '#',
+        label: 'Blog',
+        href: '/articles',
       },
+      // {
+      //   label: 'First-year guide',
+      //   href: '#',
+      // },
       {
-        label: 'Support',
+        label: 'For Sponsors',
         href: '#',
       },
-      {
-        label: 'Events',
-        href: '#',
-      },
-      {
-        label: 'Terms of Service',
-        href: '#',
-      },
-      {
-        label: 'Privacy Policy',
-        href: '#',
-      },
+      // {
+      //   label: 'Help Center',
+      //   href: '#',
+      // },
     ],
   },
   {
-    title: 'About',
+    title: 'Contact',
     links: [
       {
-        label: 'Our Community',
-        href: '#',
-      },
-      {
-        label: 'Media Kit',
-        href: '#',
-      },
-      {
-        label: 'Blog',
-        href: '#',
+        label: 'Facebook',
+        href: 'https://www.facebook.com/vinmakersoc/',
       },
       {
         label: 'Email us',
-        href: '#',
-      },
-    ],
-  },
-  {
-    title: 'Get Started',
-    links: [
-      {
-        label: 'Start for free',
-        href: '#',
-      },
-      {
-        label: 'Makerspaces',
-        href: '#',
-      },
-      {
-        label: 'Badges',
-        href: '#',
-      },
-      {
-        label: 'Machines',
-        href: '#',
+        href: 'mailto:vinmaker.info@vinuni.edu.vn',
       },
     ],
   },
@@ -97,43 +95,24 @@ export const socialLinks = [
   {
     label: 'Facebook',
     icon: <FaFacebook />,
-    href: '#',
+    href: 'https://www.facebook.com/vinmakersoc/',
   },
   {
-    label: 'Instagram',
-    icon: <FaInstagram />,
-    href: '#',
+    label: 'Github',
+    icon: <FaGithub />,
+    href: 'https://github.com/vinmakersoc',
   },
   {
     label: 'LinkedIn',
     icon: <FaLinkedin />,
-    href: '#',
+    href: 'https://www.linkedin.com/company/vinmaker',
   },
   {
-    label: 'LinkedIn',
-    icon: <FaTwitter />,
-    href: '#',
+    label: 'Youtube',
+    icon: <FaYoutube />,
+    href: 'https://www.youtube.com/channel/UCbfsn7J7G0G61itXyHNqysA',
   },
 ]
 export const footerLinks = [
-  {
-    label: 'Terms of Service',
-    href: '#',
-  },
-  {
-    label: 'Privacy Policy',
-    href: '#',
-  },
-  {
-    label: 'Offer terms',
-    href: '#',
-  },
-  {
-    label: 'Legal notice',
-    href: '#',
-  },
-  {
-    label: 'Sitemap',
-    href: '#',
-  },
+  
 ]

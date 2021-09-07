@@ -8,8 +8,10 @@ import { useContext, useState } from 'react'
 const App = () => {
   const {user} = useContext(AuthContext)
   return (
-    <Box bg="gray.800" as="section" minH="140px" position="relative">
-      <Box py="32" position="relative" zIndex={1}>
+    <Box mt='8' borderRadius='3xl' bg="transparent" as="section" minH="140px" position="relative" maxW='7xl' mx='auto'
+    
+    >
+      <Box py="24" position="relative" zIndex={1}>
         <Box
           maxW={{
             base: 'xl',
@@ -23,7 +25,7 @@ const App = () => {
           color="white"
         >
           <Box maxW="2xl">
-            <Heading as="h1" size="3xl" fontWeight="extrabold">
+            <Heading fontFamily='Space mono' as="h1" size="2xl">
               VinUniversity Makerspace Network
             </Heading>
             <Text
@@ -32,9 +34,8 @@ const App = () => {
               }}
               mt="4"
               maxW="lg"
-              fontWeight='bold'
             >
-              Creativity know no bounds
+              A Project by VinMaker Society
             </Text>
             <Stack
               direction={{
@@ -48,8 +49,11 @@ const App = () => {
                 <Button
                   href="#"
                   color="white"
-                  bg="#ae262b"
-                  _hover={{ bg: "#9d2227" }}
+                  bg="#161616"
+                  _hover={{
+                    bg: '#161616',
+                  }}
+                  borderRadius='25px 0 0 0'
                   px="8"
                   size="lg"
                   fontSize="md"
@@ -60,7 +64,8 @@ const App = () => {
               </Link>
               <Link href={user? "/user/dashboard": "/login"}>
                 <HStack
-                  cursor="default"
+                  bg="#2A5FFF"
+                  cursor="pointer"
                   as="a"
                   transition="background 0.2s"
                   justify={{
@@ -68,13 +73,10 @@ const App = () => {
                     md: 'flex-start',
                   }}
                   color="white"
-                  rounded="full"
+                  borderRadius='0 25px 0 0'
                   fontWeight="bold"
                   px="6"
                   py="3"
-                  _hover={{
-                    bg: 'whiteAlpha.300',
-                  }}
                 >
                   <span>{user? "GO TO MAKER PORTAL": "LOGIN TO MAKER PORTAL"}</span>
                   <HiChevronRight />
@@ -93,8 +95,9 @@ const App = () => {
         h="full"
         overflow="hidden"
         align="center"
+        borderRadius='3xl'
       >
-        <Box position="relative" w="full" h="full">
+        <Box position="relative" w="full" h="full" borderRadius='3xl'>
           <Img
             src="/hero.png"
             alt="Main Image"
@@ -104,7 +107,7 @@ const App = () => {
             objectPosition="top bottom"
             position="absolute"
           />
-          <Box position="absolute" w="full" h="full" bg="blackAlpha.600" />
+          <Box borderRadius='3xl' position="absolute" w="full" h="full" bg="#2A5FFF90" />
         </Box>
       </Flex>
     </Box>

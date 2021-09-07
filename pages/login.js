@@ -11,7 +11,7 @@ import Footer from '../components/footer/App'
 export default function Home() {
   return (
     <ChakraProvider>
-        <Banner />
+        {/* <Banner /> */}
         <NavBar />
         <Login />
         <Footer />
