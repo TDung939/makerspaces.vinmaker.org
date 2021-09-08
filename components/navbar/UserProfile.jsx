@@ -22,7 +22,7 @@ export const UserProfile = (props) => {
         }}
         flex="1"
       >
-        <Avatar name={name} src={avatarUrl} size="md" />
+        <Avatar name={name} src={avatarUrl? avatarUrl : `https://avatars.dicebear.com/api/croodles/${name}.svg`} bg='transparent' borderWidth='2px' borderColor='#2A5FFF' size="md" />
         {/* <Flex
           direction="column"
           display={{

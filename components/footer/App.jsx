@@ -41,15 +41,15 @@ return (
             lg: 0,
           }}
         >
-          <Img src='/Logo.svg' height='100' />
-          <HStack spacing="4" mt="8" as="ul">
+          <Img src='/footer-logo.png' height='150' />
+          {/* <HStack spacing="4" mt="8" as="ul">
             {socialLinks.map((link, idx) => (
               <SocialButton key={idx} href={link.href}>
                 <Box srOnly>{link.label}</Box>
                 {link.icon}
               </SocialButton>
             ))}
-          </HStack>
+          </HStack> */}
         </Box>
         <SimpleGrid
           w="full"

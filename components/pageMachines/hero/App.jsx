@@ -5,7 +5,7 @@ import { HiChevronRight } from 'react-icons/hi'
 const App = () => {
   return (
     <Box as="section" minH="140px" position="relative"
-    bg='linear-gradient(0deg, #2A5FFF85, #2A5FFF85),url(/machines_background.jpg)'
+    bg='linear-gradient(0deg, #2A5FFF90, #2A5FFF90),url(/machines_background.jpg)'
     bgRepeat='no-repeat'
     bgSize='cover'
     backgroundPosition='center'

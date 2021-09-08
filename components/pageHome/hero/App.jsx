@@ -8,7 +8,7 @@ import { useContext, useState } from 'react'
 const App = () => {
   const {user} = useContext(AuthContext)
   return (
-    <Box mt='8' borderRadius='3xl' bg="transparent" as="section" minH="140px" position="relative" maxW='7xl' mx='auto'
+    <Box mt={{base:'0', lg:'8'}} borderRadius={{base:'0', lg:'3xl'}} bg="transparent" as="section" minH="140px" position="relative" maxW='7xl' mx='auto'
     
     >
       <Box py="24" position="relative" zIndex={1}>
@@ -95,9 +95,9 @@ const App = () => {
         h="full"
         overflow="hidden"
         align="center"
-        borderRadius='3xl'
+        borderRadius={{base:'0', lg:'3xl'}}
       >
-        <Box position="relative" w="full" h="full" borderRadius='3xl'>
+        <Box position="relative" w="full" h="full" borderRadius={{base:'0', lg:'3xl'}}>
           <Img
             src="/hero.png"
             alt="Main Image"
@@ -107,7 +107,7 @@ const App = () => {
             objectPosition="top bottom"
             position="absolute"
           />
-          <Box borderRadius='3xl' position="absolute" w="full" h="full" bg="#2A5FFF90" />
+          <Box borderRadius={{base:'0', lg:'3xl'}} position="absolute" w="full" h="full" bg="#2A5FFF90" />
         </Box>
       </Flex>
     </Box>

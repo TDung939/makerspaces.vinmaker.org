@@ -9,6 +9,7 @@ import {
   Button,
   Heading,
   Avatar,
+  Img,
   Text,
   Breadcrumb,
   BreadcrumbItem,
@@ -32,6 +33,8 @@ import Cookies from "js-cookie"
 import axios from "axios"
 import { STRAPI_URL } from "../../../lib/const"
 import { parseCookies } from "../../../helpers"
+import { getStrapiMedia } from "../../../lib/media"
+import Seo from "../../../components/Seo"
 
 export default function Home({badge, token}) {
 
@@ -40,6 +43,7 @@ export default function Home({badge, token}) {
   const section = badge.module.section;
   const [view, setView] = useState(0);
   const [score, setScore] = useState(0);
+  const badge_image = badge.displayImage? getStrapiMedia(badge.displayImage) : ''
 
   function handleChange(newScore) {
     setScore(newScore);
@@ -134,6 +138,7 @@ export default function Home({badge, token}) {
 
   return (
     <ChakraProvider>
+      <Seo />
       <NavBar />
     
       <Layout>
@@ -186,12 +191,8 @@ export default function Home({badge, token}) {
                 {pass? `Congratulations! You have successfully completed the online components for ${badge.title} Badge. You are now ready to book a hands-on session.` : "Unforturnately, you did not surpass 80% of the quiz. Please watch the videos carefully and try again. Best of luck!"}
               </ModalBody>
                 {pass? 
-                <Avatar
-                  my="15"
-                  mx="auto"
-                  size="2xl"
-                  src=""
-                  name={badge.title}
+                <Img
+                src={badge_image} h='180px' objectFit='contain' my='4'
                 /> : null}
                 <ModalFooter>
                 {pass?

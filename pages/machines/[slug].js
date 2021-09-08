@@ -23,6 +23,7 @@ import {ChevronRightIcon} from '@chakra-ui/icons'
 import Link from "next/link"
 import Table from '../../components/tableMachine/App'
 import { getStrapiMedia } from "../../lib/media"
+import Seo from "../../components/Seo"
 
 
 export default function Home({machine}) {
@@ -30,6 +31,7 @@ export default function Home({machine}) {
   const manuals_link = machine?.manuals? getStrapiMedia(machine?.manuals) : null
   return (
     <ChakraProvider>
+      <Seo />
       <NavBar />
     
       <Layout>
@@ -56,7 +58,7 @@ export default function Home({machine}) {
             height={{
               md: '320px',
             }}
-            objectFit="cover"
+            objectFit="contain"
             src={displayImage}
             alt="state of the art speaker"
           />
@@ -100,6 +102,7 @@ export default function Home({machine}) {
             <Heading size="xl" fontWeight="extrabold"  mb="4">Required Badges</Heading>
   
               {(machine.badges).map((badge, i) => {
+                 const badge_image = badge.displayImage? getStrapiMedia(badge.displayImage) : ''
                 return (
                   <Link as={`/badges/${badge.slug}`} href="/badges/[id]">
                   <Box
@@ -130,8 +133,9 @@ export default function Home({machine}) {
                     >
                       <Stack spacing="4">
                         <Avatar
-                          size="lg"
-                          src=""
+                          bg={badge_image!==''? 'transparent':'#2A5FFF'}
+                          src={badge_image}
+                          size="xl"
                           name={badge.title}
                         />
                       </Stack>

@@ -48,12 +48,13 @@ const App = () => {
           >
             <Img
               borderRadius='3xl'
-              objectFit="cover"
+              objectFit="contain"
               w="full"
               h="full"
-              src="/picture_1.png"
+              maxH='240px'
+              src="/helmet.png"
               alt="feature"
-              filter='brightness(0.45) grayscale(1)'
+              // filter='brightness(0.45) grayscale(1)'
             />
           </Center>
           <Box

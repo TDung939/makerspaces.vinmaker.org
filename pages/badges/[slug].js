@@ -28,10 +28,15 @@ import { useContext } from 'react'
 import Link from "next/link"
 import VerticalSteps from '../../components/verticalSteps/App'
 import Table from '../../components/tableBadge/App'
+import { getStrapiMedia } from "../../lib/media"
+import Seo from "../../components/Seo"
+
 export default function Home({badge}) {
   const {user} = useContext(AuthContext)
+  const badge_image = badge.displayImage? getStrapiMedia(badge.displayImage) : ''
   return (
     <ChakraProvider>
+      <Seo />
       <NavBar />
     
       <Layout>
@@ -53,15 +58,16 @@ export default function Home({badge}) {
           spacing="10"
         >
           <Center>
-            <Avatar mx='auto' name={badge.title} size='2xl'/>
+            <Img src={badge_image} h='full' />
           </Center>
           
           
           <Box>
-            <Heading size="xl" mb="4" fontWeight="extrabold">
+            <Heading size="xl" mb="4" fontFamily='Space mono'>
               {badge.title}
             </Heading>
             <Text
+            fontFamily='Work sans'
               fontSize={{
                 md: 'lg',
               }}
@@ -74,10 +80,17 @@ export default function Home({badge}) {
             >
               <Button
                 size="lg"
-                colorScheme="blue"
+                color='white'
+                bg='#2A5FFF'
+                borderRadius='0 25px 0 0'
+                _hover={{
+                  bg:'transparent',
+                  border:'1px solid #2A5FFF',
+                  color:'#2A5FFF'
+                }}
                 rightIcon={<BsArrowRight />}
-                fontWeight="bold"
-                fontSize="md"
+                fontFamily='Space mono'
+                fontWeight='normal'
                 w={{
                   base: 'full',
                   sm: 'auto',
@@ -90,8 +103,8 @@ export default function Home({badge}) {
           </Box>
         </SimpleGrid>
         {/*Yellow banner*/}
-        <Box w="100%" bg="yellow" py="5" my="25" >
-          <Text ml="50" fontSize="md" fontWeight="bold">Get started on this badge by following the guidelines below</Text>
+        <Box w="100%" bg="#2A5FFF" py="5" my="25" >
+          <Text ml="50" fontSize="md" color='white' fontWeight="bold">Get started on this badge by following the guidelines below</Text>
         </Box>
         {/*Second section*/}
         <SimpleGrid

@@ -10,14 +10,16 @@ import Cta from '../components/pageHome/cta/App'
 import { fetchAPI } from '../lib/api'
 import Marquee from "react-fast-marquee";
 import { Img, Box, Tooltip, Heading } from '@chakra-ui/react'
+import Seo from '../components/Seo'
 
 export default function Home({badges_num, machines_num, makerspaces_num}) {
   return (
     <>
+      <Seo /> 
       <NavBar />
       <Hero />
       <Features />
-      <Box my='12' mx='auto' maxW='7xl'>
+      <Box mb='12' mx='auto' maxW='7xl'>
         <Marquee pauseOnHover speed={60}>
           <Tooltip label='Ultimaker 3D printer' hasArrow bg='#2A5FFF' fontSize='lg'>
             <Img 
@@ -26,7 +28,16 @@ export default function Home({badges_num, machines_num, makerspaces_num}) {
               transition:'0.1s ease-in-out',
               filter:'grayscale(0)'
             }}
-            mx='12' src='http://localhost:1337/uploads/ultimaker_s3_01_1b75fba196.jpeg' h='200px'/>
+            mx='12' src='/featured-machines/ultimaker.jpeg' h='200px'/>
+          </Tooltip>
+          <Tooltip label='EinScan 3D Scanner' hasArrow bg='#2A5FFF' fontSize='lg'>
+            <Img 
+            filter='grayscale(1)'
+            _hover={{
+              transition:'0.1s ease-in-out',
+              filter:'grayscale(0)'
+            }}
+            mx='12' src='/featured-machines/3D_Scanner.jpeg' h='200px'/>
           </Tooltip>
           <Tooltip label='Laser Cutter' hasArrow bg='#2A5FFF' fontSize='lg'>
             <Img 
@@ -35,25 +46,16 @@ export default function Home({badges_num, machines_num, makerspaces_num}) {
               transition:'0.1s ease-in-out',
               filter:'grayscale(0)'
             }}
-            mx='12' src='http://localhost:1337/uploads/epilog_1024x713_750180946a.jpeg' h='200px'/>
+            mx='12' src='/featured-machines/laser_cutter.jpeg' h='200px'/>
           </Tooltip>
-          <Tooltip label='VR' hasArrow bg='#2A5FFF' fontSize='lg'>
+          <Tooltip label='Vive Focus Plus' hasArrow bg='#2A5FFF' fontSize='lg'>
             <Img 
             filter='grayscale(1)'
             _hover={{
               transition:'0.1s ease-in-out',
               filter:'grayscale(0)'
             }}
-            mx='12' src='https://product.hstatic.net/1000360697/product/vive_pro_pdp_desktop-mian-min_cc9455039aaf469d92a02ef898480b99.png' h='200px'/>
-          </Tooltip>
-          <Tooltip label='Laser Cutter' hasArrow bg='#2A5FFF' fontSize='lg'>
-            <Img 
-            filter='grayscale(1)'
-            _hover={{
-              transition:'0.1s ease-in-out',
-              filter:'grayscale(0)'
-            }}
-            mx='12' src='https://www.brights.co.za/wp-content/uploads/2018/03/19854_Bosch-Electronic-Bench-Drill-710W-600x600.png' h='240px'/>
+            mx='12' src='/featured-machines/vive_focus.jpeg' h='240px'/>
           </Tooltip>
         </Marquee>
       </Box>

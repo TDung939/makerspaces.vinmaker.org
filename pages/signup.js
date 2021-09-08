@@ -5,12 +5,14 @@ import NavBar from '../components/navbar/App'
 import SignUp from '../components/pageSignUp/App'
 
 import Footer from '../components/footer/App'
+import Seo from "../components/Seo"
 
 
 
 export default function Home() {
   return (
     <ChakraProvider>
+        <Seo />
         <NavBar />
         <SignUp />
         <Footer />

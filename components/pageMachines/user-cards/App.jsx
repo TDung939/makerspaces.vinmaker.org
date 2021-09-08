@@ -104,6 +104,9 @@ const App = ({machines, processes, badges, materials}) => {
           >
             <Stack spacing="4">
               <Avatar
+                borderColor='#2A5FFF'
+                borderWidth='2px'
+                bg='transparent'
                 size="2xl"
                 src={machine?.displayImage? getStrapiMedia(machine?.displayImage) : ''}
                 name={machine.name}

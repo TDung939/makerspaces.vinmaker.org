@@ -1,4 +1,4 @@
-import { Box, Button, Heading, Stack, Text, useColorModeValue } from '@chakra-ui/react'
+import { Box, Button, Heading, Stack, Text, useColorModeValue , Img} from '@chakra-ui/react'
 import Link from 'next/link'
 import * as React from 'react'
 
@@ -40,6 +40,7 @@ const App = () => {
             Making
           </Box>
         </Heading>
+        <Img src='/makerspace_safety_badge.png' height='240px' mx='auto' my='12'/>
         <Text fontSize="lg" maxW="xl" mx="auto">
           Once you have gained your MS | MakerSpace Safety Badge you can book more training and gain access to more machines.
         </Text>

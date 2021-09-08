@@ -16,6 +16,7 @@ import Select from 'react-select'
 import { useQuery, useQueryClient } from 'react-query'
 import { fetchAPI } from '../../../lib/api'
 import { useState } from 'react'
+import { getStrapiMedia } from '../../../lib/media'
 
 const getBadges = async(key) => {
 
@@ -84,6 +85,7 @@ const App = ({badges, machines}) => {
       spacing={10}
     >
       {data.map((badge, i) => {
+        const badge_image = badge.displayImage? getStrapiMedia(badge.displayImage) : ''
         return (
         <Link as={`/badges/${badge.slug}`} href="/badges/[id]">
         <Card>
@@ -101,8 +103,9 @@ const App = ({badges, machines}) => {
           >
             <Stack spacing="4">
               <Avatar
+                bg={badge_image!==''? 'transparent':'#2A5FFF'}
                 size="2xl"
-                src=""
+                src={badge_image}
                 name={badge.title}
               />
             </Stack>

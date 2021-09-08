@@ -6,6 +6,7 @@ import Settings from '../../components/pageUser/views/user-settings/App'
 import Support from '../../components/pageUser/views/help-and-support/App'
 import { useState } from "react"
 import * as React from 'react'
+import Seo from "../../components/Seo"
 
 export default function Home() {
   const [view, setView] = useState("completed-badges");
@@ -31,9 +32,10 @@ export default function Home() {
   }
   return (
     <ChakraProvider>
+      <Seo />
       <NavBar />
-      <Flex>
-        <PageShell view={view} onChange={handleChange}/>
+      <Flex maxW='7xl' mx='auto'>
+        <PageShell view={view} onChange={handleChange} />
         {display}
       </Flex>
     </ChakraProvider>

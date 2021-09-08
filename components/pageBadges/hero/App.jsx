@@ -5,7 +5,7 @@ import { HiChevronRight } from 'react-icons/hi'
 const App = () => {
   return (
     <Box as="section" minH="140px" position="relative"
-    bg='linear-gradient(0deg, #2A5FFF85, #2A5FFF85),url(/badges_background.jpg)'
+    bg='linear-gradient(0deg, #2A5FFF90, #2A5FFF90),url(/badges_background.jpg)'
     bgRepeat='no-repeat'
     bgSize='cover'
     backgroundPosition='center'
@@ -28,7 +28,7 @@ const App = () => {
           color="white"
         >
           <Box maxW="xl">
-            <Heading as="h1" size="3xl" fontWeight="extrabold">
+            <Heading as="h1" size="3xl" fontFamily='Space mono'>
               Training Badges
             </Heading>
             <Text

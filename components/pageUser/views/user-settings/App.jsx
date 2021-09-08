@@ -2,7 +2,7 @@ import {
   Avatar,
   Box,
   Button,
-  Checkbox,
+  Img,
   FormControl,
   FormHelperText,
   FormLabel,
@@ -34,12 +34,8 @@ const App = () => {
   const [avatar, setAvatar] = useState(null);
   return (
   <Box
-    px={{
-      base: '4',
-      md: '10',
-    }}
-    py="16"
-    maxWidth="3xl"
+    py="12"
+    maxWidth="4xl"
     mx="auto"
   >
     <form
@@ -52,40 +48,16 @@ const App = () => {
         <Heading size="lg" as="h1" paddingBottom="4">
           Account Settings
         </Heading>
-        <FieldGroup title="Personal Info">
-          <VStack width="full" spacing="6">
-            <FormControl id="fullname">
-              <FormLabel>Full Name</FormLabel>
-              <Input 
-                onChange={(e) => setName(e.target.value)}
-                id="fullName"
-                type="text"
-                maxLength={255} 
-                value={name}
-                placeholder={user? user.username : ""}
-                />
-            </FormControl>
-
-            <FormControl id="email">
-              <FormLabel>Email</FormLabel>
-              <Input type="email" isReadOnly placeholder={user? user.email : ""} />
-            </FormControl>
-
-            <FormControl id="bio">
-              <FormLabel>Bio</FormLabel>
-              <Textarea rows={5} />
-              <FormHelperText>
-                Brief description for your profile. URLs are hyperlinked.
-              </FormHelperText>
-            </FormControl>
-          </VStack>
-        </FieldGroup>
         <FieldGroup title="Profile Photo">
-          <Stack direction="row" spacing="6" align="center" width="full">
+          <Stack direction="row" spacing="6" align="center" width="full" pos='relative'>
+            {/* <Img src='/helmet.png' pos='absolute' height='50px' zIndex='2' top='-0.5' left='9' /> */}
             <Avatar
+              bg='transparent'
+              borderWidth='2px'
+              borderColor='#2A5FFF'
               size="xl"
               name={user? user.username : ""}
-              src={user? user.photoURL : ""}
+              src={user?.photoURL? user.photoURL : `https://avatars.dicebear.com/api/croodles/${user?.username}.svg`}
             />
             <Box>
               <HStack spacing="5">
@@ -120,30 +92,41 @@ const App = () => {
             </Box>
           </Stack>
         </FieldGroup>
+
+        <FieldGroup title="Personal Info">
+          <VStack width="full" spacing="6">
+            <FormControl id="fullname">
+              <FormLabel>Full Name</FormLabel>
+              <Input 
+                onChange={(e) => setName(e.target.value)}
+                id="fullName"
+                type="text"
+                maxLength={255} 
+                value={name}
+                placeholder={user? user.username : ""}
+                />
+            </FormControl>
+
+            <FormControl id="email">
+              <FormLabel>Email</FormLabel>
+              <Input type="email" isReadOnly placeholder={user? user.email : ""} />
+            </FormControl>
+
+            <FormControl id="bio">
+              <FormLabel>Bio</FormLabel>
+              <Textarea rows={5} />
+              <FormHelperText>
+                Brief description for your profile. URLs are hyperlinked.
+              </FormHelperText>
+            </FormControl>
+          </VStack>
+        </FieldGroup>
+
         <FieldGroup title="Language">
           <VStack width="full" spacing="6">
             <LanguageSelect />
           </VStack>
         </FieldGroup>
-        {/*
-        <FieldGroup title="Notifications">
-          <Stack width="full" spacing="4">
-            <Checkbox>Get updates about the latest meetups.</Checkbox>
-            <Checkbox>Get notifications about your account activities</Checkbox>
-          </Stack>
-        </FieldGroup>
-        
-        <FieldGroup title="Connect accounts">
-          <HStack width="full">
-            <Button variant="outline" leftIcon={<FaGithub />}>
-              Connect Github
-            </Button>
-            <Button variant="outline" leftIcon={<Box as={FaGoogle} color="red.400" />}>
-              Connect Google
-            </Button>
-          </HStack>
-        </FieldGroup>
-        */}
       </Stack>
       <FieldGroup mt="8">
         <HStack width="full">
