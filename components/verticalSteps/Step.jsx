@@ -6,9 +6,9 @@ import { useStep } from './useStep'
 export const Step = (props) => {
   const { title, children, ...boxProps } = props
   const { isActive, isCompleted, step } = useStep()
-  const accentColor = useColorModeValue('blue.500', 'blue.300')
-  const mutedColor = useColorModeValue('gray.600', 'whiteAlpha.800')
-  const activeColor = useColorModeValue('white', 'black')
+  const accentColor = '#2A5FFF';
+  const mutedColor = 'gray.600';
+  const activeColor = 'white';
   return (
     <Box {...boxProps}>
       <HStack spacing="4">

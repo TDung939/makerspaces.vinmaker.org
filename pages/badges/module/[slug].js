@@ -112,6 +112,7 @@ export default function Home({badge, token}) {
   // Handle Update New Badges
   const handleReceiveBadge = async () => {
     let array = [];
+    
     if (user) {
       console.log(user)
       for (const badge of user.online_module_badges) {
@@ -120,9 +121,17 @@ export default function Home({badge, token}) {
       }
     }
     array.push(badge.id)
+
+    let guideSteps = user?.steps? user?.steps : {};
+    guideSteps[`badge${badge.id}`] = 1;
+
     try {
       if (token){
-          const res = await axios.put(`${STRAPI_URL}/users/${user.id}`, {online_module_badges: array}, {
+          const res = await axios.put(`${STRAPI_URL}/users/${user.id}`, 
+          {
+            online_module_badges: array,
+            steps: guideSteps
+          }, {
           headers: {
               Authorization:
               `Bearer ${token}`

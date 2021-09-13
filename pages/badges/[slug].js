@@ -24,16 +24,34 @@ import { BsFillGridFill, BsPlusCircleFill, BsShieldLockFill, BsArrowRight } from
 import {ChevronRightIcon} from '@chakra-ui/icons'
 import { Feature } from '../../components/layoutBadges/Feature'
 import AuthContext from '../../context/AuthContext'
-import { useContext } from 'react'
+import { useContext, useEffect } from 'react'
 import Link from "next/link"
 import VerticalSteps from '../../components/verticalSteps/App'
 import Table from '../../components/tableBadge/App'
 import { getStrapiMedia } from "../../lib/media"
 import Seo from "../../components/Seo"
 
+
 export default function Home({badge}) {
   const {user} = useContext(AuthContext)
   const badge_image = badge.displayImage? getStrapiMedia(badge.displayImage) : ''
+
+  let currentStep;
+  if (user && user.steps?.[`badge${badge.id}`]) {
+    currentStep = user.steps?.[`badge${badge.id}`];
+  } else {
+    currentStep = 0;
+  }
+
+  if (user) {
+    for (const badgeff of user.badges_completed) {
+        if (badgeff.id === badge.id) {
+          currentStep = 3;
+          break;
+        }
+    }
+  }
+
   return (
     <ChakraProvider>
       <Seo />
@@ -42,7 +60,7 @@ export default function Home({badge}) {
       <Layout>
         <Breadcrumb mb="10" spacing="8px" separator={<ChevronRightIcon color="gray.500" />}>
           <BreadcrumbItem>
-            <BreadcrumbLink href="/badges">Badges</BreadcrumbLink>
+           <Link href='/badges'><BreadcrumbLink>Badges</BreadcrumbLink></Link>
           </BreadcrumbItem>
 
           <BreadcrumbItem isCurrentPage>
@@ -60,7 +78,6 @@ export default function Home({badge}) {
           <Center>
             <Img src={badge_image} h='full' />
           </Center>
-          
           
           <Box>
             <Heading size="xl" mb="4" fontFamily='Space mono'>
@@ -95,18 +112,18 @@ export default function Home({badge}) {
                   base: 'full',
                   sm: 'auto',
                 }}
-                isDisabled={badge.module? false : true}
+                isDisabled={badge.module ? false : true}
               >
                 Get started
               </Button>
             </Link>
           </Box>
         </SimpleGrid>
-        {/*Yellow banner*/}
+
         <Box w="100%" bg="#2A5FFF" py="5" my="25" >
           <Text ml="50" fontSize="md" color='white' fontWeight="bold">Get started on this badge by following the guidelines below</Text>
         </Box>
-        {/*Second section*/}
+
         <SimpleGrid
           columns={{
             base: 1,
@@ -116,7 +133,7 @@ export default function Home({badge}) {
         >
         <Box w="100%" py="5" my="25">
           <Heading size="xl" fontWeight="extrabold"  mb="4">Learning Checklist</Heading>
-          <VerticalSteps />
+          <VerticalSteps active={currentStep}/>
         </Box>
         <Box w="100%" py="5" my="25">
           <Heading size="xl" fontWeight="extrabold"  mb="4">Machine Access</Heading>
@@ -132,8 +149,8 @@ export default function Home({badge}) {
             <UnorderedList>
               {(badge.machines).map((machine, i) => { 
                 return (
-                  <Link as={`/machines/${machine.slug}`} href="/machines/[id]">
-                    <ListItem cursor="pointer" _hover={{color: "#AE262B"}}>{machine.name}</ListItem>
+                  <Link key={i} as={`/machines/${machine.slug}`} href="/machines/[id]">
+                    <ListItem cursor="pointer" _hover={{color: "#2A5FFF"}}>{machine.name}</ListItem>
                   </Link>
                 );
               })}
