@@ -1,17 +1,15 @@
 import {
-  Button,
   Table,
   Tbody,
   Td,
   Th,
   Thead,
   Tr,
-  useDisclosure,
   useToast,
   useColorModeValue as mode,
 } from '@chakra-ui/react'
 import * as React from 'react'
-import { columns, data } from './_data'
+import { columns } from './_data'
 import moment from 'moment';
 import {useContext} from 'react'
 import AuthContext from '../../context/AuthContext'
@@ -21,7 +19,7 @@ export const TableContent = ({props}) => {
   const { user } = useContext(AuthContext);
   const toast = useToast();
   const id = props.id
- 
+  
   const handleSubmit = () => {
     if (user) {
       let online_completed = false
@@ -66,11 +64,11 @@ export const TableContent = ({props}) => {
                 </Td>
               )
             })}
-            <Td textAlign="right">
+            {/* <Td textAlign="right">
               <Button variant="link" colorScheme="blue" onClick={handleSubmit}>
                 Book
               </Button>
-            </Td>
+            </Td> */}
           </Tr>
         ))}
       </Tbody>

@@ -1,20 +1,19 @@
-import { Box, Img, Stack } from '@chakra-ui/react'
+import { Box, Stack, Avatar } from '@chakra-ui/react'
 import * as React from 'react'
+import { getStrapiMedia } from '../../lib/media'
 
 export const User = (props) => {
-  const { image, name, email } = props.data
+  const { profile_picture, name, email } = props.data
+  const profilePicture = profile_picture? getStrapiMedia(profile_picture) : ''
   return (
     <Stack direction="row" spacing="4" align="center">
       <Box flexShrink={0} h="10" w="10">
-        <Img
+        <Avatar
+          name={name}
           objectFit="cover"
-          htmlWidth="160px"
-          htmlHeight="160px"
           w="10"
           h="10"
-          rounded="full"
-          src={image}
-          alt=""
+          src={profilePicture}
         />
       </Box>
       <Box>

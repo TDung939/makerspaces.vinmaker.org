@@ -1,11 +1,8 @@
-import { Avatar, Center, ChakraProvider} from "@chakra-ui/react"
+import { Center, ChakraProvider, Flex } from "@chakra-ui/react"
 import NavBar from '../../components/navbar/App'
-import Hero from '../../components/pageBadges/hero/App'
-import Badges from '../../components/pageBadges/user-cards/App'
 import Footer from '../../components/footer/App'
 import {fetchAPI} from '../../lib/api'
 import Layout from '../../components/layoutBadges/App'
-
 import {
   Box,
   Button,
@@ -16,21 +13,20 @@ import {
   Breadcrumb,
   BreadcrumbItem,
   BreadcrumbLink,
-  List, ListItem, ListIcon, OrderedList, UnorderedList,
+  ListItem, UnorderedList,
 } from '@chakra-ui/react'
 import * as React from 'react'
-import { BsFillGridFill, BsPlusCircleFill, BsShieldLockFill, BsArrowRight } from 
+import { BsArrowRight } from 
 'react-icons/bs'
 import {ChevronRightIcon} from '@chakra-ui/icons'
-import { Feature } from '../../components/layoutBadges/Feature'
 import AuthContext from '../../context/AuthContext'
-import { useContext, useEffect } from 'react'
+import { useContext } from 'react'
 import Link from "next/link"
 import VerticalSteps from '../../components/verticalSteps/App'
 import Table from '../../components/tableBadge/App'
 import { getStrapiMedia } from "../../lib/media"
 import Seo from "../../components/Seo"
-
+import { PopupButton } from "react-calendly";
 
 export default function Home({badge}) {
   const {user} = useContext(AuthContext)
@@ -120,7 +116,7 @@ export default function Home({badge}) {
           </Box>
         </SimpleGrid>
 
-        <Box w="100%" bg="#2A5FFF" py="5" my="25" >
+        <Box w="100%" bg="#2A5FFF" py="5" my="12" >
           <Text ml="50" fontSize="md" color='white' fontWeight="bold">Get started on this badge by following the guidelines below</Text>
         </Box>
 
@@ -131,11 +127,11 @@ export default function Home({badge}) {
           }}
           spacing="10"
         >
-        <Box w="100%" py="5" my="25">
+        <Box w="100%" py="5">
           <Heading size="xl" fontWeight="extrabold"  mb="4">Learning Checklist</Heading>
           <VerticalSteps active={currentStep}/>
         </Box>
-        <Box w="100%" py="5" my="25">
+        <Box w="100%" py="5">
           <Heading size="xl" fontWeight="extrabold"  mb="4">Machine Access</Heading>
           <Text
               fontSize={{
@@ -157,9 +153,32 @@ export default function Home({badge}) {
             </UnorderedList>
         </Box>
         </SimpleGrid>
-        <Heading size="xl" fontWeight="extrabold"  mb="4">Hands-on Session</Heading>
+        
+        <Flex
+        justify='space-between'
+        >
+          <Heading size="xl" fontWeight="extrabold"  mb="4">Hands-on Session</Heading>
+          <Box
+          display={badge.bookingUrl? 'block':'none'}
+          >
+            <PopupButton 
+            styles={{
+              background: '#2A5FFF',
+              color:'white',
+              borderRadius:'0 25px 0 0',
+              padding:'16px',
+              fontFamily:'Space mono',
+            }}
+            prefill={{
+              name: `${user?.username}`,
+              email: `${user?.email}`
+            }}
+            text="BOOK A SESSION"
+            url={badge.bookingUrl}
+            />
+          </Box>
+        </Flex>
         <Table props = {badge}/>
-
       </Layout>
       <Footer />
     </ChakraProvider>
