@@ -159,7 +159,7 @@ export default function Home({badge}) {
         >
           <Heading size="xl" fontWeight="extrabold"  mb="4">Hands-on Session</Heading>
           <Box
-          display={badge.bookingUrl? 'block':'none'}
+          display={badge.bookingUrl && user? 'block':'none'}
           >
             <PopupButton 
             styles={{
