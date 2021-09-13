@@ -53,8 +53,11 @@ const App = ({badges, machines}) => {
     md: '7xl',
   }}
   mx='auto'>
-    <Flex>
-    <Stack w='sm' mr={16}>
+    <Flex
+     px={{base:'6', lg:'0'}}
+     direction={{base:'column', lg:'row'}}
+    >
+    <Stack w={{base:'xs', lg:'sm'}} mr={{base: 0, lg: 16}} mb='12'>
       <Select
       getOptionLabel={option => `${option.name}`}
       getOptionValue={option => option.id}

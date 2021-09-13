@@ -10,10 +10,10 @@ const App = () => {
     bgSize='cover'
     backgroundPosition='center'
     zIndex={1}
-    mt='8'
+    mt={{base:'0',lg:'8'}}
     maxW='7xl'
     mx='auto'
-    borderRadius='3xl'
+    borderRadius={{base:'0',lg:'3xl'}}
     >
       <Box py="32" position="relative" zIndex={1}>
         <Box

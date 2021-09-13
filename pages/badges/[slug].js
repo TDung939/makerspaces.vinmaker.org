@@ -117,7 +117,7 @@ export default function Home({badge}) {
         </SimpleGrid>
 
         <Box w="100%" bg="#2A5FFF" py="5" my="12" >
-          <Text ml="50" fontSize="md" color='white' fontWeight="bold">Get started on this badge by following the guidelines below</Text>
+          <Text ml={{base:'0', lg:"50"}} align={{base:'center', lg:'left'}} color='white' fontFamily='Work sans'>Get started on this badge by following the guidelines below</Text>
         </Box>
 
         <SimpleGrid
@@ -156,6 +156,7 @@ export default function Home({badge}) {
         
         <Flex
         justify='space-between'
+        direction={{base:'column', lg:'row'}}
         >
           <Heading size="xl" fontWeight="extrabold"  mb="4">Hands-on Session</Heading>
           <Box
@@ -168,12 +169,15 @@ export default function Home({badge}) {
               borderRadius:'0 25px 0 0',
               padding:'16px',
               fontFamily:'Space mono',
+              width: '100%',
+              paddingTop: '8px',
+              paddingBottom: '8px',
             }}
             prefill={{
               name: `${user?.username}`,
               email: `${user?.email}`
             }}
-            text="BOOK A SESSION"
+            text="Book a session"
             url={badge.bookingUrl}
             />
           </Box>

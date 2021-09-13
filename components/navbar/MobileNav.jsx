@@ -9,22 +9,25 @@ import {
   useFocusOnShow,
   VStack,
   useColorModeValue as mode,
-  Heading,
 } from '@chakra-ui/react'
 import { motion } from 'framer-motion'
 import * as React from 'react'
 import FocusLock from 'react-focus-lock'
 import {
-  HiBookOpen,
-  HiCloudDownload,
-  HiCurrencyDollar,
+  HiBadgeCheck,
+  HiCube,
+  HiHeart,
   HiOutlineMenu,
   HiOutlineX,
-  HiQuestionMarkCircle,
+  HiLibrary,
+  HiSupport,
 } from 'react-icons/hi'
 import { RemoveScroll } from 'react-remove-scroll'
-
+import AuthContext from '../../context/AuthContext'
+import { useContext } from 'react'
 import { NavLink } from './NavLink'
+import Link from 'next/link'
+
 const variants = {
   show: {
     display: 'revert',
@@ -107,6 +110,7 @@ export const MobileNav = () => {
     visible: show,
     shouldFocus: true,
   })
+  const {user} = useContext(AuthContext)
   return (
     <>
       <Box
@@ -139,8 +143,6 @@ export const MobileNav = () => {
           >
             <Box pt="5" pb="6" px="5">
               <Flex justify="space-between" align="center">
-                {/*Logo*/}
-                {/* <Heading>MakerSpaces</Heading> */}
                 <Box mr="-2" mt="-2">
                   <Center
                     as="button"
@@ -167,21 +169,33 @@ export const MobileNav = () => {
                   sm: 2,
                 }}
               >
-                <NavLink.Mobile icon={HiCloudDownload}>Product</NavLink.Mobile>
-                <NavLink.Mobile icon={HiCurrencyDollar}>Pricing</NavLink.Mobile>
-                <NavLink.Mobile icon={HiBookOpen}>Resources</NavLink.Mobile>
-                <NavLink.Mobile icon={HiQuestionMarkCircle}>Help</NavLink.Mobile>
+                <NavLink.Mobile href='/machines' icon={HiCube}>Machines</NavLink.Mobile>
+                <NavLink.Mobile href='/makerspaces' icon={HiLibrary}>Makerspaces</NavLink.Mobile>
+                <NavLink.Mobile href='/badges' icon={HiBadgeCheck}>Badges</NavLink.Mobile>
+                <NavLink.Mobile icon={HiHeart}>Safety</NavLink.Mobile>
+                <NavLink.Mobile icon={HiSupport}>Help</NavLink.Mobile>
               </SimpleGrid>
               <VStack mt="8" spacing="4">
+                <Link href={user? '/user/dashboard':'/signin'}>
+                <Button
+                  w="full" 
+                  color="white"
+                  bg="#2A5FFF"
+                  borderRadius='0 25px 0 0'
+                  _hover={{ bg: "transparent", color:'#2A5FFF', border:'1px solid #2A5FFF' }}
+                >
+                 {user? 'Go to Dashboard' : 'Sign in'}
+                </Button>
+                </Link>
                 <Button 
                   w="full" 
                   color="white"
-                  bg="#ae262b"
-                  _hover={{ bg: "#9d2227" }}
+                  bg="#161616"
+                  borderRadius='25px 0 0 0'
+                  _hover={{ bg: "transparent", color:'#161616', border:'1px solid #161616' }}
                 >
-                  Login
+                 {user? 'Log out' : 'Sign up'}
                 </Button>
-                
               </VStack>
             </Box>
           </Box>

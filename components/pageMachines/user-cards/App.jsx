@@ -58,8 +58,11 @@ const App = ({machines, processes, badges, materials}) => {
           }}
           mx='auto'
           >
-    <Flex>
-    <Stack w='sm' mr={16}>
+    <Flex
+    px={{base:'6', lg:'0'}}
+    direction={{base:'column', lg:'row'}}
+    >
+    <Stack w={{base:'xs', lg:'sm'}} mr={{base: 0, lg: 16}} mb='12'>
       <Select
       getOptionLabel={option => `${option.name}`}
       getOptionValue={option => option.id}
@@ -100,7 +103,7 @@ const App = ({machines, processes, badges, materials}) => {
               md: '10',
             }}
             align="flex-start"
-            cursor="default"
+            cursor="pointer"
           >
             <Stack spacing="4">
               <Avatar
@@ -140,7 +143,7 @@ const App = ({machines, processes, badges, materials}) => {
               </Box>
             </Box>
           </Stack>
-          <Text mt="5" textAlign="right" fontSize="sm">Read more</Text>
+          <Text cursor='pointer' mt="5" textAlign="right" fontSize="sm">Read more</Text>
         </Card>
         </Link>
         );

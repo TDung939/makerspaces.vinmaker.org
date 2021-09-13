@@ -47,9 +47,6 @@ const App = (props) => {
 
               <NavGroup label="Projects">
                 <NavItem icon={<BiImage />} label="Projects Gallery" pageView="" onChange={handleChange}/>
-                {/*<NavItem icon={<BiEnvelope />} label="Invoices" />
-                <NavItem icon={<BiPurchaseTagAlt />} label="Plans" />
-                <NavItem icon={<BiRecycle />} label="Subsription" />*/}
               </NavGroup>
 
               <NavGroup label="Others">

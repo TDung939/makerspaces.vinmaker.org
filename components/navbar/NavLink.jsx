@@ -32,7 +32,7 @@ const MobileNavLink = (props) => {
         bg: mode('gray.50', 'gray.600'),
       }}
     >
-      <Icon as={icon} color="black" fontSize="xl" />
+      <Icon as={icon} color="#2A5FFF" fontSize="xl" />
       <Box marginStart="3" fontWeight="medium">
         {children}
       </Box>

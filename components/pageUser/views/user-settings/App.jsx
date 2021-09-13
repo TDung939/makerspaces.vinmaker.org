@@ -130,33 +130,31 @@ const App = () => {
       </Stack>
       <FieldGroup mt="8">
         <HStack width="full">
-          <Button type="submit" colorScheme="blue" isDisabled={name===""}
-          onClick={ async () => {
-            await firebase.auth().currentUser.updateProfile({
-              displayName: name,
-            }).then(function() {
-              window.location.href = "/user/dashboard"
-            }).catch(function(error) {
-              const message = error.message;
-                toast({
-                    title: "An error occured",
-                    description: message,
-                    status: "error",
-                    duration: 9000,
-                    isClosable: true,
-                })
-            });
-        }}
-          >
-            Save Changes
-          </Button>
-          
-          <Button variant="outline" onClick={() => {
-            document.getElementById('fullName').value="";
-            document.getElementById('uploadAvatar').value="";
+          <Button color="white" bg='#161616' isDisabled={name===""}
+          borderRadius='25px 0 0 0'
+          _hover={{
+            bg:'transparent',
+            color:'#161616',
+            border: '1px solid #161616'
           }}
+          fontFamily='Space mono'
+          fontWeight='normal'
           >
             Cancel
+          </Button>
+          
+          <Button
+          color="white" bg='#2A5FFF'
+          borderRadius='0 25px 0 0'
+          _hover={{
+            bg:'transparent',
+            color:'#2A5FFF',
+            border: '1px solid #2A5FFF'
+          }}
+          fontFamily='Space mono'
+          fontWeight='normal'
+          >
+            Save changes
           </Button>
         </HStack>
       </FieldGroup>
