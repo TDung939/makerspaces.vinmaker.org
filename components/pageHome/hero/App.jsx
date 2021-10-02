@@ -72,6 +72,7 @@ const App = ({badges, machines, makerspaces}) => {
                   color:'white'
                 }}
                 key={index}
+                cursor='pointer'
                 >
                   <Flex align='center' justify='space-between'>
                   <Flex align='center'>
@@ -96,6 +97,7 @@ const App = ({badges, machines, makerspaces}) => {
                   color:'white'
                 }}
                 key={index}
+                cursor='pointer'
                 >
                   <Flex align='center' justify='space-between'>
                   <Flex align='center'>
