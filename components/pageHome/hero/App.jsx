@@ -15,7 +15,7 @@ import * as React from 'react'
 import { HiChevronRight } from 'react-icons/hi'
 import Link from 'next/link'
 import AuthContext from '../../../context/AuthContext'
-import { useContext, useState } from 'react'
+import { useContext, useState, useEffect } from 'react'
 import { BsArrowReturnLeft, BsSearch } from 'react-icons/bs'
 import { SearchIcon } from '@chakra-ui/icons'
 import Fuse from 'fuse.js';
@@ -24,6 +24,14 @@ import { FaCog, FaGraduationCap, FaUserShield } from 'react-icons/fa'
 
 const App = ({badges, machines, makerspaces}) => {
   const {user} = useContext(AuthContext)
+  useEffect(() => {
+      document.addEventListener('keydown', (e) => {  
+          // e.preventDefault();
+          if (e.shiftKey && e.code === 'Enter') {
+              onOpen();
+          }  
+      })
+  })
   const { isOpen, onOpen, onClose } = useDisclosure()
   const fuse_badges = new Fuse( badges, {
     keys: [
@@ -60,6 +68,7 @@ const App = ({badges, machines, makerspaces}) => {
                id="search"
                value={searchText}
               focusBorderColor='#00000010' borderRadius='lg' fontSize='xl' bg='white' placeholder="What are you looking for?"
+              autoComplete='off'
               />
           </InputGroup>
           <Box>
@@ -164,7 +173,7 @@ const App = ({badges, machines, makerspaces}) => {
               <Flex px='4' justify='space-between'>
                 <Text overflow='hidden' mr='8' fontWeight='thin'>Search for machines, makerspaces, resources,...</Text>
                 <span>
-                  <Kbd>⌘</Kbd> + <Kbd>Enter</Kbd>
+                  <Kbd>shift</Kbd> + <Kbd>Enter</Kbd>
                 </span>
               </Flex>
             </Button>
