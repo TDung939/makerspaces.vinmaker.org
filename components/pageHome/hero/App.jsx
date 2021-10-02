@@ -88,7 +88,7 @@ const App = ({badges, machines, makerspaces}) => {
             ))}
            
            {results_machines?.map((machine, index)=>(
-              <Link as={`/machine/${machine.item.slug}`} href="/machine/[slug]">
+              <Link as={`/machines/${machine.item.slug}`} href="/machines/[slug]">
                 <Box w='full' my='2' p='4' bg='white' boxShadow='md' borderRadius='lg'
                 color='gray'
                 _hover={{
