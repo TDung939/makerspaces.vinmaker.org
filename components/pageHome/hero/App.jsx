@@ -45,13 +45,13 @@ const App = ({badges, machines, makerspaces}) => {
   return (
     <Box mt={{base:'0', lg:'8'}} borderRadius={{base:'0', lg:'3xl'}} bg="transparent" as="section" minH="140px" position="relative" maxW='7xl' mx='auto'
     >
-      <Modal isOpen={isOpen} onClose={onClose} size='2xl'>
+      <Modal isOpen={isOpen} onClose={onClose} size='2xl' scrollBehavior='inside'>
         <ModalOverlay />
         <ModalContent>
           {/* <ModalHeader>Modal Title</ModalHeader>
           <ModalCloseButton /> */}
           <ModalBody>
-          <InputGroup w="full" borderColor='transparent' borderRadius='0'>
+          <InputGroup w="full" pos='sticky' top='0'>
               <InputLeftElement color="#2A5FFF" fontSize='xl' pointerEvents="none">
                 <SearchIcon />
               </InputLeftElement>
@@ -59,12 +59,13 @@ const App = ({badges, machines, makerspaces}) => {
                onChange={(e) => setSearchText(e.target.value)}
                id="search"
                value={searchText}
-              focusBorderColor='transparent' borderRadius='0' fontSize='xl' bg='white' placeholder="What are you looking for?"/>
+              focusBorderColor='#00000010' borderRadius='lg' fontSize='xl' bg='white' placeholder="What are you looking for?"
+              />
           </InputGroup>
           <Box>
             {results_badges?.map((badge, index)=>(
-              <Link as={`/badges/${badge.item.slug}`} href="/badges/[id]">
-                <Box w='full' m='2' p='4' bg='white' boxShadow='md' borderRadius='lg'
+              <Link as={`/badges/${badge.item.slug}`} href="/badges/[slug]">
+                <Box w='full' my='2' p='4' bg='white' boxShadow='md' borderRadius='lg'
                 color='gray'
                 _hover={{
                   bg:'#2A5FFF',
@@ -87,8 +88,8 @@ const App = ({badges, machines, makerspaces}) => {
             ))}
            
            {results_machines?.map((machine, index)=>(
-              <Link as={`/machine/${machine.item.slug}`} href="/machine/[id]">
-                <Box w='full' m='2' p='4' bg='white' boxShadow='md' borderRadius='lg'
+              <Link as={`/machine/${machine.item.slug}`} href="/machine/[slug]">
+                <Box w='full' my='2' p='4' bg='white' boxShadow='md' borderRadius='lg'
                 color='gray'
                 _hover={{
                   bg:'#2A5FFF',
@@ -159,7 +160,7 @@ const App = ({badges, machines, makerspaces}) => {
             >
               <BsSearch/>
               <Flex px='4' justify='space-between'>
-                <Text mr='8' fontWeight='thin'>Search for machines, resources, makerspaces</Text>
+                <Text overflow='hidden' mr='8' fontWeight='thin'>Search for machines, makerspaces, resources,...</Text>
                 <span>
                   <Kbd>⌘</Kbd> + <Kbd>Enter</Kbd>
                 </span>
