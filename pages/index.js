@@ -12,12 +12,12 @@ import Marquee from "react-fast-marquee";
 import { Img, Box, Tooltip, Heading } from '@chakra-ui/react'
 import Seo from '../components/Seo'
 
-export default function Home({badges_num, machines_num, makerspaces_num}) {
+export default function Home({ badges, machines, makerspaces, badges_num, machines_num, makerspaces_num}) {
   return (
     <>
       <Seo /> 
       <NavBar />
-      <Hero />
+      <Hero badges={badges} machines={machines} makerspaces={makerspaces}/>
       <Features />
       <Box mb='12' mx='auto' maxW='7xl'>
         <Marquee pauseOnHover speed={60}>
@@ -68,17 +68,18 @@ export default function Home({badges_num, machines_num, makerspaces_num}) {
   )
 }
 
-export async function getStaticProps() {
-  // Run API calls in parallel
-  const [badges_num, machines_num, makerspaces_num] = await Promise.all([
+export async function getServerSideProps({context, req }) {
+  const [badges, machines, makerspaces, badges_num, machines_num, makerspaces_num] = await Promise.all([
+    fetchAPI("/badges"), 
+    fetchAPI("/machines"), 
+    fetchAPI("/makerspaces"),
     fetchAPI("/badges/count"), 
     fetchAPI("/machines/count"), 
     fetchAPI("/makerspaces/count")
   ]);
 
   return {
-    props: { badges_num, machines_num, makerspaces_num },
-    revalidate: 1,
+    props: { badges, machines, makerspaces, badges_num, machines_num, makerspaces_num }
   };
 }
 

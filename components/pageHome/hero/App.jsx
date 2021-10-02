@@ -1,16 +1,125 @@
-import { Box, Button, Flex, Heading, HStack, Img, Stack, Text } from '@chakra-ui/react'
+import { Box, Button, Flex, Heading, HStack, Img, Stack, Text,Kbd, Icon,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
+  ModalCloseButton,
+  useDisclosure,
+  Input,
+  InputGroup,
+  InputLeftElement,
+} from '@chakra-ui/react'
 import * as React from 'react'
 import { HiChevronRight } from 'react-icons/hi'
 import Link from 'next/link'
 import AuthContext from '../../../context/AuthContext'
 import { useContext, useState } from 'react'
+import { BsArrowReturnLeft, BsSearch } from 'react-icons/bs'
+import { SearchIcon } from '@chakra-ui/icons'
+import Fuse from 'fuse.js';
+import { BiBadge } from 'react-icons/bi'
+import { FaCog, FaGraduationCap, FaUserShield } from 'react-icons/fa'
 
-const App = () => {
+const App = ({badges, machines, makerspaces}) => {
   const {user} = useContext(AuthContext)
+  const { isOpen, onOpen, onClose } = useDisclosure()
+  const fuse_badges = new Fuse( badges, {
+    keys: [
+      'title',
+      'descriptions'
+    ]
+  });
+
+  const fuse_machines = new Fuse( machines, {
+    keys: [
+      'name',
+      'descriptions'
+    ]
+  });
+
+  const [searchText, setSearchText] = useState('')
+  const results_badges = fuse_badges.search(searchText)
+  const results_machines = fuse_machines.search(searchText)
   return (
     <Box mt={{base:'0', lg:'8'}} borderRadius={{base:'0', lg:'3xl'}} bg="transparent" as="section" minH="140px" position="relative" maxW='7xl' mx='auto'
-    
     >
+      <Modal isOpen={isOpen} onClose={onClose} size='2xl'>
+        <ModalOverlay />
+        <ModalContent>
+          {/* <ModalHeader>Modal Title</ModalHeader>
+          <ModalCloseButton /> */}
+          <ModalBody>
+          <InputGroup w="full" borderColor='transparent' borderRadius='0'>
+              <InputLeftElement color="#2A5FFF" fontSize='xl' pointerEvents="none">
+                <SearchIcon />
+              </InputLeftElement>
+              <Input 
+               onChange={(e) => setSearchText(e.target.value)}
+               id="search"
+               value={searchText}
+              focusBorderColor='transparent' borderRadius='0' fontSize='xl' bg='white' placeholder="What are you looking for?"/>
+          </InputGroup>
+          <Box>
+            {results_badges?.map((badge, index)=>(
+              <Link as={`/badges/${badge.item.slug}`} href="/badges/[id]">
+                <Box w='full' m='2' p='4' bg='white' boxShadow='md' borderRadius='lg'
+                color='gray'
+                _hover={{
+                  bg:'#2A5FFF',
+                  color:'white'
+                }}
+                key={index}
+                >
+                  <Flex align='center' justify='space-between'>
+                  <Flex align='center'>
+                      <Icon mr='4' as={FaUserShield} fontSize='3xl'/>
+                      <Box>
+                        <Text fontSize='sm'>badge</Text>
+                        <Heading fontSize='md'>{badge.item.title}</Heading>
+                      </Box>
+                  </Flex>
+                  <Icon as={BsArrowReturnLeft} fontSize='3xl'/>
+                  </Flex>
+                </Box>
+                </Link>
+            ))}
+           
+           {results_machines?.map((machine, index)=>(
+              <Link as={`/machine/${machine.item.slug}`} href="/machine/[id]">
+                <Box w='full' m='2' p='4' bg='white' boxShadow='md' borderRadius='lg'
+                color='gray'
+                _hover={{
+                  bg:'#2A5FFF',
+                  color:'white'
+                }}
+                key={index}
+                >
+                  <Flex align='center' justify='space-between'>
+                  <Flex align='center'>
+                      <Icon mr='4' as={FaCog} fontSize='3xl'/>
+                      <Box>
+                        <Text fontSize='sm'>machine</Text>
+                        <Heading fontSize='md'>{machine.item.name}</Heading>
+                      </Box>
+                  </Flex>
+                  <Icon as={BsArrowReturnLeft} fontSize='3xl'/>
+                  </Flex>
+                </Box>
+                </Link>
+            ))}
+          </Box>
+          </ModalBody>
+
+          {/* <ModalFooter>
+            <Button colorScheme="blue" mr={3} onClick={onClose}>
+              Close
+            </Button>
+            <Button variant="ghost">Secondary Action</Button>
+          </ModalFooter> */}
+        </ModalContent>
+      </Modal>
       <Box py="24" position="relative" zIndex={1}>
         <Box
           maxW={{
@@ -37,6 +146,25 @@ const App = () => {
             >
               A Project by VinMaker Society
             </Text>
+            <Button
+            onClick={onOpen}
+            bg='white'
+            mt='4'
+            borderColor='gray.100'
+            boxShadow='0 1px 3px 0 rgba(0, 0, 0, 0.1),0 1px 2px 0 rgba(0, 0, 0, 0.06)'
+            outline='2px solid transparent'
+            borderRadius='md'
+            _hover={{}}
+            color='gray.400'
+            >
+              <BsSearch/>
+              <Flex px='4' justify='space-between'>
+                <Text mr='8' fontWeight='thin'>Search for machines, resources, makerspaces</Text>
+                <span>
+                  <Kbd>⌘</Kbd> + <Kbd>Enter</Kbd>
+                </span>
+              </Flex>
+            </Button>
             <Stack
               direction={{
                 base: 'column',
