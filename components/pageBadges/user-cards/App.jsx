@@ -90,7 +90,7 @@ const App = ({badges, machines}) => {
       {data.map((badge, i) => {
         const badge_image = badge.displayImage? getStrapiMedia(badge.displayImage) : ''
         return (
-        <Link as={`/badges/${badge.slug}`} href="/badges/[id]">
+        <Link as={`/badges/${badge.slug}`} href="/badges/[slug]">
         <Card>
           <Stack
             direction={{

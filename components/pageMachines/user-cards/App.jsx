@@ -91,7 +91,7 @@ const App = ({machines, processes, badges, materials}) => {
     >
       {data.map((machine, i) => {
         return (
-        <Link as={`/machines/${machine.slug}`} href="/machines/[id]">
+        <Link as={`/machines/${machine.slug}`} href="/machines/[slug]">
         <Card width="100%">
           <Stack
             direction={{
