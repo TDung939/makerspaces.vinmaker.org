@@ -1,8 +1,8 @@
 import { Center, ChakraProvider, Flex } from "@chakra-ui/react"
-import NavBar from '../../components/navbar/App'
-import Footer from '../../components/footer/App'
-import {fetchAPI} from '../../lib/api'
-import Layout from '../../components/layoutBadges/App'
+import NavBar from '@/components/navbar/App'
+import Footer from '@/components/footer/App'
+import {fetchAPI} from '@/lib/api'
+import Layout from '@/components/layoutBadges/App'
 import {
   Box,
   Button,
@@ -19,13 +19,13 @@ import * as React from 'react'
 import { BsArrowRight } from 
 'react-icons/bs'
 import {ChevronRightIcon} from '@chakra-ui/icons'
-import AuthContext from '../../context/AuthContext'
+import AuthContext from '@/context/AuthContext'
 import { useContext } from 'react'
 import Link from "next/link"
-import VerticalSteps from '../../components/verticalSteps/App'
-import Table from '../../components/tableBadge/App'
-import { getStrapiMedia } from "../../lib/media"
-import Seo from "../../components/Seo"
+import VerticalSteps from '@/components/verticalSteps/App'
+import Table from '@/components/tableBadge/App'
+import { getStrapiMedia } from "@/lib/media"
+import Seo from "@/components/Seo"
 import { PopupButton } from "react-calendly";
 
 export default function Home({badge}) {

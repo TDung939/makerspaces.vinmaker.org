@@ -1,5 +1,5 @@
 import cookie from 'cookie'
-import { STRAPI_URL } from '../../lib/const'
+import { STRAPI_URL } from '@/lib/const'
 
 export default async (req, res) => {
   if (req.method === 'GET') {

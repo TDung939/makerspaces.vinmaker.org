@@ -1,12 +1,12 @@
 import { ChakraProvider, Flex} from "@chakra-ui/react"
-import NavBar from '../../components/navbar/App'
-import PageShell from '../../components/pageUser/pageshell/App'
-import CompletedBadges from '../../components/pageUser/views/completed-badges/App'
-import Settings from '../../components/pageUser/views/user-settings/App'
-import Support from '../../components/pageUser/views/help-and-support/App'
+import NavBar from '@/components/navbar/App'
+import PageShell from '@/components/pageUser/pageshell/App'
+import CompletedBadges from '@/components/pageUser/views/completed-badges/App'
+import Settings from '@/components/pageUser/views/user-settings/App'
+import Support from '@/components/pageUser/views/help-and-support/App'
 import { useState } from "react"
 import * as React from 'react'
-import Seo from "../../components/Seo"
+import Seo from "@/components/Seo"
 
 export default function Home() {
   const [view, setView] = useState("completed-badges");

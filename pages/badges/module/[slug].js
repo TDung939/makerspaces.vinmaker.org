@@ -1,7 +1,7 @@
 import { ChakraProvider, useDisclosure} from "@chakra-ui/react"
-import NavBar from '../../../components/navbar/App'
-import {fetchAPI} from '../../../lib/api'
-import Layout from '../../../components/layoutBadges/App'
+import NavBar from '@/components/navbar/App'
+import {fetchAPI} from '@/lib/api'
+import Layout from '@/components/layoutBadges/App'
 import ReactMarkdown from 'react-markdown'
 import YouTube from 'react-youtube';
 import {
@@ -25,16 +25,15 @@ import {
 import * as React from 'react'
 import {ChevronRightIcon} from '@chakra-ui/icons'
 import { useState, useContext } from "react"
-import Questions from '../../../components/questions'
+import Questions from '@/components/questions'
 import Router from "next/router"
 import Link from "next/link"
-import AuthContext from '../../../context/AuthContext'
-import Cookies from "js-cookie"
+import AuthContext from '@/context/AuthContext'
 import axios from "axios"
-import { STRAPI_URL } from "../../../lib/const"
-import { parseCookies } from "../../../helpers"
-import { getStrapiMedia } from "../../../lib/media"
-import Seo from "../../../components/Seo"
+import { STRAPI_URL } from "@/lib/const"
+import { parseCookies } from "@/helpers"
+import { getStrapiMedia } from "@/lib/media"
+import Seo from "@/components/Seo"
 
 export default function Home({badge, token}) {
 

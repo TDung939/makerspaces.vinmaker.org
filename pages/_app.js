@@ -1,5 +1,5 @@
 import { ChakraProvider, theme, CSSReset } from "@chakra-ui/react"
-import {AuthProvider} from '../context/AuthContext'
+import {AuthProvider} from '@/context/AuthContext'
 import { QueryClientProvider, QueryClient } from "react-query";
 import "@fontsource/space-mono"
 import "@fontsource/work-sans"

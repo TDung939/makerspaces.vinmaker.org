@@ -1,13 +1,10 @@
 import { ChakraProvider} from "@chakra-ui/react"
-import NavBar from '../../components/navbar/App'
-import Hero from '../../components/pageBadges/hero/App'
-import Badges from '../../components/pageBadges/user-cards/App'
-import Footer from '../../components/footer/App'
-import {fetchAPI} from '../../lib/api'
-import Layout from '../../components/layoutBadges/App'
+import NavBar from '@/components/navbar/App'
+import Footer from '@/components/footer/App'
+import {fetchAPI} from '@/lib/api'
+import Layout from '@/components/layoutBadges/App'
 import {
   Box,
-  Button,
   Heading,
   Img,
   SimpleGrid,
@@ -15,15 +12,15 @@ import {
   Breadcrumb,
   BreadcrumbItem,
   BreadcrumbLink,
-  List, ListItem, Stack, Avatar, HStack, UnorderedList, Icon,
+  ListItem, Stack, Avatar, HStack, UnorderedList, Icon,
 } from '@chakra-ui/react'
 import { HiShieldCheck } from 'react-icons/hi'
 import * as React from 'react'
 import {ChevronRightIcon} from '@chakra-ui/icons'
 import Link from "next/link"
-import Table from '../../components/tableMachine/App'
-import { getStrapiMedia } from "../../lib/media"
-import Seo from "../../components/Seo"
+import Table from '@/components/tableMachine/App'
+import { getStrapiMedia } from "@/lib/media"
+import Seo from "@/components/Seo"
 
 
 export default function Home({machine}) {

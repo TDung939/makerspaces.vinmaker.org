@@ -1,10 +1,10 @@
 import { ChakraProvider} from "@chakra-ui/react"
 import NavBar from '../components/navbar/App'
 import Hero from '../components/pageMachines/hero/App'
-import Machines from '../components/pageMachines/user-cards/App'
-import Footer from '../components/footer/App'
-import {fetchAPI} from '../lib/api'
-import Seo from "../components/Seo"
+import Machines from '@/components/pageMachines/user-cards/App'
+import Footer from '@/components/footer/App'
+import {fetchAPI} from '@/lib/api'
+import Seo from "@/components/Seo"
 
 export default function Home({machines, processes, badges, materials}) {
   return (

@@ -1,11 +1,11 @@
 
 import { ChakraProvider} from "@chakra-ui/react"
 
-import NavBar from '../components/navbar/App'
-import SignUp from '../components/pageSignUp/App'
+import NavBar from '@/components/navbar/App'
+import SignUp from '@/components/pageSignUp/App'
 
-import Footer from '../components/footer/App'
-import Seo from "../components/Seo"
+import Footer from '@/components/footer/App'
+import Seo from "@/components/Seo"
 
 
 

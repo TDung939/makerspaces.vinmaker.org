@@ -1,16 +1,16 @@
 
-import Banner from '../components/banner/App'
-import NavBar from '../components/navbar/App'
-import Hero from '../components/pageHome/hero/App'
-import Features from '../components/pageHome/features/App'
-import Testimonials from '../components/pageHome/testimonials/App'
-import Footer from '../components/footer/App'
-import Stats from '../components/pageHome/stats/App'
-import Cta from '../components/pageHome/cta/App'
-import { fetchAPI } from '../lib/api'
+import Banner from '@/components/banner/App'
+import NavBar from '@/components/navbar/App'
+import Hero from '@/components/pageHome/hero/App'
+import Features from '@/components/pageHome/features/App'
+import Testimonials from '@/components/pageHome/testimonials/App'
+import Footer from '@/components/footer/App'
+import Stats from '@/components/pageHome/stats/App'
+import Cta from '@/components/pageHome/cta/App'
+import { fetchAPI } from '..//lib/api'
 import Marquee from "react-fast-marquee";
 import { Img, Box, Tooltip, Heading } from '@chakra-ui/react'
-import Seo from '../components/Seo'
+import Seo from '@/components/Seo'
 
 export default function Home({ badges, machines, makerspaces, badges_num, machines_num, makerspaces_num}) {
   return (

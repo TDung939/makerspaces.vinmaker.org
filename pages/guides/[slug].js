@@ -1,10 +1,8 @@
 import { ChakraProvider} from "@chakra-ui/react"
-import NavBar from '../../components/navbar/App'
-import Hero from '../../components/pageBadges/hero/App'
-import Badges from '../../components/pageBadges/user-cards/App'
-import Footer from '../../components/footer/App'
-import {fetchAPI} from '../../lib/api'
-import Layout from '../../components/layoutBadges/App'
+import NavBar from '@/components/navbar/App'
+import Footer from '@/components/footer/App'
+import {fetchAPI} from '@/lib/api'
+import Layout from '@/components/layoutBadges/App'
 import {
   Box,
   Button,
