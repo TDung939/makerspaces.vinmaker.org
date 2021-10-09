@@ -1,9 +1,9 @@
 import { ChakraProvider} from "@chakra-ui/react"
 
 import NavBar from '@/components/navbar/App'
-import Hero from '@/components/pageGetStarted/hero/App'
+import Hero from '@/views/pageGetStarted/hero/App'
 import Footer from '@/components/footer/App'
-import Steps from '@/components/pageGetStarted/steps/App'
+import Steps from '@/views/pageGetStarted/steps/App'
 import Seo from "@/components/Seo"
 
 export default function Home() {

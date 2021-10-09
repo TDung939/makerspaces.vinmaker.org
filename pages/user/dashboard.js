@@ -1,9 +1,9 @@
 import { ChakraProvider, Flex} from "@chakra-ui/react"
 import NavBar from '@/components/navbar/App'
-import PageShell from '@/components/pageUser/pageshell/App'
-import CompletedBadges from '@/components/pageUser/views/completed-badges/App'
-import Settings from '@/components/pageUser/views/user-settings/App'
-import Support from '@/components/pageUser/views/help-and-support/App'
+import PageShell from '@/views/pageUser/pageshell/App'
+import CompletedBadges from '@/views/pageUser/views/completed-badges/App'
+import Settings from '@/views/pageUser/views/user-settings/App'
+import Support from '@/views/pageUser/views/help-and-support/App'
 import { useState } from "react"
 import * as React from 'react'
 import Seo from "@/components/Seo"

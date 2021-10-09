@@ -1,7 +1,7 @@
 
 import { ChakraProvider} from "@chakra-ui/react"
 import NavBar from '@/components/navbar/App'
-import Login from '@/components/pageLogin/App'
+import Login from '@/views/pageLogin/App'
 import Footer from '@/components/footer/App'
 import Seo from "@/components/Seo"
 

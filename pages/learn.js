@@ -1,6 +1,6 @@
 import { ChakraProvider} from "@chakra-ui/react"
 import NavBar from '@/components/navbar/App'
-import Hero from '@/components/pageLearn/hero/App'
+import Hero from '@/views/pageLearn/hero/App'
 import Footer from '@/components/footer/App'
 import Seo from "@/components/Seo"
 
