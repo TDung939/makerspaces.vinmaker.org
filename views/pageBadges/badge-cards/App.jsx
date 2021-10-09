@@ -52,34 +52,45 @@ const App = ({badges, machines}) => {
     base: 'xl',
     md: '7xl',
   }}
+  pos='relative'
   mx='auto'>
     <Flex
+    pos='relative'
      px={{base:'6', lg:'0'}}
      direction={{base:'column', lg:'row'}}
     >
-    <Stack w={{base:'xs', lg:'sm'}} mr={{base: 0, lg: 16}} mb='12'>
-      <Select
-      getOptionLabel={option => `${option.name}`}
-      getOptionValue={option => option.id}
-      options={machines}
-      instanceId='machines'
-      isClearable
-      placeholder='Filter by Machines' 
-      onChange={value => setMachineId(value? value.id : null)}
-      />
-      <Select 
-        getOptionValue={option => option.value}
-        options={[
-          { value: 'entry', label: 'Entry' },
-          { value: 'intermediate', label: 'Intermediate' },
-          { value: 'advanced', label: 'Advanced' }
-        ]}
-        instanceId='level'
+    <Box>
+    <Box pos='sticky' top='32'>
+      <Stack 
+      w={{base:'xs', lg:'sm'}} 
+      mr={{base: 0, lg: 16}} 
+      mb='12'
+      >
+        <Select
+        getOptionLabel={option => `${option.name}`}
+        getOptionValue={option => option.id}
+        options={machines}
+        instanceId='machines'
         isClearable
-        placeholder='Filter by Level' 
-        onChange={value => setLevelType(value? value.value : null)}
-      />
-    </Stack>
+        placeholder='Filter by Machines' 
+        onChange={value => setMachineId(value? value.id : null)}
+        />
+        <Select 
+          getOptionValue={option => option.value}
+          options={[
+            { value: 'entry', label: 'Entry' },
+            { value: 'intermediate', label: 'Intermediate' },
+            { value: 'advanced', label: 'Advanced' }
+          ]}
+          instanceId='level'
+          isClearable
+          placeholder='Filter by Level' 
+          onChange={value => setLevelType(value? value.value : null)}
+        />
+      </Stack>
+    </Box>
+    </Box>
+
     <SimpleGrid 
       columns={{
         md: "2",

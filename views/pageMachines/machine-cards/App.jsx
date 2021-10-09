@@ -16,7 +16,6 @@ import * as React from 'react'
 import Link from 'next/link'
 import { HiCash, HiLocationMarker, HiShieldCheck } from 'react-icons/hi'
 import { Card } from './Card'
-import { CustomerReviews } from './CustomerReviews'
 import { getStrapiMedia } from '../../../lib/media'
 import Select from 'react-select'
 import { useQuery, useQueryClient } from 'react-query'
@@ -62,6 +61,8 @@ const App = ({machines, processes, badges, materials}) => {
     px={{base:'6', lg:'0'}}
     direction={{base:'column', lg:'row'}}
     >
+    <Box>
+    <Box pos='sticky' top='32'>
     <Stack w={{base:'xs', lg:'sm'}} mr={{base: 0, lg: 16}} mb='12'>
       <Select
       getOptionLabel={option => `${option.name}`}
@@ -82,6 +83,9 @@ const App = ({machines, processes, badges, materials}) => {
       onChange={value => setMaterialId(value? value.id : null)}
       />
     </Stack>
+    </Box>
+    </Box>
+
     <SimpleGrid 
       columns={{
         md: "2",
