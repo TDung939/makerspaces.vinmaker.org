@@ -1,5 +1,5 @@
 
-import { Flex, IconButton, HStack, Avatar, Text, Box } from '@chakra-ui/react'
+import { Flex, HStack, Avatar, Text, Box } from '@chakra-ui/react'
 
 import * as React from 'react'
 

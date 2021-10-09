@@ -1,15 +1,8 @@
 import {
   Box,
-  Button,
-  Heading,
-  Img,
-  SimpleGrid,
-  Text,
   useColorModeValue as mode,
 } from '@chakra-ui/react'
 import * as React from 'react'
-import { BsFillGridFill, BsPlusCircleFill, BsShieldLockFill, BsArrowRight } from 'react-icons/bs'
-import { Feature } from './Feature'
 
 const App = (props) => {
   return (

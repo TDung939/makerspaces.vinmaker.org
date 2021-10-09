@@ -16,7 +16,7 @@ import Link from 'next/link'
 import { MobileNav } from './MobileNav'
 
 import { UserProfile } from './UserProfile'
-import AuthContext from '../../context/AuthContext'
+import AuthContext from '@/context/AuthContext'
 import { useContext } from 'react'
 const App = () => {
   const {user, logout} = useContext(AuthContext)

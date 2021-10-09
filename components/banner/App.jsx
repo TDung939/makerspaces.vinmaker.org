@@ -5,7 +5,7 @@ import { CloseButton } from './CloseButton'
 import {useState} from 'react'
 import Link from 'next/link'
 
-const App = () => {
+const Banner = () => {
   const [isOpen, setIsOpen] = useState(false); 
   return (
   <Box as="section" hidden={isOpen}>
@@ -68,4 +68,4 @@ const App = () => {
   )
 }
 
-export default App
+export default Banner

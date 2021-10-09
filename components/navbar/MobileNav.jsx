@@ -23,7 +23,7 @@ import {
   HiSupport,
 } from 'react-icons/hi'
 import { RemoveScroll } from 'react-remove-scroll'
-import AuthContext from '../../context/AuthContext'
+import AuthContext from '@/context/AuthContext'
 import { useContext } from 'react'
 import { NavLink } from './NavLink'
 import Link from 'next/link'
