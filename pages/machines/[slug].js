@@ -2,7 +2,7 @@ import { ChakraProvider} from "@chakra-ui/react"
 import NavBar from '@/components/navbar/App'
 import Footer from '@/components/footer/App'
 import {fetchAPI} from '@/lib/api'
-import Layout from '@/components/layoutBadges/App'
+import Layout from '@/components/layoutModules/App'
 import {
   Box,
   Heading,
@@ -96,12 +96,12 @@ export default function Home({machine}) {
         spacing="20"
         >
           <Box w="100%" py="5" my="25">
-            <Heading size="xl" fontWeight="extrabold"  mb="4">Required Badges</Heading>
+            <Heading size="xl" fontWeight="extrabold"  mb="4">Required modules</Heading>
   
-              {(machine.badges).map((badge, i) => {
-                 const badge_image = badge.displayImage? getStrapiMedia(badge.displayImage) : ''
+              {(machine.modules).map((module, i) => {
+                 const module_image = module.displayImage? getStrapiMedia(module.displayImage) : ''
                 return (
-                  <Link as={`/badges/${badge.slug}`} href="/badges/[id]">
+                  <Link as={`/modules/${module.slug}`} href="/modules/[slug]">
                   <Box
                   maxW="2xl"
                   mx="auto"
@@ -130,10 +130,10 @@ export default function Home({machine}) {
                     >
                       <Stack spacing="4">
                         <Avatar
-                          bg={badge_image!==''? 'transparent':'#2A5FFF'}
-                          src={badge_image}
+                          bg={module_image!==''? 'transparent':'#2A5FFF'}
+                          src={module_image}
                           size="xl"
-                          name={badge.title}
+                          name={module.title}
                         />
                       </Stack>
                       <Box>
@@ -148,7 +148,7 @@ export default function Home({machine}) {
                           }}
                         >
                           <Text as="h2" fontWeight="bold" fontSize="lg">
-                            {badge.title}
+                            {module.title}
                           </Text>
                           <HStack
                             fontSize={{
@@ -159,9 +159,9 @@ export default function Home({machine}) {
                             <Icon as={HiShieldCheck} color="green.500" />
                           </HStack>
                         </Stack>
-                        <Text mt="2">{badge.level.name}</Text>
+                        <Text mt="2">{module.level.name}</Text>
                         <Box fontSize="sm" noOfLines={2}>
-                            {badge.descriptions}
+                            {module.descriptions}
                         </Box>
                       </Box>
                     </Stack>

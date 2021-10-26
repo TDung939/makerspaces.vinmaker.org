@@ -36,8 +36,8 @@ const App = (props) => {
           <Flex h="full" direction="column" px="4" py="4">
             <Stack spacing="8" flex="1" overflow="auto" >
 
-              <NavGroup label="Badges">
-                <NavItem icon={<BiBadgeCheck />} label="Completed Badges" pageView="completed-badges" onChange={handleChange}/>
+              <NavGroup label="Modules">
+                <NavItem icon={<BiBadgeCheck />} label="Completed Modules" pageView="completed-badges" onChange={handleChange}/>
               </NavGroup>
 
               <NavGroup label="Hands-on Sessions">

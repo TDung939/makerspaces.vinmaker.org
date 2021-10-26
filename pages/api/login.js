@@ -1,11 +1,10 @@
 import cookie from 'cookie'
-import { STRAPI_URL } from '@/lib/const'
 
 export default async (req, res) => {
   if (req.method === 'POST') {
     const { identifier, password } = req.body
 
-    const strapiRes = await fetch(`${STRAPI_URL}/auth/local`, {
+    const strapiRes = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_URL}/auth/local`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

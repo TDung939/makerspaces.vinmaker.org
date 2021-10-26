@@ -42,7 +42,7 @@ const getMachines = async(key) => {
   return machinesData
 }
 
-const App = ({machines, processes, badges, materials}) => {
+const App = ({machines, processes, modules, materials}) => {
 
   const queryClient = useQueryClient();
 

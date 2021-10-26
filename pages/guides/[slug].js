@@ -2,7 +2,7 @@ import { ChakraProvider} from "@chakra-ui/react"
 import NavBar from '@/components/navbar/App'
 import Footer from '@/components/footer/App'
 import {fetchAPI} from '@/lib/api'
-import Layout from '@/components/layoutBadges/App'
+import Layout from '@/components/layoutModules/App'
 import {
   Box,
   Button,

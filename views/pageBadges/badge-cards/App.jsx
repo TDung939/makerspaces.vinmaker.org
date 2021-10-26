@@ -18,34 +18,34 @@ import { fetchAPI } from '../../../lib/api'
 import { useState } from 'react'
 import { getStrapiMedia } from '../../../lib/media'
 
-const getBadges = async(key) => {
+const getModules = async(key) => {
 
   const levelType = key.queryKey[1].level
   const machineId = key.queryKey[2].machine
   console.log(key);
   if(levelType && machineId) {
-    const badgesData = await fetchAPI(`/badges?machines.id=${machineId}&level=${levelType}`)
-    return badgesData
+    const modulesData = await fetchAPI(`/modules?machines.id=${machineId}&level=${levelType}`)
+    return modulesData
   }
   if(machineId) {
-    const badgesData = await fetchAPI(`/badges?machines.id=${machineId}`)
-    return badgesData
+    const modulesData = await fetchAPI(`/modules?machines.id=${machineId}`)
+    return modulesData
   }
   if(levelType) {
-    const badgesData = await fetchAPI(`/badges?level=${levelType}`)
-    return badgesData
+    const modulesData = await fetchAPI(`/modules?level=${levelType}`)
+    return modulesData
   }
 
-  const badgesData = await fetchAPI("/badges")
-  return badgesData
+  const modulesData = await fetchAPI("/modules")
+  return modulesData
 } 
 
-const App = ({badges, machines}) => {
+const App = ({modules, machines}) => {
   const queryClient = useQueryClient();
 
   const [levelType, setLevelType] = useState(null)
   const [machineId, setMachineId] = useState(null)
-  const {data, status} = useQuery(['badges', {level: levelType}, {machine: machineId}], getBadges, {initialData: badges})
+  const {data, status} = useQuery(['modules', {level: levelType}, {machine: machineId}], getModules, {initialData: modules})
 
   return (
   <Box as="section" py="12" ml="50" maxW={{
@@ -98,10 +98,10 @@ const App = ({badges, machines}) => {
       }} 
       spacing={10}
     >
-      {data.map((badge, i) => {
-        const badge_image = badge.displayImage? getStrapiMedia(badge.displayImage) : ''
+      {data?.map((module, i) => {
+        const module_image = module.displayImage? getStrapiMedia(module.displayImage) : ''
         return (
-        <Link as={`/badges/${badge.slug}`} href="/badges/[slug]">
+        <Link as={`/modules/${module.slug}`} href="/modules/[slug]">
         <Card>
           <Stack
             direction={{
@@ -117,10 +117,10 @@ const App = ({badges, machines}) => {
           >
             <Stack spacing="4">
               <Avatar
-                bg={badge_image!==''? 'transparent':'#2A5FFF'}
+                bg={module_image!==''? 'transparent':'#2A5FFF'}
                 size="2xl"
-                src={badge_image}
-                name={badge.title}
+                src={module_image}
+                name={module.title}
               />
             </Stack>
             <Box>
@@ -135,7 +135,7 @@ const App = ({badges, machines}) => {
                 }}
               >
                 <Text as="h2" fontWeight="bold" fontSize="xl">
-                  {badge.title}
+                  {module.title}
                 </Text>
                 <HStack
                   fontSize={{
@@ -146,9 +146,9 @@ const App = ({badges, machines}) => {
                   <Icon as={HiShieldCheck} color="green.500" />
                 </HStack>
               </Stack>
-              <Text mt="2" textTransform="capitalize">{badge.level} Level</Text>
+              <Text mt="2" textTransform="capitalize">{module.level} Level</Text>
               <Box fontSize="sm" noOfLines={2}>
-                  {badge.descriptions}
+                  {module.descriptions}
               </Box>
             </Box>
           </Stack>

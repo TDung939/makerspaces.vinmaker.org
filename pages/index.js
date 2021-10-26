@@ -11,12 +11,12 @@ import Marquee from "react-fast-marquee";
 import { Img, Box, Tooltip, Heading } from '@chakra-ui/react'
 import Seo from '@/components/Seo'
 
-export default function Home({ badges, machines, makerspaces, badges_num, machines_num, makerspaces_num}) {
+export default function Home({ modules, machines, makerspaces, modules_num, machines_num, makerspaces_num}) {
   return (
     <>
       <Seo /> 
       <NavBar />
-      <Hero badges={badges} machines={machines} makerspaces={makerspaces}/>
+      <Hero modules={modules} machines={machines} makerspaces={makerspaces}/>
       <Features />
       <Box mb='12' mx='auto' maxW='7xl'>
         <Marquee pauseOnHover speed={60}>
@@ -58,7 +58,7 @@ export default function Home({ badges, machines, makerspaces, badges_num, machin
           </Tooltip>
         </Marquee>
       </Box>
-      <Stats badges_num={badges_num}  machines_num={machines_num} makerspaces_num={makerspaces_num}/>
+      <Stats modules_num={modules_num}  machines_num={machines_num} makerspaces_num={makerspaces_num}/>
       
       <Testimonials />
       <Cta />
@@ -68,17 +68,17 @@ export default function Home({ badges, machines, makerspaces, badges_num, machin
 }
 
 export async function getServerSideProps({context, req }) {
-  const [badges, machines, makerspaces, badges_num, machines_num, makerspaces_num] = await Promise.all([
-    fetchAPI("/badges"), 
+  const [modules, machines, makerspaces, modules_num, machines_num, makerspaces_num] = await Promise.all([
+    fetchAPI("/modules"), 
     fetchAPI("/machines"), 
     fetchAPI("/makerspaces"),
-    fetchAPI("/badges/count"), 
+    fetchAPI("/modules/count"), 
     fetchAPI("/machines/count"), 
     fetchAPI("/makerspaces/count")
   ]);
 
   return {
-    props: { badges, machines, makerspaces, badges_num, machines_num, makerspaces_num }
+    props: { modules, machines, makerspaces, modules_num, machines_num, makerspaces_num }
   };
 }
 

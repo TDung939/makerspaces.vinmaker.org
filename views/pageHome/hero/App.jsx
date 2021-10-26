@@ -22,7 +22,7 @@ import Fuse from 'fuse.js';
 import { BiBadge } from 'react-icons/bi'
 import { FaCog, FaGraduationCap, FaUserShield } from 'react-icons/fa'
 
-const App = ({badges, machines, makerspaces}) => {
+const App = ({ modules, machines, makerspaces}) => {
   const {user} = useContext(AuthContext)
   useEffect(() => {
       document.addEventListener('keydown', (e) => {  
@@ -33,7 +33,7 @@ const App = ({badges, machines, makerspaces}) => {
       })
   })
   const { isOpen, onOpen, onClose } = useDisclosure()
-  const fuse_badges = new Fuse( badges, {
+  const fuse_modules = new Fuse( modules, {
     keys: [
       'title',
       'descriptions'
@@ -48,7 +48,7 @@ const App = ({badges, machines, makerspaces}) => {
   });
 
   const [searchText, setSearchText] = useState('')
-  const results_badges = fuse_badges.search(searchText)
+  const results_modules = fuse_modules.search(searchText)
   const results_machines = fuse_machines.search(searchText)
   return (
     <Box mt={{base:'0', lg:'8'}} borderRadius={{base:'0', lg:'3xl'}} bg="transparent" as="section" minH="140px" position="relative" maxW='7xl' mx='auto'
@@ -72,8 +72,8 @@ const App = ({badges, machines, makerspaces}) => {
               />
           </InputGroup>
           <Box>
-            {results_badges?.map((badge, index)=>(
-              <Link as={`/badges/${badge.item.slug}`} href="/badges/[slug]">
+            {results_modules?.map((module, index)=>(
+              <Link as={`/modules/${module.item.slug}`} href="/modules/[slug]">
                 <Box w='full' my='2' p='4' bg='white' boxShadow='md' borderRadius='lg'
                 color='gray'
                 _hover={{
@@ -87,8 +87,8 @@ const App = ({badges, machines, makerspaces}) => {
                   <Flex align='center'>
                       <Icon mr='4' as={FaUserShield} fontSize='3xl'/>
                       <Box>
-                        <Text fontSize='sm'>badge</Text>
-                        <Heading fontSize='md'>{badge.item.title}</Heading>
+                        <Text fontSize='sm'>module</Text>
+                        <Heading fontSize='md'>{module.item.title}</Heading>
                       </Box>
                   </Flex>
                   <Icon as={BsArrowReturnLeft} fontSize='3xl'/>

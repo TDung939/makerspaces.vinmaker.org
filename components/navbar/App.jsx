@@ -14,10 +14,10 @@ import {
 import { ChevronDownIcon } from '@chakra-ui/icons'
 import Link from 'next/link'
 import { MobileNav } from './MobileNav'
-
 import { UserProfile } from './UserProfile'
 import AuthContext from '@/context/AuthContext'
 import { useContext } from 'react'
+
 const App = () => {
   const {user, logout} = useContext(AuthContext)
   let display;
@@ -119,7 +119,7 @@ const App = () => {
                   </MenuButton>
                   <MenuList border='0' >
                     <Link href='/machines'><MenuItem>Machines</MenuItem></Link>
-                    <Link href='/badges'><MenuItem>Badges</MenuItem></Link>
+                    <Link href='/modules'><MenuItem>Modules</MenuItem></Link>
                     <MenuItem isDisabled>Makerspaces</MenuItem>
                   </MenuList>
                 </Menu>

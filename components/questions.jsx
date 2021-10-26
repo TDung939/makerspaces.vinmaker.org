@@ -1,4 +1,4 @@
-import { Box, Heading, List, ListItem, ListIcon, Stack, Radio, RadioGroup, Button } from '@chakra-ui/react'
+import { Box, Heading, Stack, Radio, RadioGroup, Button } from '@chakra-ui/react'
 import * as React from 'react'
 import { useState } from 'react'
 const App = ({props, score, onChange}) => {

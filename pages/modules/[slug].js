@@ -2,7 +2,7 @@ import { Center, ChakraProvider, Flex } from "@chakra-ui/react"
 import NavBar from '@/components/navbar/App'
 import Footer from '@/components/footer/App'
 import {fetchAPI} from '@/lib/api'
-import Layout from '@/components/layoutBadges/App'
+import Layout from '@/components/layoutModules/App'
 import {
   Box,
   Button,
@@ -23,26 +23,28 @@ import AuthContext from '@/context/AuthContext'
 import { useContext } from 'react'
 import Link from "next/link"
 import VerticalSteps from '@/components/verticalSteps/App'
-import Table from '@/components/tableBadge/App'
+import Table from '@/components/tableModule/App'
 import { getStrapiMedia } from "@/lib/media"
 import Seo from "@/components/Seo"
 import { PopupButton } from "react-calendly";
+import Router from "next/router"
+import parse from "html-react-parser"
 
-export default function Home({badge}) {
+export default function Home({module}) {
   const {user} = useContext(AuthContext)
-  const badge_image = badge.displayImage? getStrapiMedia(badge.displayImage) : ''
-
+  const module_image = module.displayImage? getStrapiMedia(module.displayImage) : ''
+  const html = module?.teaching_content? module?.teaching_content : ''
   let currentStep;
-  if (user && user.steps?.[`badge${badge.id}`]) {
-    currentStep = user.steps?.[`badge${badge.id}`];
-  } else {
-    currentStep = 0;
-  }
-
   if (user) {
-    for (const badgeff of user.badges_completed) {
-        if (badgeff.id === badge.id) {
-          currentStep = 3;
+    for (const moduleff of user.online_module_modules) {
+      if (moduleff.id === module.id) {
+        currentStep = 1;
+        break;
+      }
+  }
+    for (const moduleff of user.modules_completed) {
+        if (moduleff.id === module.id) {
+          currentStep = 2;
           break;
         }
     }
@@ -56,11 +58,11 @@ export default function Home({badge}) {
       <Layout>
         <Breadcrumb mb="10" spacing="8px" separator={<ChevronRightIcon color="gray.500" />}>
           <BreadcrumbItem>
-           <Link href='/badges'><BreadcrumbLink>Badges</BreadcrumbLink></Link>
+           <Link href='/modules'><BreadcrumbLink>Modules</BreadcrumbLink></Link>
           </BreadcrumbItem>
 
           <BreadcrumbItem isCurrentPage>
-            <BreadcrumbLink href="#">{badge.title} Badge</BreadcrumbLink>
+            <BreadcrumbLink href="#">{module.title} Module</BreadcrumbLink>
           </BreadcrumbItem>
         </Breadcrumb>
         {/*First section*/}
@@ -72,12 +74,12 @@ export default function Home({badge}) {
           spacing="10"
         >
           <Center>
-            <Img src={badge_image} h='full' />
+            <Img src={module_image} h='full' />
           </Center>
           
           <Box>
             <Heading size="xl" mb="4" fontFamily='Space mono'>
-              {badge.title}
+              {module.title}
             </Heading>
             <Text
             fontFamily='Work sans'
@@ -87,12 +89,13 @@ export default function Home({badge}) {
               mb="6"
               maxW="md"
             >
-              {badge.descriptions}
+              {module.descriptions}
             </Text>
-            <Link as={user? `/badges/module/${badge.slug}` : null } href={user? "/badges/module/[id]" : "/login"}
-            >
+            {/* <Link as={user? `/badges/module/${badge.slug}` : null } href={user? "/badges/module/[id]" : "/login"} >*/}
+            
               <Button
                 size="lg"
+                onClick={() => {user? null: Router.push("/login")}}
                 color='white'
                 bg='#2A5FFF'
                 borderRadius='0 25px 0 0'
@@ -108,11 +111,11 @@ export default function Home({badge}) {
                   base: 'full',
                   sm: 'auto',
                 }}
-                isDisabled={badge.module ? false : true}
+                // isDisabled={badge.module ? false : true}
               >
-                Get started
+                Take Comprehension Quiz
               </Button>
-            </Link>
+            {/* </Link> */}
           </Box>
         </SimpleGrid>
 
@@ -143,9 +146,9 @@ export default function Home({badge}) {
              Once you have learnt this badge you will be granted access to the following machines:
             </Text>
             <UnorderedList>
-              {(badge.machines).map((machine, i) => { 
+              {(module.machines).map((machine, i) => { 
                 return (
-                  <Link key={i} as={`/machines/${machine.slug}`} href="/machines/[id]">
+                  <Link key={i} as={`/machines/${machine.slug}`} href="/machines/[slug]">
                     <ListItem cursor="pointer" _hover={{color: "#2A5FFF"}}>{machine.name}</ListItem>
                   </Link>
                 );
@@ -160,7 +163,7 @@ export default function Home({badge}) {
         >
           <Heading size="xl" fontWeight="extrabold"  mb="4">Hands-on Session</Heading>
           <Box
-          display={badge.bookingUrl && user? 'block':'none'}
+          display={module.bookingUrl && user? 'block':'none'}
           >
             <PopupButton 
             styles={{
@@ -178,11 +181,21 @@ export default function Home({badge}) {
               email: `${user?.email}`
             }}
             text="Book a session"
-            url={badge.bookingUrl}
+            url={module.bookingUrl}
             />
           </Box>
         </Flex>
-        <Table props = {badge}/>
+        <Table props = {module}/>
+        <Box mt='8' maxW='5xl' mx='auto'
+        // className={styles.article}
+        >
+        {parse(html, {
+            replace: (domNode) => {
+              // console.dir(domNode, { depth: null });
+            
+            }
+          })}
+        </Box>
       </Layout>
       <Footer />
     </ChakraProvider>
@@ -191,8 +204,8 @@ export default function Home({badge}) {
 
 export async function getServerSideProps(context) {
   const { slug } = context.query;
-  const badges = await fetchAPI(
-    `/badges?slug=${slug}`
+  const modules = await fetchAPI(
+    `/modules?slug=${slug}`
   );
-  return { props: { badge: badges[0]} };
+  return { props: { module: modules[0]} };
 }

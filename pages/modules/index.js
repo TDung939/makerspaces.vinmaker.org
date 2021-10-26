@@ -3,16 +3,16 @@ import NavBar from '@/components/navbar/App'
 import Hero from '@/views/pageBadges/hero/App'
 import Badges from '@/views/pageBadges/badge-cards/App'
 import Footer from '@/components/footer/App'
-import {fetchAPI} from '../lib/api'
+import {fetchAPI} from '../../lib/api'
 import Seo from "@/components/Seo"
 
-export default function Home({badges, machines}) {
+export default function Home({modules, machines}) {
   return (
     <ChakraProvider>
       <Seo />
       <NavBar />
       <Hero />
-      <Badges badges={badges} machines={machines}/>
+      <Badges module={modules} machines={machines}/>
       <Footer />
     </ChakraProvider>
   )
@@ -20,13 +20,13 @@ export default function Home({badges, machines}) {
 
 export async function getStaticProps() {
   // Run API calls in parallel
-  const [badges, machines] = await Promise.all([
-    fetchAPI("/badges"),
+  const [modules, machines] = await Promise.all([
+    fetchAPI("/modules"),
     fetchAPI("/machines")
   ]);
 
   return {
-    props: { badges, machines},
+    props: { modules, machines},
     revalidate: 1,
   };
 }

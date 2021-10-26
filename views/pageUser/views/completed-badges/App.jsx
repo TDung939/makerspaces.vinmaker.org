@@ -16,7 +16,7 @@ const App = () => {
     mx="auto"
   >
     <Heading size="lg" as="h1" paddingBottom="4">
-          Completed Badges
+          Completed Modules
     </Heading>
     <SimpleGrid
         columns={{
@@ -26,9 +26,9 @@ const App = () => {
         spacing="6"
       >
         
-      {user? user.badges_completed.map((badge) => {
-            const name = badge.title
-            const badge_image = badge.displayImage? getStrapiMedia(badge.displayImage) : ''
+      {user? user.modules_completed.map((module) => {
+            const name = module.title
+            const module_image = module.displayImage? getStrapiMedia(module.displayImage) : ''
             return (
               // <CardWithAvatar
               //     key={badge.title}
@@ -39,7 +39,7 @@ const App = () => {
               //   >
               //     {/* <BadgeInfo name={name} bio={badge.descriptions} isVerified="true" /> */}
               //   </CardWithAvatar>
-              <Img src={badge_image} height='240px' objectFit='contain'/>
+              <Img src={module_image} height='240px' objectFit='contain'/>
             );
           })
       : null  

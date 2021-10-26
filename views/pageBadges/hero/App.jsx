@@ -29,7 +29,7 @@ const App = () => {
         >
           <Box maxW="xl">
             <Heading as="h1" size="3xl" fontFamily='Space mono'>
-              Training Badges
+              Training Modules
             </Heading>
             <Text
               fontSize={{

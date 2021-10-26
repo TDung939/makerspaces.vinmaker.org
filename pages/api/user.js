@@ -1,5 +1,4 @@
 import cookie from 'cookie'
-import { STRAPI_URL } from '@/lib/const'
 
 export default async (req, res) => {
   if (req.method === 'GET') {
@@ -10,7 +9,7 @@ export default async (req, res) => {
 
     const { token } = cookie.parse(req.headers.cookie)
 
-    const strapiRes = await fetch(`${STRAPI_URL}/users/me`, {
+    const strapiRes = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_URL}/users/me`, {
       method: 'GET',
       headers: {
         Authorization: `Bearer ${token}`,

@@ -171,7 +171,7 @@ export const MobileNav = () => {
               >
                 <NavLink.Mobile href='/machines' icon={HiCube}>Machines</NavLink.Mobile>
                 <NavLink.Mobile href='/makerspaces' icon={HiLibrary}>Makerspaces</NavLink.Mobile>
-                <NavLink.Mobile href='/badges' icon={HiBadgeCheck}>Badges</NavLink.Mobile>
+                <NavLink.Mobile href='/modules' icon={HiBadgeCheck}>Modules</NavLink.Mobile>
                 <NavLink.Mobile icon={HiHeart}>Safety</NavLink.Mobile>
                 <NavLink.Mobile icon={HiSupport}>Help</NavLink.Mobile>
               </SimpleGrid>

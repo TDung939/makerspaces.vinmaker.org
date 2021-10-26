@@ -28,27 +28,27 @@ const App = (props) => {
           <StepContent>
             <Stack shouldWrapChildren spacing="4">
               <Text>
-              You will need to follow the link to the Learning Module page where you will find information about using the related machines, please complete the quizzes thoroughly to earn the Online Badge.
+              You will find information about using the related machines below, please complete the quizz thoroughly to be able to book a hands-on session.
               </Text>
            
             </Stack>
           </StepContent>
         </Step>
-        <Step title="Book Hands-on Training session">
+        <Step title="Book & Finish Hands-on Training session to gain access">
           <StepContent>
             <Stack shouldWrapChildren spacing="4">
               <Text>
-                You will need to book an offline session to get familiar with the machines and learn safety procedures when operating.
+                You will need to book an offline training session to get familiar with the machines and learn safety procedures when operating. This training session is assessed and if you are deemed competent you will receive your qualification badge.
               </Text>
            
             </Stack>
           </StepContent>
         </Step>
-        <Step title="Finish Hands-on Training to gain access">
+        <Step title="Feedback on the training">
           <StepContent>
             <Stack shouldWrapChildren spacing="4">
               <Text>
-              Learn practical machine and workshop skills in this 3 hour group badge training session. This badge training session is assessed and if you are deemed competent you will receive your badge.
+              Congratulations on finishing your training! Please provide your feedback here! Feedback is fun! Feedback is useful! Feedback or we take away your badge. Just Kidding 😛
               </Text>
              
             </Stack>
