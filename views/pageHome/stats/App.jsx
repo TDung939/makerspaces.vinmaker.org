@@ -3,7 +3,7 @@ import * as React from 'react'
 import { BiBarChartSquare, BiBook, BiBriefcaseAlt, BiDollarCircle, BiDoorOpen, BiWorld, BiWrench } from 'react-icons/bi'
 import { StatCard } from './StatCard'
 
-const App = ({badges_num, machines_num, makerspaces_num}) => (
+const App = ({ modules_num, machines_num, makerspaces_num}) => (
   <Box
     as="section"
     position="relative"
@@ -62,7 +62,7 @@ const App = ({badges_num, machines_num, makerspaces_num}) => (
         />
         <StatCard
           title="Learning Modules"
-          value={`${badges_num}+`}
+          value={`${modules_num}+`}
           icon={<BiBook />}
         />
       </SimpleGrid>
